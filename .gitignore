@@ -10,12 +10,12 @@
 README.html
 Rplots.pdf
 
-# ignore .results
-.results/*
-!.results/.gitkeep
-!.results/figures/.gitkeep
-!.results/tables/.gitkeep
-!.results/tmp_objects/.gitkeep
+# ignore output
+output/*
+!output/.gitkeep
+!output/figures/.gitkeep
+!output/tables/.gitkeep
+!output/tmp_objects/.gitkeep
 
 # snakemake
 .snakemake
@@ -29,3 +29,4 @@ Rplots.pdf
 
 # other
 models_report.log
+docker_build.log

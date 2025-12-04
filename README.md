@@ -13,9 +13,60 @@ This README focuses on getting the computational environment ready, configuring 
 ### TL;DR - Mac/Linux
 To set up the conda environment and run the analyses:
 ``` 
+  - python=3.11
+RUN pip3 install snakemake==7.26
+RUN pip3 install --force-reinstall pulp==2.7.0
+  - graphviz=12.2.1
+  - python-dotenv=1.1.0 in a conda environment snakemake
+
+
+
+
 bash setup_env.sh
 conda activate wt1_wp1_036_bmi_hf_metabolomics
 snakemake --cores 1 --rerun-incomplete all
+```
+
+## Requirements
+singularity 3.8.3  
+snakemake 7.26 (i.e. not 8.x)
+pulp 2.7.0 (i.e. <2.8)
+Docker image: `docker://nicksunderland/hf_mvmr:latest`  
+Data directory: `/user/home/xx20081/work/data`
+
+## Making the conda env that has snakemake and also uses R
+create a conda env
+install snakemake version 7.26
+install base r version 4.3.3
+Then we need to change where R looks for library files to the conda env. 
+https://intellij-support.jetbrains.com/hc/en-us/community/posts/360009755299-Pycharm-R-error-Cannot-run-console-RWrapper-terminated-exit-code-1
+On the home HPC dir for your account go to and open:
+```{bash}
+nano ~/.local/share/JetBrains/PyCharm2023.3/r-plugin/R/GetEnvVars.R
+```
+Change line: 
+```{r} 
+else if (get_os() == "linux") Sys.getenv("LD_LIBRARY_PATH")
+# to --> 
+else if (get_os() == "linux") 
+"/user/work/xx20081/miniforge3/envs/snakemake/lib:/user/work/xx20081/miniforge3/envs/snakemake/lib/R/lib" # Sys.getenv("LD_LIBRARY_PATH")
+```
+
+## Docker image
+All the required software and packages have been installed into a docker image. The image specification is contained in the `Dockerfile` incase this needs to be rebuilt or adjusted.
+
+## Run
+The project can be run on the Bristol HPC. First, load singularity and snakemake. Snakemake 7.26 is installed in a conda environment that needs to be activated.
+
+The project (slurm) configuration profile is contained within the `config.yaml` file. The snakemake `--profile` option takes a directory path to the where the `config.yaml` file can be found. In this case simply `.` as we have cd into the top level project directory.  
+
+To run the project, submitting each job to the compute nodes, run the `all` rule like so:
+
+```{bash}
+module load apptainer
+conda activate $WORK/miniforge3/envs/snakemake
+cd $WORK/projects/bmi_metabolites_and_heart_failure
+snakemake --profile . all -n
 ```
 
 ### TL;DR - Windows
