@@ -1,6 +1,6 @@
 # slurm settings
 use-singularity: True
-singularity-args: "-B $WORK/data:$WORK/data,$MRCIEU_DATA_DIR/genomic_data/dbsnp:$MRCIEU_DATA_DIR/genomic_data/dbsnp"
+singularity-args: "-B $DATA_DIR:$DATA_DIR,$DBSNP_DIR:$DBSNP_DIR"
 use-conda: True
 cluster-cancel: scancel %j
 cluster:
