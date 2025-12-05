@@ -1,0 +1,148 @@
+# metablites data
+# populated in make_config.py '["GCST" + str(i) for i in range(90301941, 90302174)]'
+metabolite_ids:
+  metabolon: []
+  nightingale: []
+
+# GWAS information and file mapping
+gwases: {
+  bmi: {
+    path: "gwas/bmi_pulit_2018/bmi.giant-ukbb.meta-analysis.combined.23May2018.txt.gz",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "SNP",                "type": "character" },
+      "chr":  { "name": "chr",     "alias": "CHR",                "type": "character" },
+      "bp":   { "name": "bp",      "alias": "POS",                "type": "integer"   },
+      "se":   { "name": "se",      "alias": "SE",                 "type": "numeric"   },
+      "p":    { "name": "p",       "alias": "P",                  "type": "numeric"   },
+      "n":    { "name": "n",       "alias": "N",                  "type": "integer"   },
+      "ea":   { "name": "ea",      "alias": "Tested_Allele",      "type": "character" },
+      "oa":   { "name": "oa",      "alias": "Other_Allele",       "type": "character" },
+      "beta": { "name": "beta",    "alias": "BETA",               "type": "numeric"   },
+      "eaf":  { "name": "eaf",     "alias": "Freq_Tested_Allele", "type": "numeric"   },
+    }
+  },
+  metabolites: {
+    map: {
+      "chr":  { "name": "chr",     "alias": "chromosome",               "type": "character" },
+      "bp":   { "name": "bp",      "alias": "base_pair_location",       "type": "integer"   },
+      "se":   { "name": "se",      "alias": "standard_error",           "type": "numeric"   },
+      "p":    { "name": "p",       "alias": "p_value",                  "type": "numeric"   },
+      "ea":   { "name": "ea",      "alias": "effect_allele",            "type": "character" },
+      "oa":   { "name": "oa",      "alias": "other_allele",             "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                     "type": "numeric"   },
+      "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency",  "type": "numeric"   }
+    }
+  },
+  default: {
+    map: {
+      "rsid":    {"name": "rsid",    "alias": "rsid", "type": "character" },
+      "chr":     {"name": "chr",     "alias": "chr",  "type": "character" },
+      "bp":      {"name": "bp",      "alias": "bp",   "type": "integer"   },
+      "se":      {"name": "se",      "alias": "se",   "type": "numeric"   },
+      "p":       {"name": "p",       "alias": "p",    "type": "numeric"   },
+      "n":       {"name": "n",       "alias": "n",    "type": "integer"   },
+      "ea":      {"name": "ea",      "alias": "ea",   "type": "character" },
+      "oa":      {"name": "oa",      "alias": "oa",   "type": "character" },
+      "beta":    {"name": "beta",    "alias": "beta", "type": "numeric"   },
+      "eaf":     {"name": "eaf",     "alias": "eaf",  "type": "numeric"   }
+    }
+  },
+  heart_failure: {
+    path: "gwas/hf_allcause_henry_2023/FORMAT-METAL_Pheno1_EUR.tsv.gz",
+    map: {
+      "rsid":  { "name": "rsid",    "alias": "rsID",     "type": "character" },
+      "chr":   { "name": "chr",     "alias": "chr",      "type": "character" },
+      "bp":    { "name": "bp",      "alias": "pos_b37",  "type": "integer"   },
+      "se":    { "name": "se",      "alias": "se",       "type": "numeric"   },
+      "p":     { "name": "p",       "alias": "pval",     "type": "numeric"   },
+      "ea":    { "name": "ea",      "alias": "A1",       "type": "character" },
+      "oa":    { "name": "oa",      "alias": "A2",       "type": "character" },
+      "beta":  { "name": "beta",    "alias": "A1_beta",  "type": "numeric"   },
+      "eaf":   { "name": "eaf",     "alias": "A1_freq",  "type": "numeric"   },
+      "n":     { "name": "n",       "alias": "N_total",  "type": "integer"   },
+      "ncase": { "name": "ncase",   "alias": "N_case",   "type": "integer"   }
+    }
+  },
+  hfref: {
+    path: "gwas/hf_nonisch_ref_henry_2023/FORMAT-METAL_Pheno3_EUR.tsv.gz",
+    map: {
+      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
+      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
+      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
+      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
+      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
+      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
+      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
+      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
+      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
+      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
+      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
+    }
+  },
+  hfpef: {
+    path: "gwas/hf_nonisch_pef_henry_2023/FORMAT-METAL_Pheno4_EUR.tsv.gz",
+    map: {
+      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
+      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
+      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
+      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
+      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
+      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
+      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
+      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
+      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
+      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
+      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
+    }
+  }
+}
+
+pathway_targets: {
+  # Asparagine Synthetase
+  asns_asparagine: {
+    gwas_path: "metabolomic_chen_2023/GCST90200452.fst",
+    gwas_build: "Hg38",
+    gene_chr: 7,
+    gene_start: 97480989,
+    gene_end: 97557753,
+    gene_win: 250000,
+    r2: 0.001,
+    p1: 5e-8,
+    kb: 250,
+    fill_rsid: "b37_dbsnp156",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+      "chr":  { "name": "chr",     "alias": "chromosome",             "type": "character" },
+      "bp":   { "name": "bp",      "alias": "base_pair_location",     "type": "integer"   },
+      "se":   { "name": "se",      "alias": "standard_error",         "type": "numeric"   },
+      "p":    { "name": "p",       "alias": "p_value",                "type": "numeric"   },
+      "ea":   { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+      "oa":   { "name": "oa",      "alias": "other_allele",           "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric"   },
+      "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric"  }
+    }
+  },
+  aspg_asparagine: {
+    gwas_path: "metabolomic_chen_2023/GCST90200452.fst",
+    gwas_build: "Hg38",
+    gene_chr: 14,
+    gene_start: 104552037,
+    gene_end: 104581919,
+    gene_win: 250000,
+    r2: 0.001,
+    p1: 5e-8,
+    kb: 250,
+    fill_rsid: "b37_dbsnp156",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+      "chr":  { "name": "chr",     "alias": "chromosome",             "type": "character" },
+      "bp":   { "name": "bp",      "alias": "base_pair_location",     "type": "integer"   },
+      "se":   { "name": "se",      "alias": "standard_error",         "type": "numeric"   },
+      "p":    { "name": "p",       "alias": "p_value",                "type": "numeric"   },
+      "ea":   { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+      "oa":   { "name": "oa",      "alias": "other_allele",           "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric"   },
+      "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric"  }
+    }
+  }
+}

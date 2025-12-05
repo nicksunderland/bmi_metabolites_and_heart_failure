@@ -19,6 +19,7 @@ RUN pip3 install --force-reinstall pulp==2.7.0
   - graphviz=12.2.1
   - python-dotenv=1.1.0 in a conda environment snakemake
 
+mamba install -c conda-forge python-dotenv
 
 
 
