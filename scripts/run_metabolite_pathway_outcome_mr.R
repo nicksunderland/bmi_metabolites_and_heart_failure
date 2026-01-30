@@ -59,7 +59,7 @@ results <- lapply(seq_along(out_list), function(i) {
   # read the gwas
   cat(" - reading GWAS\n")
   outcome_gwas <- fread(out_list[[i]])
-  outcome_map <- out_maps[[i]][["map"]]
+  outcome_map <- out_maps[[i]]
   old_names <- sapply(outcome_map, function(x) x[["alias"]])
   new_names <- sapply(outcome_map, function(x) x[["name"]])
   setnames(outcome_gwas, old_names, new_names)

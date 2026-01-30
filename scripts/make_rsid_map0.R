@@ -21,12 +21,12 @@ cat("Current number of threads used by data.table:", current_threads, "\n")
 cols <- c("variant_id", "chromosome", "base_pair_location", "effect_allele", "other_allele")
 
 # get metab file
-cat("Reading metabolite file\n")
+cat("Reading metabolite file:", metab_file, "\n")
 metab <- read_fst(metab_file, columns = cols, as.data.table = TRUE)
 
 
 if (base_file != metab_file) {
-  cat("Antijoin with base file\n")
+  cat("Antijoin with base file:", base_file, "\n")
   base <- read_fst(base_file, columns = cols, as.data.table = TRUE) |> unique()
   metab <- metab[!base, on=c("chromosome", "base_pair_location", "effect_allele", "other_allele")]
   cat(nrow(metab), "additional variants\n")

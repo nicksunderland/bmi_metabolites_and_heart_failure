@@ -22,7 +22,7 @@ git clone https://github.com/nicksunderland/bmi_metabolites_and_heart_failure $W
 module load apptainer
 conda activate snakemake
 cd $WORK/projects/bmi_metabolites_and_heart_failure
-snakemake --profile . all
+snakemake --profile . all 
 ```
 
 ## Requirements

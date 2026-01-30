@@ -94,6 +94,20 @@ gwases: {
       "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
       "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
     }
+  },
+  uterine_cancer: {
+    path: "gwas/uterine_cancer_omara_2018/GCST006465_GRCh37.tsv.gz",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "variant_id",    "type": "character" },
+      "chr": { "name": "chr",     "alias": "chromosome",     "type": "character" },
+      "bp": { "name": "bp",      "alias": "base_pair_location", "type": "integer" },
+      "se": { "name": "se",      "alias": "standard_error",      "type": "numeric" },
+      "p": { "name": "p",       "alias": "p_value",    "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "effect_allele",      "type": "character" },
+      "oa": { "name": "oa",      "alias": "other_allele",      "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta", "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+    }
   }
 }
 
@@ -143,6 +157,75 @@ pathway_targets: {
       "oa":   { "name": "oa",      "alias": "other_allele",           "type": "character" },
       "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric"   },
       "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric"  }
+    }
+  },
+  bckdk_kiv: { # α-ketoisovalerate / 3-methyl-2-oxobutyrate
+    gwas_path: "metabolomic_chen_2023/GCST90199677.fst",
+    gwas_build: "Hg38",
+    gene_chr: 16,
+    gene_start: 31117428,
+    gene_end: 31124110,
+    gene_win: 250000,
+    r2: 0.001,
+    p1: 5e-8,
+    kb: 250,
+    fill_rsid: "b37_dbsnp156",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+    }
+  },
+  bckdk_kic: { # α-ketoisocaproate / 4-methyl-2-oxopentanoate
+    gwas_path: "metabolomic_chen_2023/GCST90199655.fst",
+    gwas_build: "Hg38",
+    gene_chr: 16,
+    gene_start: 31117428,
+    gene_end: 31124110,
+    gene_win: 250000,
+    r2: 0.001,
+    p1: 5e-8,
+    kb: 250,
+    fill_rsid: "b37_dbsnp156",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+    }
+  },
+  bckdk_kmv: { # α-keto-β-methylvalerate / 3-methyl-2-oxovalerate
+    gwas_path: "metabolomic_chen_2023/GCST90199631.fst",
+    gwas_build: "Hg38",
+    gene_chr: 16,
+    gene_start: 31117428,
+    gene_end: 31124110,
+    gene_win: 250000,
+    r2: 0.001,
+    p1: 5e-8,
+    kb: 250,
+    fill_rsid: "b37_dbsnp156",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
     }
   }
 }

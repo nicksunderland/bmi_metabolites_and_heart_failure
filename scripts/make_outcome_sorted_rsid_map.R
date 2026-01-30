@@ -26,9 +26,9 @@ map <- NULL
 for (i in seq_along(gwases)) {
   f <- gwases[[i]]
   cat("Processing file:", basename(f), "(", i, "/", length(gwases), ")\n")
-  gwas_map <- gwas_maps[[i]][["map"]]
+  gwas_map <- gwas_maps[[i]]
   old_names <- sapply(c("rsid", "chr", "bp", "ea", "oa"), function(x) gwas_map[[x]][["alias"]])
-  d <- fread(f, select = unname(old_names), col.names = names(old_names))
+  d <- fread(f, select = unlist(unname(old_names)), col.names = names(old_names))
   d[, `:=`(chr = as.character(chr), ea = toupper(ea), oa = toupper(oa))]
   if (is.null(map)) {
     map <- d

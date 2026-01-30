@@ -23,15 +23,16 @@ SECTION: Project-wide target for full run
 """
 rule all:
   input:
-    "output/tmp_objects/bbs_metabolon.RDS",
-    "output/tmp_objects/bbs_nightingale.RDS",
-    "output/tables/qc/bbs_nightingale_qc_summary.tsv",
-    "output/tables/qc/bbs_metabolon_qc_summary.tsv",
-    "output/tables/linear_mixed_associations/linear_mixed_associations_raw_z_bbs_nightingale.tsv",
-    "output/tables/linear_mixed_associations/linear_mixed_associations_rnt_bbs_metabolon.tsv",
-    "output/tables/linear_mixed_associations/linear_mixed_associations_raw_z_direct_nightingale.tsv",
-    "output/tables/linear_mixed_associations/linear_mixed_associations_rnt_direct_metabolon.tsv",
-    "output/figures/replication/study_comparison_bland_alterman.png",
+    # "output/tmp_objects/bbs_metabolon.RDS",
+    # "output/tmp_objects/bbs_nightingale.RDS",
+    # "output/tables/qc/bbs_nightingale_qc_summary.tsv",
+    # "output/tables/qc/bbs_metabolon_qc_summary.tsv",
+    # "output/tables/linear_mixed_associations/linear_mixed_associations_raw_z_bbs_nightingale.tsv",
+    # "output/tables/linear_mixed_associations/linear_mixed_associations_rnt_bbs_metabolon.tsv",
+    # "output/tables/linear_mixed_associations/linear_mixed_associations_raw_z_direct_nightingale.tsv",
+    # "output/tables/linear_mixed_associations/linear_mixed_associations_rnt_direct_metabolon.tsv",
+    # "output/figures/replication/study_comparison_bland_alterman.png",
+    #"output/tmp_objects/mapping/metabolon_GCST90200194_rsid_map.tsv.gz"
     "output/figures/outcomes/metabolite_outcome_mr.png",
     "output/figures/outcomes/metabolite_outcome_mr_forest.png",
     "output/figures/outcomes/asparagine_mr.png"
@@ -263,17 +264,15 @@ rule make_sorted_outcome_rsid_map:
     mem_mb        = 150000,
     time          = "01:00:00"
   input:
-    gwases = [
-      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["heart_failure"]["path"]),
-      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["hfref"]["path"]),
-      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["hfpef"]["path"])
-    ]
+    gwases = [ os.path.join(os.environ["DATA_DIR"], config["gwases"]["heart_failure"]["path"]),
+               os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfref"]["path"]),
+               os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfpef"]["path"]) ]
   params:
-    gwas_maps = [
-      config["gwases"]["heart_failure"]["map"],
-      config["gwases"]["hfref"]["map"],
-      config["gwases"]["hfpef"]["map"]
-    ],
+    gwas_maps = {
+      "heart_failure": config["gwases"]["heart_failure"]["map"],
+      "hfref":         config["gwases"]["hfref"]["map"],
+      "hfpef":         config["gwases"]["hfpef"]["map"],
+    },
     dbsnp_dir = os.environ.get("DBSNP_DIR")
   output:
     map_out = "output/tables/outcome_sorted_rsid_map.fst"
@@ -300,25 +299,23 @@ rule metabolite_outcome_mr:
     mem_mb        = 40000,
     time          = "03:00:00"
   input:
-    out_list = [
-      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["heart_failure"]["path"]),
-      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["hfref"]["path"]),
-      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["hfpef"]["path"])
-    ],
+    out_list = [ os.path.join(os.environ["DATA_DIR"], config["gwases"]["heart_failure"]["path"]),
+                 os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfref"]["path"]),
+                 os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfpef"]["path"]) ],
     out_map     = "output/tables/outcome_sorted_rsid_map.fst",
     metab_gwas  = lambda w: os.path.join(os.environ.get(f"{w.platform}_METAB_DIR".replace(" ","").upper()),f"{w.metabolite_id}.fst".replace(" ","")),
     metab_meta  = lambda w: os.path.join(os.environ.get(f"{w.platform}_METAB_DIR".replace(" ","").upper()),f"{w.metabolite_id}.tsv-meta.yaml".replace(" ","")),
     metab_map   = "output/tables/{platform}_metabolite_sorted_rsid_map.fst"
   params:
-    out_maps = [
-      config["gwases"]["heart_failure"]["map"],
-      config["gwases"]["hfref"]["map"],
-      config["gwases"]["hfpef"]["map"]
-    ],
+    out_maps = {
+      "heart_failure": config["gwases"]["heart_failure"]["map"],
+      "hfref":         config["gwases"]["hfref"]["map"],
+      "hfpef":         config["gwases"]["hfpef"]["map"],
+    },
     platform = "{platform}",
     clump_r2 = 0.001,
     clump_p1 = 5e-8,
-    clump_kb = 10000,
+    clump_kb = 250,
     pfile    = os.path.join(os.environ.get("DATA_DIR"), "genome_reference", "ukb_reference_genome", "uk10k")
   output:
     mr_instrument = "output/tmp_objects/metabolite_outcome_mr/{metabolite_id}_{platform}_outcome_mr_instrument.tsv.gz",
@@ -374,7 +371,9 @@ rule plot_metabolite_outcome_mr:
     name_map      = "scripts/gwas_metab_name_map.xlsx",
     outcome_mr    = "output/tables/mr_results/metabolite_outcome_mr_results.tsv.gz",
     metab_loci_fp = "output/tables/mr_results/metabolite_outcome_instruments.tsv.gz",
-    replicating   = os.path.join("output","tables","replication","metabolite_replication_bbs_direct_mr.tsv")
+    replicating   = os.path.join("output","tables","replication","metabolite_replication_bbs_direct_mr.tsv"),
+    liu_fp        = "scripts/circhf_circhf-2023-010896_supp2.xlsx",
+    julkunen_fp   = "scripts/julkunen_2023_summary_statistics.csv"
   params:
     outcome_snp_overlap_dir = os.path.join("output","figures","outcomes","metabolite_outcome_mr_sig_overlap")
   output:
@@ -389,7 +388,8 @@ rule plot_metabolite_outcome_mr:
     bmi_metabolite_variant_venn = os.path.join("output", "figures", "outcomes", "bmi_metabolite_variant_venn.png"),
     liu_model1_overlap_venn_ms  = os.path.join("output", "figures", "outcomes", "liu_model1_observational_metabolite_venn_ms.png"),
     liu_model1_overlap_venn_nmr = os.path.join("output","figures","outcomes","liu_model1_observational_metabolite_venn_nmr.png"),
-    out_mr_obs_heatmap          = os.path.join("output", "figures", "outcomes", "outcomes/mr_observational_heatmap.png")
+    out_mr_obs_heatmap          = os.path.join("output", "figures", "outcomes", "outcomes/mr_observational_heatmap.png"),
+    observational_hf_overlap_tbl= os.path.join("output", "tables", "outcomes", "observational_hf_overlap.tsv")
   script:
     "scripts/metabolite_outcome_mr.R"
 
@@ -444,11 +444,11 @@ rule metabolite_gene_outcome_mr:
     out_map     = "output/tables/outcome_sorted_rsid_map.fst",
     exp_gwas    = "output/tables/instruments/{pathway}_instrument.tsv"
   params:
-    out_maps = [
-      config["gwases"]["heart_failure"]["map"],
-      config["gwases"]["hfref"]["map"],
-      config["gwases"]["hfpef"]["map"]
-    ],
+    out_maps = {
+        "heart_failure": config["gwases"]["heart_failure"]["map"],
+        "hfref": config["gwases"]["hfref"]["map"],
+        "hfpef": config["gwases"]["hfpef"]["map"]
+    },
     pfile = os.path.join(os.environ.get("DATA_DIR"), "genome_reference", "ukb_reference_genome", "uk10k"),
   output:
     mr_result = "output/tmp_objects/metabolite_outcome_mr/{pathway}_pathway_outcome_mr_results.tsv.gz"
@@ -472,7 +472,7 @@ rule concat_gene_mr_results:
 """
 SECTION: Asparagine Mendelian randomisation
 """
-rule plot_asparagine_outcome_mr:
+rule plot_gene_outcome_mr:
   input:
     metab_outcome_mr_results = "output/tables/mr_results/metabolite_outcome_mr_results.tsv.gz",
     metab_outcome_pathway_mr = "output/tables/mr_results/metabolite_pathway_outcome_mr_results.tsv.gz"

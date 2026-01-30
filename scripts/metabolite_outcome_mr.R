@@ -13,6 +13,8 @@ name_map                    <- snakemake@input[["name_map"]]
 outcome_mr                  <- snakemake@input[["outcome_mr"]]
 metab_loci_fp               <- snakemake@input[["metab_loci_fp"]]
 replicating                 <- snakemake@input[["replicating"]]
+liu_fp                      <- snakemake@input[["liu_fp"]]
+julkunen_fp                 <- snakemake@input[["julkunen_fp"]]
 outcome_snp_overlap_dir     <- snakemake@params[["outcome_snp_overlap_dir"]]
 outcome_mr_tbl              <- snakemake@output[["outcome_mr_tbl"]]
 outcome_mr_plot             <- snakemake@output[["outcome_mr_plot"]]
@@ -26,6 +28,7 @@ bmi_metabolite_variant_venn <- snakemake@output[["bmi_metabolite_variant_venn"]]
 liu_model1_overlap_venn_ms  <- snakemake@output[["liu_model1_overlap_venn_ms"]]
 liu_model1_overlap_venn_nmr <- snakemake@output[["liu_model1_overlap_venn_nmr"]]
 out_mr_obs_heatmap          <- snakemake@output[["out_mr_obs_heatmap"]]
+observational_hf_overlap_tbl<- snakemake@output[["observational_hf_overlap_tbl"]]
 ########################################################
 
 
@@ -38,6 +41,10 @@ library(plotly)
 library(htmlwidgets)
 library(mcr)
 library(readxl)
+library(eulerr)
+library(cowplot)
+library(ggvenn)
+library(RColorBrewer)
 suppressPackageStartupMessages(library(data.table))
 
 
@@ -187,7 +194,6 @@ ggsave(outcome_mr_forest, p, width = 10, height = 12, dpi=300, bg="white")
 
 
 # Volcano of all-cause HF results
-library(cowplot)
 mr_volcano_dat <- fread(outcome_mr)
 mr_volcano_dat[map, `:=`(label = i.label, pathway_group=i.pathway_group, gwas_id=i.gwas_id), on=c("exposure"="gwas_name")]
 mr_volcano_dat[, bmi_metabolite := factor("No", levels=c("No","Yes"))]
@@ -404,7 +410,6 @@ bmi_metabolite_variants <- metab_loci[rsid!="" & !is.na(rsid),
 fwrite(bmi_metabolite_variants[order(category)], bmi_metabolite_snps, sep="\t")
 
 
-library(ggvenn)
 venn_list <- list(
   `Non BMI Metabolite` = unique(metab_loci[bmi_metabolite == FALSE, rsid]),
   `BMI Metabolite` = unique(metab_loci[bmi_metabolite == TRUE, rsid])
@@ -451,7 +456,6 @@ pct_overlap[, overlap_sum := mean(pct_overlap_snps, na.rm=T), by="sig_trait_lab"
 pct_overlap[, sig_trait_lab := factor(sig_trait_lab, levels = unique(sig_trait_lab[order(-overlap_sum)]))]
 
 
-library(RColorBrewer)
 dir.create(outcome_snp_overlap_dir, showWarnings = FALSE, recursive = TRUE)
 for (ii in as.character(unique(pct_overlap$sig_trait_lab))) {
   dat <- copy(pct_overlap)
@@ -556,7 +560,6 @@ cols <- c("hr", "ci_95", "p_fdr")
 vector <- as.vector(unlist(lapply(hf_types, function(hf) {sapply(models, function(m) {paste0(hf, "_model_", m, "_", cols)})})))
 
 # MS
-liu_fp <- "/Users/xx20081/git/wt1_wp1_036_bmi_hf_metabolomics/.results/tables/outcomes/circhf_circhf-2023-010896_supp2.xlsx"
 hf1 <- read_xlsx(liu_fp, sheet=1, skip=4, col_names = c("liu_name", "pathway", "subpathway", "hmdb", vector, "new", "fig_num", "lasso")) |> as.data.table()
 hf2 <- read_xlsx(liu_fp, sheet=2, skip=4, col_names = c("liu_name", vector))|> as.data.table()
 hf_obs  <- rbind(hf1, hf2, fill=TRUE)
@@ -566,7 +569,6 @@ setcolorder(hf_obs, c("label", "platform"))
 
 
 # NMR
-julkunen_fp <- "/Users/xx20081/git/wt1_wp1_036_bmi_hf_metabolomics/.results/tables/outcomes/julkunen_2023_summary_statistics.csv"
 hf_nmr <- fread(julkunen_fp)
 hf_nmr[map, `:=`(label = i.label, platform = "nightingale"), on=c("biomarker_name"="julkunen_name")]
 
@@ -640,11 +642,10 @@ fwrite(bmi_metabs[, .(label, platform,
                       mr_hfpef_or       = exp(estimate_hfpef_mr),
                       mr_hfpef_95ci    = ifelse(is.na(estimate_hfall_mr), NA_character_, sprintf("%.2f, %.2f", exp(estimate_hfpef_mr - 1.96*std.error_hfpef_mr), exp(estimate_hfpef_mr + 1.96*std.error_hfpef_mr))),
                       mr_hfpef_p.value = p.value_hfpef_mr)],
-       "/Users/xx20081/git/wt1_wp1_036_bmi_hf_metabolomics/.results/tables/outcomes/observational_hf_overlap.tsv",
+       observational_hf_overlap_tbl,
        sep="\t")
 
 # get overlap
-library(eulerr)
 bmi_metabs_euler_dat <- merge(rep[, .(label, platform, replicates_trials_mr)],
                               hf_obs[, .SD, .SDcols = c("label", "platform", grep("hr|p_fdr|ci_95", names(hf_obs), value=T))],
                               by  = c("label", "platform"),

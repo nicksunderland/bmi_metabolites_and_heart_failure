@@ -15,19 +15,23 @@ asp_hf_mr_plot     <- snakemake@output[["asp_hf_mr_plot"]]
 asp_hf_mr_all_plot <- snakemake@output[["asp_hf_mr_all_plot"]]
 # ########################################################
 
+if (FALSE) {
+  metab_outcome_mr_results = file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output", "tables", "mr_results", "metabolite_outcome_mr_results.tsv.gz")
+  metab_outcome_pathway_mr = file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output", "tables", "mr_results", "metabolite_pathway_outcome_mr_results.tsv.gz")
+}
+
 # requirements
 library(data.table)
 library(ggplot2)
 
-metab_outcome_mr_results = "/Users/xx20081/git/bmi_metabolomics/output/tables/mr_results/metabolite_outcome_mr_results.tsv.gz"
-metab_outcome_pathway_mr = "/Users/xx20081/git/bmi_metabolomics/output/tables/mr_results/metabolite_pathway_outcome_mr_results.tsv.gz"
+
 # read
 outcome_dat <- fread(metab_outcome_mr_results)
 pathway_dat <- fread(metab_outcome_pathway_mr)
 
 
 # process
-≠ <-
+ <-
 
 ggsave(asp_hf_mr_plot, p, width = 8, height = 5, dpi=300, bg="white")
 

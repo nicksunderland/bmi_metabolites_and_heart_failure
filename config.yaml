@@ -1,6 +1,6 @@
 # slurm settings
 use-singularity: True
-singularity-args: "-B $DATA_DIR:$DATA_DIR,$DBSNP_DIR:$DBSNP_DIR"
+singularity-args: "-B $DATA_DIR:$DATA_DIR,$DBSNP_DIR:$DBSNP_DIR,$METAB_DIR:$METAB_DIR,$PROJ_DIR:$PROJ_DIR"
 use-conda: True
 cluster-cancel: scancel %j
 cluster:

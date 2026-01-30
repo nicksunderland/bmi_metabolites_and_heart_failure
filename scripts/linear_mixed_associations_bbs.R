@@ -15,6 +15,7 @@ model_df      <- snakemake@input[["model_df"]]
 functions     <- snakemake@params[["functions"]]
 data_type     <- snakemake@params[["data_type"]]
 platform      <- snakemake@params[["platform"]]
+cores         <- snakemake@resources[["cpus_per_task"]]
 assoc         <- snakemake@output[["assoc"]]
 log_file      <- snakemake@output[["log_file"]]
 ########################################################
@@ -54,7 +55,7 @@ model_dat[, `:=`(timepoint = factor(timepoint, levels = c("baseline", "end")),
 # run linear mixed model
 log("Running linear mixed model...", func = "cli_alert_info")
 metabs <- grep("^metab_", names(model_dat), value=TRUE)
-plan(multisession, workers = parallel::detectCores()-1)
+plan(multisession, workers = cores)
 with_progress({
   p    <- progressor(steps = length(metabs))
   res  <- future_map(stats::setNames(metabs, metabs), run_model,

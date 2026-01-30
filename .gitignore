@@ -1,6 +1,9 @@
 # local .env file
 .env
 
+# local data
+local_data/**
+
 # ignore R things
 .Rproj.user
 .Rhistory
