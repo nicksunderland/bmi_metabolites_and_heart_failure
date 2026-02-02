@@ -266,12 +266,15 @@ rule make_sorted_outcome_rsid_map:
   input:
     gwases = [ os.path.join(os.environ["DATA_DIR"], config["gwases"]["heart_failure"]["path"]),
                os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfref"]["path"]),
-               os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfpef"]["path"]) ]
+               os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfpef"]["path"]),
+               os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfpef_mvp"]["path"])
+               ]
   params:
     gwas_maps = {
       "heart_failure": config["gwases"]["heart_failure"]["map"],
       "hfref":         config["gwases"]["hfref"]["map"],
       "hfpef":         config["gwases"]["hfpef"]["map"],
+      "hfpef_mvp":     config["gwases"]["hfpef_mvp"]["map"]
     },
     dbsnp_dir = os.environ.get("DBSNP_DIR")
   output:
@@ -301,7 +304,8 @@ rule metabolite_outcome_mr:
   input:
     out_list = [ os.path.join(os.environ["DATA_DIR"], config["gwases"]["heart_failure"]["path"]),
                  os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfref"]["path"]),
-                 os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfpef"]["path"]) ],
+                 os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfpef"]["path"]),
+                 os.path.join(os.environ["DATA_DIR"], config["gwases"]["hfpef_mvp"]["path"]) ],
     out_map     = "output/tables/outcome_sorted_rsid_map.fst",
     metab_gwas  = lambda w: os.path.join(os.environ.get(f"{w.platform}_METAB_DIR".replace(" ","").upper()),f"{w.metabolite_id}.fst".replace(" ","")),
     metab_meta  = lambda w: os.path.join(os.environ.get(f"{w.platform}_METAB_DIR".replace(" ","").upper()),f"{w.metabolite_id}.tsv-meta.yaml".replace(" ","")),
@@ -311,6 +315,7 @@ rule metabolite_outcome_mr:
       "heart_failure": config["gwases"]["heart_failure"]["map"],
       "hfref":         config["gwases"]["hfref"]["map"],
       "hfpef":         config["gwases"]["hfpef"]["map"],
+      "hfpef_mvp":     config["gwases"]["hfpef_mvp"]["map"],
     },
     platform = "{platform}",
     clump_r2 = 0.001,
@@ -439,7 +444,8 @@ rule metabolite_gene_outcome_mr:
     out_list = [
       os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["heart_failure"]["path"]),
       os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["hfref"]["path"]),
-      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["hfpef"]["path"])
+      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["hfpef"]["path"]),
+      os.path.join(os.environ.get("DATA_DIR"), config["gwases"]["hfpef_mvp"]["path"])
     ],
     out_map     = "output/tables/outcome_sorted_rsid_map.fst",
     exp_gwas    = "output/tables/instruments/{pathway}_instrument.tsv"
@@ -447,7 +453,8 @@ rule metabolite_gene_outcome_mr:
     out_maps = {
         "heart_failure": config["gwases"]["heart_failure"]["map"],
         "hfref": config["gwases"]["hfref"]["map"],
-        "hfpef": config["gwases"]["hfpef"]["map"]
+        "hfpef": config["gwases"]["hfpef"]["map"],
+        "hfpef_mvp": config["gwases"]["hfpef_mvp"]["map"],
     },
     pfile = os.path.join(os.environ.get("DATA_DIR"), "genome_reference", "ukb_reference_genome", "uk10k"),
   output:
