@@ -1,0 +1,1878 @@
+ukbb_std_name	ukbb_raw_name	outcome	bbs_feature_id	bbs_chemical_name	bbs_pathway	bbs_sub_pathway	unsure	comment
+3_hydroxybutyrate	3-Hydroxybutyrate	3-Hydroxybutyrate levels	metab_bohbutyrate	3-Hydroxybutyrate	Ketone bodies	Ketone bodies		
+acetate	Acetate	Acetate levels	metab_acetate	Acetate	Ketone bodies	Ketone bodies		
+acetoacetate	Acetoacetate	Acetoacetate levels	metab_acetoacetate	Acetoacetate	Ketone bodies	Ketone bodies		
+acetone	Acetone	Acetone levels	metab_acetone	Acetone	Ketone bodies	Ketone bodies		
+alanine	Alanine	Alanine levels	metab_ala	Alanine	Amino acids	Amino acids		
+albumin	Albumin	Albumin levels	metab_albumin	Albumin	Fluid balance	Fluid balance		
+apolipoprotein_a1	Apolipoprotein A1	Apolipoprotein A-I levels	metab_apoa1	Apolipoprotein A-I	Apolipoproteins	Apolipoproteins		
+apolipoprotein_b	Apolipoprotein B	Apolipoprotein B levels	metab_apob	Apolipoprotein B	Apolipoproteins	Apolipoproteins		
+apolipoprotein_b_to_apolipoprotein_a1_ratio	Apolipoprotein B to Apolipoprotein A1 ratio	Ratio of apolipoprotein B to apolipoprotein A1 levels	metab_apobapoa1	Apolipoprotein B/A-I	Apolipoproteins	Apolipoproteins		
+average_diameter_for_hdl_particles	Average Diameter for HDL Particles	Mean diameter of HDL particles	metab_hdlsize	Average diameter for HDL particles	Lipoprotein particle sizes	Lipoprotein particle sizes		
+average_diameter_for_ldl_particles	Average Diameter for LDL Particles	Mean diameter of LDL particles	metab_ldlsize	Average diameter for LDL particles	Lipoprotein particle sizes	Lipoprotein particle sizes		
+average_diameter_for_vldl_particles	Average Diameter for VLDL Particles	Mean diameter of VLDL particles	metab_vldlsize	Average diameter for VLDL particles	Lipoprotein particle sizes	Lipoprotein particle sizes		
+cholesterol_in_chylomicrons_and_extremely_large_vldl	Cholesterol in Chylomicrons and Extremely Large VLDL	Total cholesterol levels in chylomicrons and extremely large VLDL	metab_xxlvldlc	Total cholesterol	Lipoprotein subclasses	Extremely large VLDL		
+cholesterol_in_idl	Cholesterol in IDL	Total Cholesterol in IDL	metab_idlc	Total cholesterol	Lipoprotein subclasses	IDL		
+cholesterol_in_large_hdl	Cholesterol in Large HDL	Total cholesterol in large HDL	metab_lhdlc	Total cholesterol	Lipoprotein subclasses	Large HDL		
+cholesterol_in_large_ldl	Cholesterol in Large LDL	Total cholesterol in large LDL	metab_lldlc	Total cholesterol	Lipoprotein subclasses	Large LDL		
+cholesterol_in_large_vldl	Cholesterol in Large VLDL	Total Cholesterol in large VLDL	metab_lvldlc	Total cholesterol	Lipoprotein subclasses	Large VLDL		
+cholesterol_in_medium_hdl	Cholesterol in Medium HDL	Total cholesterol levels in medium HDL	metab_mhdlc	Total cholesterol	Lipoprotein subclasses	Medium HDL		
+cholesterol_in_medium_ldl	Cholesterol in Medium LDL	Total cholesterol in medium LDL	metab_mldlc	Total cholesterol	Lipoprotein subclasses	Medium LDL		
+cholesterol_in_medium_vldl	Cholesterol in Medium VLDL	Total cholesterol in medium VLDL	metab_mvldlc	Total cholesterol	Lipoprotein subclasses	Medium VLDL		
+cholesterol_in_small_hdl	Cholesterol in Small HDL	Total cholesterol levels in small HDL	metab_shdlc	Total cholesterol	Lipoprotein subclasses	Small HDL		
+cholesterol_in_small_ldl	Cholesterol in Small LDL	Total Cholesterol in small LDL	metab_sldlc	Total cholesterol	Lipoprotein subclasses	Small LDL		
+cholesterol_in_small_vldl	Cholesterol in Small VLDL	Total cholesterol in small VLDL	metab_svldlc	Total cholesterol	Lipoprotein subclasses	Small VLDL		
+cholesterol_in_very_large_hdl	Cholesterol in Very Large HDL	Total cholesterol levels in very large HDL	metab_xlhdlc	Total cholesterol	Lipoprotein subclasses	Very large HDL		
+cholesterol_in_very_large_vldl	Cholesterol in Very Large VLDL	Total cholesterol in very large VLDL	metab_xlvldlc	Total cholesterol	Lipoprotein subclasses	Very large VLDL		
+cholesterol_in_very_small_vldl	Cholesterol in Very Small VLDL	Total cholesterol in very small VLDL	metab_xsvldlc	Total cholesterol	Lipoprotein subclasses	Very Small VLDL		
+cholesterol_to_total_lipids_in_chylomicrons_and_extremely_large_vldl_percentage	Cholesterol to Total Lipids in Chylomicrons and Extremely Large VLDL percentage	Total cholesterol to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldlcpct	Ratio	Lipoprotein subclasses ratios	Extremely large VLDL ratios		
+cholesterol_to_total_lipids_in_idl_percentage	Cholesterol to Total Lipids in IDL percentage	Total cholesterol to total lipids ratio in IDL	metab_idlcpct	Ratio	Lipoprotein subclasses ratios	IDL ratios		
+cholesterol_to_total_lipids_in_large_hdl_percentage	Cholesterol to Total Lipids in Large HDL percentage	Total cholesterol to total lipids ratio in large HDL	metab_lhdlcpct	Ratio	Lipoprotein subclasses ratios	Large HDL ratios		
+cholesterol_to_total_lipids_in_large_ldl_percentage	Cholesterol to Total Lipids in Large LDL percentage	Total cholesterol to total lipids ratio in large LDL	metab_lldlcpct	Ratio	Lipoprotein subclasses ratios	Large LDL ratios		
+cholesterol_to_total_lipids_in_large_vldl_percentage	Cholesterol to Total Lipids in Large VLDL percentage	Total cholesterol to total lipids ratio in large VLDL	metab_lvldlcpct	Ratio	Lipoprotein subclasses ratios	Large VLDL ratios		
+cholesterol_to_total_lipids_in_medium_hdl_percentage	Cholesterol to Total Lipids in Medium HDL percentage	Total cholesterol to total lipids ratio in medium HDL	metab_mhdlcpct	Ratio	Lipoprotein subclasses ratios	Medium HDL ratios		
+cholesterol_to_total_lipids_in_medium_ldl_percentage	Cholesterol to Total Lipids in Medium LDL percentage	Total cholesterol to total lipids ratio in medium LDL	metab_mldlcpct	Ratio	Lipoprotein subclasses ratios	Medium LDL ratios		
+cholesterol_to_total_lipids_in_medium_vldl_percentage	Cholesterol to Total Lipids in Medium VLDL percentage	Total cholesterol to total lipids ratio in medium VLDL	metab_mvldlcpct	Ratio	Lipoprotein subclasses ratios	Medium VLDL ratios		
+cholesterol_to_total_lipids_in_small_hdl_percentage	Cholesterol to Total Lipids in Small HDL percentage	Total cholesterol to total lipids ratio in small HDL	metab_shdlcpct	Ratio	Lipoprotein subclasses ratios	Small HDL ratios		
+cholesterol_to_total_lipids_in_small_ldl_percentage	Cholesterol to Total Lipids in Small LDL percentage	Total cholesterol to total lipids ratio in small LDL	metab_sldlcpct	Ratio	Lipoprotein subclasses ratios	Small LDL ratios		
+cholesterol_to_total_lipids_in_small_vldl_percentage	Cholesterol to Total Lipids in Small VLDL percentage	Total cholesterol to total lipids ratio in small VLDL	metab_svldlcpct	Ratio	Lipoprotein subclasses ratios	Small VLDL ratios		
+cholesterol_to_total_lipids_in_very_large_hdl_percentage	Cholesterol to Total Lipids in Very Large HDL percentage	Total cholesterol to total lipids ratio in very large HDL	metab_xlhdlcpct	Ratio	Lipoprotein subclasses ratios	Very large HDL ratios		
+cholesterol_to_total_lipids_in_very_large_vldl_percentage	Cholesterol to Total Lipids in Very Large VLDL percentage	Total cholesterol to total lipids ratio in very large VLDL	metab_xlvldlcpct	Ratio	Lipoprotein subclasses ratios	Very large VLDL ratios		
+cholesterol_to_total_lipids_in_very_small_vldl_percentage	Cholesterol to Total Lipids in Very Small VLDL percentage	Total cholesterol to total lipids ratio in very small VLDL	metab_xsvldlcpct	Ratio	Lipoprotein subclasses ratios	Very Small VLDL ratios		
+cholesteryl_esters_in_chylomicrons_and_extremely_large_vldl	Cholesteryl Esters in Chylomicrons and Extremely Large VLDL	Cholesteryl ester levels in chylomicrons and extremely large VLDL	metab_xxlvldlce	Cholesterol esters	Lipoprotein subclasses	Extremely large VLDL		
+cholesteryl_esters_in_hdl	Cholesteryl Esters in HDL		metab_hdlce	Cholesteryl esters in HDL	Cholesteryl esters	Cholesteryl esters		
+cholesteryl_esters_in_idl	Cholesteryl Esters in IDL	Cholesterol esters in IDL	metab_idlce	Cholesterol esters	Lipoprotein subclasses	IDL		
+cholesteryl_esters_in_large_hdl	Cholesteryl Esters in Large HDL	Cholesterol esters in large HDL	metab_lhdlce	Cholesterol esters	Lipoprotein subclasses	Large HDL		
+cholesteryl_esters_in_large_ldl	Cholesteryl Esters in Large LDL	Cholesterol esters in large LDL	metab_lldlce	Cholesterol esters	Lipoprotein subclasses	Large LDL		
+cholesteryl_esters_in_large_vldl	Cholesteryl Esters in Large VLDL	Cholesterol esters in large VLDL	metab_lvldlce	Cholesterol esters	Lipoprotein subclasses	Large VLDL		
+cholesteryl_esters_in_ldl	Cholesteryl Esters in LDL		metab_ldlce	Cholesteryl esters in LDL	Cholesteryl esters	Cholesteryl esters		
+cholesteryl_esters_in_medium_hdl	Cholesteryl Esters in Medium HDL	Cholesterol esters in medium HDL	metab_mhdlce	Cholesterol esters	Lipoprotein subclasses	Medium HDL		
+cholesteryl_esters_in_medium_ldl	Cholesteryl Esters in Medium LDL	Cholesterol esters in medium LDL	metab_mldlce	Cholesterol esters	Lipoprotein subclasses	Medium LDL		
+cholesteryl_esters_in_medium_vldl	Cholesteryl Esters in Medium VLDL	Cholesterol esters in medium VLDL	metab_mvldlce	Cholesterol esters	Lipoprotein subclasses	Medium VLDL		
+cholesteryl_esters_in_small_hdl	Cholesteryl Esters in Small HDL	Cholesterol esters in small HDL	metab_shdlce	Cholesterol esters	Lipoprotein subclasses	Small HDL		
+cholesteryl_esters_in_small_ldl	Cholesteryl Esters in Small LDL	Cholesterol esters in small LDL	metab_sldlce	Cholesterol esters	Lipoprotein subclasses	Small LDL		
+cholesteryl_esters_in_small_vldl	Cholesteryl Esters in Small VLDL	Cholesterol esters in small VLDL	metab_svldlce	Cholesterol esters	Lipoprotein subclasses	Small VLDL		
+cholesteryl_esters_in_very_large_hdl	Cholesteryl Esters in Very Large HDL	Cholesterol esters in very large HDL	metab_xlhdlce	Cholesterol esters	Lipoprotein subclasses	Very large HDL		
+cholesteryl_esters_in_very_large_vldl	Cholesteryl Esters in Very Large VLDL	Cholesterol esters in very large VLDL	metab_xlvldlce	Cholesterol esters	Lipoprotein subclasses	Very large VLDL		
+cholesteryl_esters_in_very_small_vldl	Cholesteryl Esters in Very Small VLDL	Cholesterol esters in very small VLDL	metab_xsvldlce	Cholesterol esters	Lipoprotein subclasses	Very Small VLDL		
+cholesteryl_esters_in_vldl	Cholesteryl Esters in VLDL		metab_vldlce	Cholesteryl esters in VLDL	Cholesteryl esters	Cholesteryl esters		
+cholesteryl_esters_to_total_lipids_in_chylomicrons_and_extremely_large_vldl_percentage	Cholesteryl Esters to Total Lipids in Chylomicrons and Extremely Large VLDL percentage	Cholesteryl esters to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldlcepct	Ratio	Lipoprotein subclasses ratios	Extremely large VLDL ratios		
+cholesteryl_esters_to_total_lipids_in_idl_percentage	Cholesteryl Esters to Total Lipids in IDL percentage	Cholesteryl esters to total lipids ratio in IDL	metab_idlcepct	Ratio	Lipoprotein subclasses ratios	IDL ratios		
+cholesteryl_esters_to_total_lipids_in_large_hdl_percentage	Cholesteryl Esters to Total Lipids in Large HDL percentage	Cholesteryl esters to total lipids ratio in large HDL	metab_lhdlcepct	Ratio	Lipoprotein subclasses ratios	Large HDL ratios		
+cholesteryl_esters_to_total_lipids_in_large_ldl_percentage	Cholesteryl Esters to Total Lipids in Large LDL percentage	Cholesteryl esters to total lipids ratio in large LDL	metab_lldlcepct	Ratio	Lipoprotein subclasses ratios	Large LDL ratios		
+cholesteryl_esters_to_total_lipids_in_large_vldl_percentage	Cholesteryl Esters to Total Lipids in Large VLDL percentage	Cholesteryl esters to total lipids ratio in large VLDL	metab_lvldlcepct	Ratio	Lipoprotein subclasses ratios	Large VLDL ratios		
+cholesteryl_esters_to_total_lipids_in_medium_hdl_percentage	Cholesteryl Esters to Total Lipids in Medium HDL percentage	Cholesteryl esters to total lipids ratio in medium HDL	metab_mhdlcepct	Ratio	Lipoprotein subclasses ratios	Medium HDL ratios		
+cholesteryl_esters_to_total_lipids_in_medium_ldl_percentage	Cholesteryl Esters to Total Lipids in Medium LDL percentage	Cholesteryl esters to total lipids ratio in medium LDL	metab_mldlcepct	Ratio	Lipoprotein subclasses ratios	Medium LDL ratios		
+cholesteryl_esters_to_total_lipids_in_medium_vldl_percentage	Cholesteryl Esters to Total Lipids in Medium VLDL percentage	Cholesteryl esters to total lipids ratio in medium VLDL	metab_mvldlcepct	Ratio	Lipoprotein subclasses ratios	Medium VLDL ratios		
+cholesteryl_esters_to_total_lipids_in_small_hdl_percentage	Cholesteryl Esters to Total Lipids in Small HDL percentage	Cholesteryl esters to total lipids ratio in small HDL	metab_shdlcepct	Ratio	Lipoprotein subclasses ratios	Small HDL ratios		
+cholesteryl_esters_to_total_lipids_in_small_ldl_percentage	Cholesteryl Esters to Total Lipids in Small LDL percentage	Cholesteryl esters to total lipids ratio in small LDL	metab_sldlcepct	Ratio	Lipoprotein subclasses ratios	Small LDL ratios		
+cholesteryl_esters_to_total_lipids_in_small_vldl_percentage	Cholesteryl Esters to Total Lipids in Small VLDL percentage	Cholesteryl esters to total lipids ratio in small VLDL	metab_svldlcepct	Ratio	Lipoprotein subclasses ratios	Small VLDL ratios		
+cholesteryl_esters_to_total_lipids_in_very_large_hdl_percentage	Cholesteryl Esters to Total Lipids in Very Large HDL percentage	Cholesteryl esters to total lipids ratio in very large HDL	metab_xlhdlcepct	Ratio	Lipoprotein subclasses ratios	Very large HDL ratios		
+cholesteryl_esters_to_total_lipids_in_very_large_vldl_percentage	Cholesteryl Esters to Total Lipids in Very Large VLDL percentage	Cholesteryl esters to total lipids ratio in very large VLDL	metab_xlvldlcepct	Ratio	Lipoprotein subclasses ratios	Very large VLDL ratios		
+cholesteryl_esters_to_total_lipids_in_very_small_vldl_percentage	Cholesteryl Esters to Total Lipids in Very Small VLDL percentage	Cholesteryl esters to total lipids ratio in very small VLDL	metab_xsvldlcepct	Ratio	Lipoprotein subclasses ratios	Very Small VLDL ratios		
+citrate	Citrate	Citrate levels	metab_citrate	Citrate	Glycolysis related metabolites	Glycolysis related metabolites		
+clinical_ldl_cholesterol	Clinical LDL Cholesterol		metab_clinicalldlc	Clinical LDL cholesterol	Cholesterol	Cholesterol		
+concentration_of_chylomicrons_and_extremely_large_vldl_particles	Concentration of Chylomicrons and Extremely Large VLDL Particles	Concentration of chylomicrons and extremely large VLDL particles	metab_xxlvldlp	Particle concentration	Lipoprotein subclasses	Extremely large VLDL		
+concentration_of_hdl_particles	Concentration of HDL Particles		metab_hdlp	Concentration of HDL particles	Lipoprotein particle concentrations	Lipoprotein particle concentrations		
+concentration_of_idl_particles	Concentration of IDL Particles	Concentration of IDL particles	metab_idlp	Particle concentration	Lipoprotein subclasses	IDL		
+concentration_of_large_hdl_particles	Concentration of Large HDL Particles	Concentration of large HDL particles	metab_lhdlp	Particle concentration	Lipoprotein subclasses	Large HDL		
+concentration_of_large_ldl_particles	Concentration of Large LDL Particles	Concentration of large LDL particles	metab_lldlp	Particle concentration	Lipoprotein subclasses	Large LDL		
+concentration_of_large_vldl_particles	Concentration of Large VLDL Particles	Concentration of large VLDL particles	metab_lvldlp	Particle concentration	Lipoprotein subclasses	Large VLDL		
+concentration_of_ldl_particles	Concentration of LDL Particles		metab_ldlp	Concentration of LDL particles	Lipoprotein particle concentrations	Lipoprotein particle concentrations		
+concentration_of_medium_hdl_particles	Concentration of Medium HDL Particles	Concentration of medium HDL particles	metab_mhdlp	Particle concentration	Lipoprotein subclasses	Medium HDL		
+concentration_of_medium_ldl_particles	Concentration of Medium LDL Particles	Concentration of medium LDL particles	metab_mldlp	Particle concentration	Lipoprotein subclasses	Medium LDL		
+concentration_of_medium_vldl_particles	Concentration of Medium VLDL Particles	Concentration of medium VLDL particles	metab_mvldlp	Particle concentration	Lipoprotein subclasses	Medium VLDL		
+concentration_of_small_hdl_particles	Concentration of Small HDL Particles	Concentration of small HDL particles	metab_shdlp	Particle concentration	Lipoprotein subclasses	Small HDL		
+concentration_of_small_ldl_particles	Concentration of Small LDL Particles	Concentration of small LDL particles	metab_sldlp	Particle concentration	Lipoprotein subclasses	Small LDL		
+concentration_of_small_vldl_particles	Concentration of Small VLDL Particles	Concentration of small VLDL particles	metab_svldlp	Particle concentration	Lipoprotein subclasses	Small VLDL		
+concentration_of_very_large_hdl_particles	Concentration of Very Large HDL Particles	Concentration of very large HDL particles	metab_xlhdlp	Particle concentration	Lipoprotein subclasses	Very large HDL		
+concentration_of_very_large_vldl_particles	Concentration of Very Large VLDL Particles	Concentration of very large VLDL particles	metab_xlvldlp	Particle concentration	Lipoprotein subclasses	Very large VLDL		
+concentration_of_very_small_vldl_particles	Concentration of Very Small VLDL Particles	Concentration of very small VLDL particles	metab_xsvldlp	Particle concentration	Lipoprotein subclasses	Very Small VLDL		
+concentration_of_vldl_particles	Concentration of VLDL Particles		metab_vldlp	Concentration of VLDL particles	Lipoprotein particle concentrations	Lipoprotein particle concentrations		
+creatinine	Creatinine	Creatinine levels	metab_creatinine	Creatinine	Fluid balance	Fluid balance		
+degree_of_unsaturation	Degree of Unsaturation	Estimated degree of unsaturation	metab_unsaturation	Degree of unsaturation	Fatty acids	Fatty acids		
+docosahexaenoic_acid	Docosahexaenoic Acid	Docosahexaenoic acid (22:6) levels	metab_dha	Docosahexaenoic acid	Fatty acids	Fatty acids		
+docosahexaenoic_acid_to_total_fatty_acids_percentage	Docosahexaenoic Acid to Total Fatty Acids percentage	Ratio of 22:6 docosahexaenoic acid to total fatty acids	metab_dhapct	Ratio of docosahexaenoic acid to total fatty acids	Fatty acids	Fatty acid ratios		
+free_cholesterol_in_chylomicrons_and_extremely_large_vldl	Free Cholesterol in Chylomicrons and Extremely Large VLDL	Free cholesterol levels in chylomicrons and extremely large VLDL	metab_xxlvldlfc	Free cholesterol	Lipoprotein subclasses	Extremely large VLDL		
+free_cholesterol_in_hdl	Free Cholesterol in HDL		metab_hdlfc	Free cholesterol in HDL	Free cholesterol	Free cholesterol		
+free_cholesterol_in_idl	Free Cholesterol in IDL	Free cholesterol in IDL	metab_idlfc	Free cholesterol	Lipoprotein subclasses	IDL		
+free_cholesterol_in_large_hdl	Free Cholesterol in Large HDL	Free cholesterol in large HDL	metab_lhdlfc	Free cholesterol	Lipoprotein subclasses	Large HDL		
+free_cholesterol_in_large_ldl	Free Cholesterol in Large LDL	Free cholesterol in large LDL	metab_lldlfc	Free cholesterol	Lipoprotein subclasses	Large LDL		
+free_cholesterol_in_large_vldl	Free Cholesterol in Large VLDL	Free cholesterol in large VLDL	metab_lvldlfc	Free cholesterol	Lipoprotein subclasses	Large VLDL		
+free_cholesterol_in_ldl	Free Cholesterol in LDL		metab_ldlfc	Free cholesterol in LDL	Free cholesterol	Free cholesterol		
+free_cholesterol_in_medium_hdl	Free Cholesterol in Medium HDL	Free cholesterol in medium HDL	metab_mhdlfc	Free cholesterol	Lipoprotein subclasses	Medium HDL		
+free_cholesterol_in_medium_ldl	Free Cholesterol in Medium LDL	Free cholesterol in medium LDL	metab_mldlfc	Free cholesterol	Lipoprotein subclasses	Medium LDL		
+free_cholesterol_in_medium_vldl	Free Cholesterol in Medium VLDL	Free cholesterol in medium VLDL	metab_mvldlfc	Free cholesterol	Lipoprotein subclasses	Medium VLDL		
+free_cholesterol_in_small_hdl	Free Cholesterol in Small HDL	Free cholesterol in small HDL	metab_shdlfc	Free cholesterol	Lipoprotein subclasses	Small HDL		
+free_cholesterol_in_small_ldl	Free Cholesterol in Small LDL	Free cholesterol in small LDL	metab_sldlfc	Free cholesterol	Lipoprotein subclasses	Small LDL		
+free_cholesterol_in_small_vldl	Free Cholesterol in Small VLDL	Free cholesterol in small VLDL	metab_svldlfc	Free cholesterol	Lipoprotein subclasses	Small VLDL		
+free_cholesterol_in_very_large_hdl	Free Cholesterol in Very Large HDL	Free cholesterol in very large HDL	metab_xlhdlfc	Free cholesterol	Lipoprotein subclasses	Very large HDL		
+free_cholesterol_in_very_large_vldl	Free Cholesterol in Very Large VLDL	Free cholesterol in very large VLDL	metab_xlvldlfc	Free cholesterol	Lipoprotein subclasses	Very large VLDL		
+free_cholesterol_in_very_small_vldl	Free Cholesterol in Very Small VLDL	Free cholesterol in very small VLDL	metab_xsvldlfc	Free cholesterol	Lipoprotein subclasses	Very Small VLDL		
+free_cholesterol_in_vldl	Free Cholesterol in VLDL		metab_vldlfc	Free cholesterol in VLDL	Free cholesterol	Free cholesterol		
+free_cholesterol_to_total_lipids_in_chylomicrons_and_extremely_large_vldl_percentage	Free Cholesterol to Total Lipids in Chylomicrons and Extremely Large VLDL percentage	Free cholesterol to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldlfcpct	Ratio	Lipoprotein subclasses ratios	Extremely large VLDL ratios		
+free_cholesterol_to_total_lipids_in_idl_percentage	Free Cholesterol to Total Lipids in IDL percentage	Free cholesterol to total lipids ratio in IDL	metab_idlfcpct	Ratio	Lipoprotein subclasses ratios	IDL ratios		
+free_cholesterol_to_total_lipids_in_large_hdl_percentage	Free Cholesterol to Total Lipids in Large HDL percentage	Free cholesterol to total lipids ratio in large HDL	metab_lhdlfcpct	Ratio	Lipoprotein subclasses ratios	Large HDL ratios		
+free_cholesterol_to_total_lipids_in_large_ldl_percentage	Free Cholesterol to Total Lipids in Large LDL percentage	Free cholesterol to total lipids ratio in large LDL	metab_lldlfcpct	Ratio	Lipoprotein subclasses ratios	Large LDL ratios		
+free_cholesterol_to_total_lipids_in_large_vldl_percentage	Free Cholesterol to Total Lipids in Large VLDL percentage	Free cholesterol to total lipids ratio in large VLDL	metab_lvldlfcpct	Ratio	Lipoprotein subclasses ratios	Large VLDL ratios		
+free_cholesterol_to_total_lipids_in_medium_hdl_percentage	Free Cholesterol to Total Lipids in Medium HDL percentage	Free cholesterol to total lipids ratio in medium HDL	metab_mhdlfcpct	Ratio	Lipoprotein subclasses ratios	Medium HDL ratios		
+free_cholesterol_to_total_lipids_in_medium_ldl_percentage	Free Cholesterol to Total Lipids in Medium LDL percentage	Free cholesterol to total lipids ratio in medium LDL	metab_mldlfcpct	Ratio	Lipoprotein subclasses ratios	Medium LDL ratios		
+free_cholesterol_to_total_lipids_in_medium_vldl_percentage	Free Cholesterol to Total Lipids in Medium VLDL percentage	Free cholesterol to total lipids ratio in medium VLDL	metab_mvldlfcpct	Ratio	Lipoprotein subclasses ratios	Medium VLDL ratios		
+free_cholesterol_to_total_lipids_in_small_hdl_percentage	Free Cholesterol to Total Lipids in Small HDL percentage	Free cholesterol to total lipids ratio in small HDL	metab_shdlfcpct	Ratio	Lipoprotein subclasses ratios	Small HDL ratios		
+free_cholesterol_to_total_lipids_in_small_ldl_percentage	Free Cholesterol to Total Lipids in Small LDL percentage	Free cholesterol to total lipids ratio in small LDL	metab_sldlfcpct	Ratio	Lipoprotein subclasses ratios	Small LDL ratios		
+free_cholesterol_to_total_lipids_in_small_vldl_percentage	Free Cholesterol to Total Lipids in Small VLDL percentage	Free cholesterol to total lipids ratio in small VLDL	metab_svldlfcpct	Ratio	Lipoprotein subclasses ratios	Small VLDL ratios		
+free_cholesterol_to_total_lipids_in_very_large_hdl_percentage	Free Cholesterol to Total Lipids in Very Large HDL percentage	Free cholesterol to total lipids ratio in very large HDL	metab_xlhdlfcpct	Ratio	Lipoprotein subclasses ratios	Very large HDL ratios		
+free_cholesterol_to_total_lipids_in_very_large_vldl_percentage	Free Cholesterol to Total Lipids in Very Large VLDL percentage	Free cholesterol to total lipids ratio in very large VLDL	metab_xlvldlfcpct	Ratio	Lipoprotein subclasses ratios	Very large VLDL ratios		
+free_cholesterol_to_total_lipids_in_very_small_vldl_percentage	Free Cholesterol to Total Lipids in Very Small VLDL percentage	Free cholesterol to total lipids ratio in very small VLDL	metab_xsvldlfcpct	Ratio	Lipoprotein subclasses ratios	Very Small VLDL ratios		
+glucose	Glucose	Glucose levels	metab_glucose	Glucose	Glycolysis related metabolites	Glycolysis related metabolites		
+glutamine	Glutamine	Glutamine levels	metab_gln	Glutamine	Amino acids	Amino acids		
+glycine	Glycine	Glycine levels	metab_gly	Glycine	Amino acids	Amino acids		
+glycoprotein_acetyls	Glycoprotein Acetyls	Glycoprotein acetylation	metab_glyca	Glycoprotein acetyls	Inflammation	Inflammation		
+hdl_cholesterol	HDL Cholesterol		metab_hdlc	HDL C	Cholesterol	Cholesterol		
+histidine	Histidine	Histidine levels	metab_his	Histidine	Amino acids	Amino acids		
+isoleucine	Isoleucine	Isoleucine levels	metab_ile	Isoleucine	Amino acids	Branched-chain amino acids		
+lactate	Lactate	Lactate levels	metab_lactate	Lactate	Glycolysis related metabolites	Glycolysis related metabolites		
+ldl_cholesterol	LDL Cholesterol		metab_ldlc	LDL C	Cholesterol	Cholesterol		
+leucine	Leucine	Leucine levels	metab_leu	Leucine	Amino acids	Branched-chain amino acids		
+linoleic_acid	Linoleic Acid	Linoleic acid (18:2) levels	metab_la	Linoleic acid	Fatty acids	Fatty acids		
+linoleic_acid_to_total_fatty_acids_percentage	Linoleic Acid to Total Fatty Acids percentage	Ratio of 18:2 linoleic acid to total fatty acids	metab_lapct	Ratio of linoleic acid to total fatty acids	Fatty acids	Fatty acid ratios		
+monounsaturated_fatty_acids	Monounsaturated Fatty Acids	"Monounsaturated fatty acids (16:1, 18:1) levels"	metab_mufa	MUFA	Fatty acids	Fatty acids		
+monounsaturated_fatty_acids_to_total_fatty_acids_percentage	Monounsaturated Fatty Acids to Total Fatty Acids percentage	Ratio of monounsaturated fatty acids to total fatty acids	metab_mufapct	Ratio of monounsaturated fatty acids to total fatty acids	Fatty acids	Fatty acid ratios		
+omega_3_fatty_acids	Omega-3 Fatty Acids	Omega-3 fatty acids levels	metab_omega3	Omega-3 fatty acids	Fatty acids	Fatty acids		
+omega_3_fatty_acids_to_total_fatty_acids_percentage	Omega-3 Fatty Acids to Total Fatty Acids percentage	Ratio of omega-3 fatty acids to total fatty acids	metab_omega3pct	Ratio of omega-3 fatty acids to total fatty acids	Fatty acids	Fatty acid ratios		
+omega_6_fatty_acids	Omega-6 Fatty Acids	Omega-6 fatty acids levels	metab_omega6	Omega-6 fatty acids	Fatty acids	Fatty acids		
+omega_6_fatty_acids_to_omega_3_fatty_acids_ratio	Omega-6 Fatty Acids to Omega-3 Fatty Acids ratio		metab_omega6omega3	Ratio of omega-6 fatty acids to omega-3 fatty acids	Fatty acids	Fatty acid ratios		
+omega_6_fatty_acids_to_total_fatty_acids_percentage	Omega-6 Fatty Acids to Total Fatty Acids percentage	Ratio of omega-6 fatty acids to total fatty acids	metab_omega6pct	Ratio of omega-6 fatty acids to total fatty acids	Fatty acids	Fatty acid ratios		
+phenylalanine	Phenylalanine	Phenylalanine levels	metab_phe	Phenylalanine	Amino acids	Aromatic amino acids		
+phosphatidylcholines	Phosphatidylcholines	Phosphatidylcholine and other choline levels	metab_phosphatidylc	Phosphatidylcholines	Other lipids	Other lipids		
+phosphoglycerides	Phosphoglycerides	Total phosphoglycerides levels	metab_phosphoglyc	Phosphoglycerides	Other lipids	Other lipids		
+phospholipids_in_chylomicrons_and_extremely_large_vldl	Phospholipids in Chylomicrons and Extremely Large VLDL	Phospholipid levels in chylomicrons and extremely large VLDL	metab_xxlvldlpl	Phospholipids	Lipoprotein subclasses	Extremely large VLDL	TRUE	no mention of chylomicrons
+phospholipids_in_hdl	Phospholipids in HDL		metab_hdlpl	Phospholipids in HDL	Phospholipids	Phospholipids		
+phospholipids_in_idl	Phospholipids in IDL	Phospholipids in IDL	metab_idlpl	Phospholipids	Lipoprotein subclasses	IDL		
+phospholipids_in_large_hdl	Phospholipids in Large HDL	Phospholipids in large HDL	metab_lhdlpl	Phospholipids	Lipoprotein subclasses	Large HDL		
+phospholipids_in_large_ldl	Phospholipids in Large LDL	Phospholipids in large LDL	metab_lldlpl	Phospholipids	Lipoprotein subclasses	Large LDL		
+phospholipids_in_large_vldl	Phospholipids in Large VLDL	Phospholipids in large VLDL	metab_lvldlpl	Phospholipids	Lipoprotein subclasses	Large VLDL		
+phospholipids_in_ldl	Phospholipids in LDL		metab_ldlpl	Phospholipids in LDL	Phospholipids	Phospholipids		
+phospholipids_in_medium_hdl	Phospholipids in Medium HDL	Phospholipids in medium HDL	metab_mhdlpl	Phospholipids	Lipoprotein subclasses	Medium HDL		
+phospholipids_in_medium_ldl	Phospholipids in Medium LDL	Phospholipids in medium LDL	metab_mldlpl	Phospholipids	Lipoprotein subclasses	Medium LDL		
+phospholipids_in_medium_vldl	Phospholipids in Medium VLDL	Phospholipids in medium VLDL	metab_mvldlpl	Phospholipids	Lipoprotein subclasses	Medium VLDL		
+phospholipids_in_small_hdl	Phospholipids in Small HDL	Phospholipids in small HDL	metab_shdlpl	Phospholipids	Lipoprotein subclasses	Small HDL		
+phospholipids_in_small_ldl	Phospholipids in Small LDL	Phospholipids in small LDL	metab_sldlpl	Phospholipids	Lipoprotein subclasses	Small LDL		
+phospholipids_in_small_vldl	Phospholipids in Small VLDL	Phospholipids in small VLDL	metab_svldlpl	Phospholipids	Lipoprotein subclasses	Small VLDL		
+phospholipids_in_very_large_hdl	Phospholipids in Very Large HDL	Phospholipids in very large HDL	metab_xlhdlpl	Phospholipids	Lipoprotein subclasses	Very large HDL		
+phospholipids_in_very_large_vldl	Phospholipids in Very Large VLDL	Phospholipids in very large VLDL	metab_xlvldlpl	Phospholipids	Lipoprotein subclasses	Very large VLDL		
+phospholipids_in_very_small_vldl	Phospholipids in Very Small VLDL	Phospholipids in very small VLDL	metab_xsvldlpl	Phospholipids	Lipoprotein subclasses	Very Small VLDL		
+phospholipids_in_vldl	Phospholipids in VLDL		metab_vldlpl	Phospholipids in VLDL	Phospholipids	Phospholipids		
+phospholipids_to_total_lipids_in_chylomicrons_and_extremely_large_vldl_percentage	Phospholipids to Total Lipids in Chylomicrons and Extremely Large VLDL percentage	Phospholipids to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldlplpct	Ratio	Lipoprotein subclasses ratios	Extremely large VLDL ratios		
+phospholipids_to_total_lipids_in_idl_percentage	Phospholipids to Total Lipids in IDL percentage	Phospholipids to total lipids ratio in IDL	metab_idlplpct	Ratio	Lipoprotein subclasses ratios	IDL ratios		
+phospholipids_to_total_lipids_in_large_hdl_percentage	Phospholipids to Total Lipids in Large HDL percentage	Phospholipids to total lipids ratio in large HDL	metab_lhdlplpct	Ratio	Lipoprotein subclasses ratios	Large HDL ratios		
+phospholipids_to_total_lipids_in_large_ldl_percentage	Phospholipids to Total Lipids in Large LDL percentage	Phospholipids to total lipids ratio in large LDL	metab_lldlplpct	Ratio	Lipoprotein subclasses ratios	Large LDL ratios		
+phospholipids_to_total_lipids_in_large_vldl_percentage	Phospholipids to Total Lipids in Large VLDL percentage	Phospholipids to total lipids ratio in large VLDL	metab_lvldlplpct	Ratio	Lipoprotein subclasses ratios	Large VLDL ratios		
+phospholipids_to_total_lipids_in_medium_hdl_percentage	Phospholipids to Total Lipids in Medium HDL percentage	Phospholipids to total lipids ratio in medium HDL	metab_mhdlplpct	Ratio	Lipoprotein subclasses ratios	Medium HDL ratios		
+phospholipids_to_total_lipids_in_medium_ldl_percentage	Phospholipids to Total Lipids in Medium LDL percentage	Phospholipids to total lipids ratio in medium LDL	metab_mldlplpct	Ratio	Lipoprotein subclasses ratios	Medium LDL ratios		
+phospholipids_to_total_lipids_in_medium_vldl_percentage	Phospholipids to Total Lipids in Medium VLDL percentage	Phospholipids to total lipids ratio in medium VLDL	metab_mvldlplpct	Ratio	Lipoprotein subclasses ratios	Medium VLDL ratios		
+phospholipids_to_total_lipids_in_small_hdl_percentage	Phospholipids to Total Lipids in Small HDL percentage	Phospholipids to total lipids ratio in small HDL	metab_shdlplpct	Ratio	Lipoprotein subclasses ratios	Small HDL ratios		
+phospholipids_to_total_lipids_in_small_ldl_percentage	Phospholipids to Total Lipids in Small LDL percentage	Phospholipids to total lipids ratio in small LDL	metab_sldlplpct	Ratio	Lipoprotein subclasses ratios	Small LDL ratios		
+phospholipids_to_total_lipids_in_small_vldl_percentage	Phospholipids to Total Lipids in Small VLDL percentage	Phospholipids to total lipids ratio in small VLDL	metab_svldlplpct	Ratio	Lipoprotein subclasses ratios	Small VLDL ratios		
+phospholipids_to_total_lipids_in_very_large_hdl_percentage	Phospholipids to Total Lipids in Very Large HDL percentage	Phospholipids to total lipids ratio in very large HDL	metab_xlhdlplpct	Ratio	Lipoprotein subclasses ratios	Very large HDL ratios		
+phospholipids_to_total_lipids_in_very_large_vldl_percentage	Phospholipids to Total Lipids in Very Large VLDL percentage	Phospholipids to total lipids ratio in very large VLDL	metab_xlvldlplpct	Ratio	Lipoprotein subclasses ratios	Very large VLDL ratios		
+phospholipids_to_total_lipids_in_very_small_vldl_percentage	Phospholipids to Total Lipids in Very Small VLDL percentage	Phospholipids to total lipids ratio in very small VLDL	metab_xsvldlplpct	Ratio	Lipoprotein subclasses ratios	Very Small VLDL ratios		
+polyunsaturated_fatty_acids	Polyunsaturated Fatty Acids	Polyunsaturated fatty acids	metab_pufa	PUFA	Fatty acids	Fatty acids		
+polyunsaturated_fatty_acids_to_monounsaturated_fatty_acids_ratio	Polyunsaturated Fatty Acids to Monounsaturated Fatty Acids ratio		metab_pufamufa	Ratio of polyunsaturated fatty acids to monounsaturated fatty acids	Fatty acids	Fatty acid ratios		
+polyunsaturated_fatty_acids_to_total_fatty_acids_percentage	Polyunsaturated Fatty Acids to Total Fatty Acids percentage	Ratio of polyunsaturated fatty acids to total fatty acids	metab_pufapct	Ratio of polyunsaturated fatty acids to total fatty acids	Fatty acids	Fatty acid ratios		
+pyruvate	Pyruvate	Pyruvate levels	metab_pyruvate	Pyruvate	Glycolysis related metabolites	Glycolysis related metabolites		
+remnant_cholesterol_non_hdl_non_ldl_cholesterol	"Remnant Cholesterol (Non-HDL, Non-LDL -Cholesterol)"	"Remnant cholesterol (non-HDL, non-LDL -cholesterol)"	metab_remnantc	Remnant C	Cholesterol	Cholesterol		
+saturated_fatty_acids	Saturated Fatty Acids	Saturated fatty acids	metab_sfa	Saturated fatty acids	Fatty acids	Fatty acids		
+saturated_fatty_acids_to_total_fatty_acids_percentage	Saturated Fatty Acids to Total Fatty Acids percentage	Ratio of saturated fatty acids to total fatty acids	metab_sfapct	Ratio of saturated fatty acids to total fatty acids	Fatty acids	Fatty acid ratios		
+sphingomyelins	Sphingomyelins	Sphingomyelins levels	metab_sphingomyelins	Sphingomyelins	Other lipids	Other lipids		
+total_cholesterol	Total Cholesterol	Serum total cholesterol levels	metab_totalc	Total cholesterol	Cholesterol	Cholesterol	TRUE	also could be total free cholesterol?
+total_cholesterol_minus_hdl_c	Total Cholesterol Minus HDL-C		metab_nonhdlc	Total cholesterol minus HDL-C	Cholesterol	Cholesterol		
+total_cholines	Total Cholines	Total cholines levels	metab_cholines	Total cholines	Other lipids	Other lipids		
+total_concentration_of_branched_chain_amino_acids_leucine_isoleucine_valine	Total Concentration of Branched-Chain Amino Acids (Leucine + Isoleucine + Valine)		metab_totalbcaa	Total concentration of branched-chain amino acids (leucine + isoleucine + valine)	Amino acids	Branched-chain amino acids		
+total_concentration_of_lipoprotein_particles	Total Concentration of Lipoprotein Particles		metab_totalp	Total concentration of lipoprotein particles	Lipoprotein particle concentrations	Lipoprotein particle concentrations		
+total_esterified_cholesterol	Total Esterified Cholesterol	Esterified cholesterol levels	metab_totalce	Total esterified cholesterol	Cholesteryl esters	Cholesteryl esters		
+total_fatty_acids	Total Fatty Acids	Total fatty acids	metab_totalfa	Total fatty acids	Fatty acids	Fatty acids		
+total_free_cholesterol	Total Free Cholesterol	Free cholesterol levels	metab_totalfc	Total free cholesterol	Free cholesterol	Free cholesterol		
+total_lipids_in_chylomicrons_and_extremely_large_vldl	Total Lipids in Chylomicrons and Extremely Large VLDL	Total lipid levels in chylomicrons and extremely large VLDL	metab_xxlvldll	Total lipids	Lipoprotein subclasses	Extremely large VLDL		
+total_lipids_in_hdl	Total Lipids in HDL		metab_hdll	Total lipids in HDL	Total lipids	Total lipids		
+total_lipids_in_idl	Total Lipids in IDL	Total lipids in IDL	metab_idll	Total lipids	Lipoprotein subclasses	IDL		
+total_lipids_in_large_hdl	Total Lipids in Large HDL	Total lipids in large HDL	metab_lhdll	Total lipids	Lipoprotein subclasses	Large HDL		
+total_lipids_in_large_ldl	Total Lipids in Large LDL	Total lipids in large LDL	metab_lldll	Total lipids	Lipoprotein subclasses	Large LDL		
+total_lipids_in_large_vldl	Total Lipids in Large VLDL	Total lipids in large VLDL	metab_lvldll	Total lipids	Lipoprotein subclasses	Large VLDL		
+total_lipids_in_ldl	Total Lipids in LDL		metab_ldll	Total lipids in LDL	Total lipids	Total lipids		
+total_lipids_in_lipoprotein_particles	Total Lipids in Lipoprotein Particles		metab_totall	Total lipids in lipoprotein particles	Total lipids	Total lipids		
+total_lipids_in_medium_hdl	Total Lipids in Medium HDL	Total lipids in medium HDL	metab_mhdll	Total lipids	Lipoprotein subclasses	Medium HDL		
+total_lipids_in_medium_ldl	Total Lipids in Medium LDL	Total lipid levels in medium LDL	metab_mldll	Total lipids	Lipoprotein subclasses	Medium LDL		
+total_lipids_in_medium_vldl	Total Lipids in Medium VLDL	Total lipids in medium VLDL	metab_mvldll	Total lipids	Lipoprotein subclasses	Medium VLDL		
+total_lipids_in_small_hdl	Total Lipids in Small HDL	Total lipids in small HDL	metab_shdll	Total lipids	Lipoprotein subclasses	Small HDL		
+total_lipids_in_small_ldl	Total Lipids in Small LDL	Total lipids in small LDL	metab_sldll	Total lipids	Lipoprotein subclasses	Small LDL		
+total_lipids_in_small_vldl	Total Lipids in Small VLDL	Total lipids in small VLDL	metab_svldll	Total lipids	Lipoprotein subclasses	Small VLDL		
+total_lipids_in_very_large_hdl	Total Lipids in Very Large HDL	Total lipids in very large HDL	metab_xlhdll	Total lipids	Lipoprotein subclasses	Very large HDL		
+total_lipids_in_very_large_vldl	Total Lipids in Very Large VLDL	Total lipids in very large VLDL	metab_xlvldll	Total lipids	Lipoprotein subclasses	Very large VLDL		
+total_lipids_in_very_small_vldl	Total Lipids in Very Small VLDL	Total lipids in very small VLDL	metab_xsvldll	Total lipids	Lipoprotein subclasses	Very Small VLDL		
+total_lipids_in_vldl	Total Lipids in VLDL		metab_vldll	Total lipids in VLDL	Total lipids	Total lipids		
+total_phospholipids_in_lipoprotein_particles	Total Phospholipids in Lipoprotein Particles		metab_totalpl	Total phospholipids in lipoprotein particles	Phospholipids	Phospholipids		
+total_triglycerides	Total Triglycerides	Serum total triglyceride levels	metab_totaltg	Total triglycerides	Triglycerides	Triglycerides		
+triglycerides_in_chylomicrons_and_extremely_large_vldl	Triglycerides in Chylomicrons and Extremely Large VLDL	Triglyceride levels in chylomicrons and extremely large VLDL	metab_xxlvldltg	Triglycerides	Lipoprotein subclasses	Extremely large VLDL		
+triglycerides_in_hdl	Triglycerides in HDL	Triglyceride levels in HDL	metab_hdltg	HDL triglycerides	Glycerides and phospholipids	Glycerides and phospholipids		
+triglycerides_in_idl	Triglycerides in IDL	Triglycerides in IDL	metab_idltg	Triglycerides	Lipoprotein subclasses	IDL		
+triglycerides_in_large_hdl	Triglycerides in Large HDL	Triglycerides in large HDL	metab_lhdltg	Triglycerides	Lipoprotein subclasses	Large HDL		
+triglycerides_in_large_ldl	Triglycerides in Large LDL	Triglycerides in large LDL	metab_lldltg	Triglycerides	Lipoprotein subclasses	Large LDL		
+triglycerides_in_large_vldl	Triglycerides in Large VLDL	Triglycerides in large VLDL	metab_lvldltg	Triglycerides	Lipoprotein subclasses	Large VLDL		
+triglycerides_in_ldl	Triglycerides in LDL	Triglyceride levels in LDL	metab_ldltg	LDL triglycerides	Glycerides and phospholipids	Glycerides and phospholipids		
+triglycerides_in_medium_hdl	Triglycerides in Medium HDL	Triglycerides in medium HDL	metab_mhdltg	Triglycerides	Lipoprotein subclasses	Medium HDL		
+triglycerides_in_medium_ldl	Triglycerides in Medium LDL	Triglycerides in medium LDL	metab_mldltg	Triglycerides	Lipoprotein subclasses	Medium LDL		
+triglycerides_in_medium_vldl	Triglycerides in Medium VLDL	Triglycerides in medium VLDL	metab_mvldltg	Triglycerides	Lipoprotein subclasses	Medium VLDL		
+triglycerides_in_small_hdl	Triglycerides in Small HDL	Triglycerides in small HDL	metab_shdltg	Triglycerides	Lipoprotein subclasses	Small HDL		
+triglycerides_in_small_ldl	Triglycerides in Small LDL	Triglycerides in small LDL	metab_sldltg	Triglycerides	Lipoprotein subclasses	Small LDL		
+triglycerides_in_small_vldl	Triglycerides in Small VLDL	Triglycerides in small VLDL	metab_svldltg	Triglycerides	Lipoprotein subclasses	Small VLDL		
+triglycerides_in_very_large_hdl	Triglycerides in Very Large HDL	Triglycerides in very large HDL	metab_xlhdltg	Triglycerides	Lipoprotein subclasses	Very large HDL		
+triglycerides_in_very_large_vldl	Triglycerides in Very Large VLDL	Triglycerides in very large VLDL	metab_xlvldltg	Triglycerides	Lipoprotein subclasses	Very large VLDL		
+triglycerides_in_very_small_vldl	Triglycerides in Very Small VLDL	Triglycerides in very small VLDL	metab_xsvldltg	Triglycerides	Lipoprotein subclasses	Very Small VLDL		
+triglycerides_in_vldl	Triglycerides in VLDL	Triglyceride levels in VLDL	metab_vldltg	VLDL triglycerides	Glycerides and phospholipids	Glycerides and phospholipids		
+triglycerides_to_phosphoglycerides_ratio	Triglycerides to Phosphoglycerides ratio	Ratio of triglycerides to phosphoglycerides	metab_tgpg	Ratio	Glycerides and phospholipids ratios	Glycerides and phospholipids ratios		
+triglycerides_to_total_lipids_in_chylomicrons_and_extremely_large_vldl_percentage	Triglycerides to Total Lipids in Chylomicrons and Extremely Large VLDL percentage	Triglycerides to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldltgpct	Ratio	Lipoprotein subclasses ratios	Extremely large VLDL ratios		
+triglycerides_to_total_lipids_in_idl_percentage	Triglycerides to Total Lipids in IDL percentage	Triglycerides to total lipids ratio in IDL	metab_idltgpct	Ratio	Lipoprotein subclasses ratios	IDL ratios		
+triglycerides_to_total_lipids_in_large_hdl_percentage	Triglycerides to Total Lipids in Large HDL percentage	Triglycerides to total lipids ratio in large HDL	metab_lhdltgpct	Ratio	Lipoprotein subclasses ratios	Large HDL ratios		
+triglycerides_to_total_lipids_in_large_ldl_percentage	Triglycerides to Total Lipids in Large LDL percentage	Triglycerides to total lipids ratio in large LDL	metab_lldltgpct	Ratio	Lipoprotein subclasses ratios	Large LDL ratios		
+triglycerides_to_total_lipids_in_large_vldl_percentage	Triglycerides to Total Lipids in Large VLDL percentage	Triglycerides to total lipids ratio in large VLDL	metab_lvldltgpct	Ratio	Lipoprotein subclasses ratios	Large VLDL ratios		
+triglycerides_to_total_lipids_in_medium_hdl_percentage	Triglycerides to Total Lipids in Medium HDL percentage	Triglycerides to total lipids ratio in medium HDL	metab_mhdltgpct	Ratio	Lipoprotein subclasses ratios	Medium HDL ratios		
+triglycerides_to_total_lipids_in_medium_ldl_percentage	Triglycerides to Total Lipids in Medium LDL percentage	Triglycerides to total lipids ratio in medium LDL	metab_mldltgpct	Ratio	Lipoprotein subclasses ratios	Medium LDL ratios		
+triglycerides_to_total_lipids_in_medium_vldl_percentage	Triglycerides to Total Lipids in Medium VLDL percentage	Triglycerides to total lipids ratio in medium VLDL	metab_mvldltgpct	Ratio	Lipoprotein subclasses ratios	Medium VLDL ratios		
+triglycerides_to_total_lipids_in_small_hdl_percentage	Triglycerides to Total Lipids in Small HDL percentage	Triglycerides to total lipids ratio in small HDL	metab_shdltgpct	Ratio	Lipoprotein subclasses ratios	Small HDL ratios		
+triglycerides_to_total_lipids_in_small_ldl_percentage	Triglycerides to Total Lipids in Small LDL percentage	Triglycerides to total lipids ratio in small LDL	metab_sldltgpct	Ratio	Lipoprotein subclasses ratios	Small LDL ratios		
+triglycerides_to_total_lipids_in_small_vldl_percentage	Triglycerides to Total Lipids in Small VLDL percentage	Triglycerides to total lipids ratio in small VLDL	metab_svldltgpct	Ratio	Lipoprotein subclasses ratios	Small VLDL ratios		
+triglycerides_to_total_lipids_in_very_large_hdl_percentage	Triglycerides to Total Lipids in Very Large HDL percentage	Triglycerides to total lipids ratio in very large HDL	metab_xlhdltgpct	Ratio	Lipoprotein subclasses ratios	Very large HDL ratios		
+triglycerides_to_total_lipids_in_very_large_vldl_percentage	Triglycerides to Total Lipids in Very Large VLDL percentage	Triglycerides to total lipids ratio in very large VLDL	metab_xlvldltgpct	Ratio	Lipoprotein subclasses ratios	Very large VLDL ratios		
+triglycerides_to_total_lipids_in_very_small_vldl_percentage	Triglycerides to Total Lipids in Very Small VLDL percentage	Triglycerides to total lipids ratio in very small VLDL	metab_xsvldltgpct	Ratio	Lipoprotein subclasses ratios	Very Small VLDL ratios		
+tyrosine	Tyrosine	Tyrosine levels	metab_tyr	Tyrosine	Amino acids	Aromatic amino acids		
+valine	Valine	Valine levels	metab_val	Valine	Amino acids	Branched-chain amino acids		
+vldl_cholesterol	VLDL Cholesterol		metab_vldlc	VLDL C	Cholesterol	Cholesterol		
+		Conjugated linoleic acid						
+		Diacylglycerol levels						
+		Estimated description of fatty acid chain length not actual carbon number						
+		Glycerol levels	metab_glycerol	Glycerol	Glycolysis related metabolites	Glycolysis related metabolites		
+		Ratio of conjugated linoleic acid to total fatty acids						
+		Ratio of diacylglycerol to triglycerides						
+		Total cholesterol in HDL2						
+		Total cholesterol in HDL3						
+		Total cholesterol levels in HDL						
+		Total cholesterol levels in LDL						
+		Total cholesterol levels in VLDL						
+		Acetate levels	metab_acetate					
+		Acetone levels	metab_acetone					
+		Alanine levels	metab_ala					
+		Albumin levels	metab_albumin					
+		Apolipoprotein A-I levels						
+		Apolipoprotein B levels	metab_apob					
+		Ratio of apolipoprotein B to apolipoprotein A1 levels	metab_apobapoa1					
+		3-Hydroxybutyrate levels	metab_bohbutyrate					
+		Citrate levels	metab_citrate					
+		Conjugated linoleic acid						
+		Ratio of conjugated linoleic acid to total fatty acids						
+		Creatinine levels	metab_creatinine					
+		Diacylglycerol levels						
+		Ratio of diacylglycerol to triglycerides						
+		Docosahexaenoic acid (22:6) levels						
+		Ratio of 22:6 docosahexaenoic acid to total fatty acids						
+		Esterified cholesterol levels						
+		Estimated description of fatty acid chain length not actual carbon number						
+		Omega-3 fatty acids levels	metab_omega3					
+		Ratio of omega-3 fatty acids to total fatty acids	metab_omega3pct					
+		Omega-6 fatty acids levels	metab_omega6					
+		Ratio of omega-6 fatty acids to total fatty acids	metab_omega6pct					
+		Free cholesterol levels						
+		Glucose levels	metab_glucose					
+		Glutamine levels	metab_gln					
+		Glycerol levels	metab_glycerol					
+		Glycine levels	metab_gly					
+		Glycoprotein acetylation						
+		Total cholesterol in HDL2	metab_hdl2c					
+		Total cholesterol in HDL3	metab_hdl3c					
+		Total cholesterol levels in HDL						
+		Mean diameter of HDL particles						
+		Triglyceride levels in HDL						
+		Histidine levels	metab_his					
+		Total Cholesterol in IDL						
+		Total cholesterol to total lipids ratio in IDL						
+		Cholesterol esters in IDL						
+		Cholesteryl esters to total lipids ratio in IDL	metab_idlcepct					
+		Free cholesterol in IDL	metab_idlfc					
+		Free cholesterol to total lipids ratio in IDL	metab_idlfcpct					
+		Total lipids in IDL	metab_idll					
+		Concentration of IDL particles	metab_idlp					
+		Phospholipids in IDL	metab_idlpl					
+		Phospholipids to total lipids ratio in IDL	metab_idlplpct					
+		Triglycerides in IDL	metab_idltg					
+		Triglycerides to total lipids ratio in IDL	metab_idltgpct					
+		Isoleucine levels	metab_ile					
+		Linoleic acid (18:2) levels						
+		Ratio of 18:2 linoleic acid to total fatty acids						
+		Lactate levels	metab_lactate					
+		Total cholesterol levels in LDL						
+		Mean diameter of LDL particles						
+		Triglyceride levels in LDL						
+		Leucine levels	metab_leu					
+		Total cholesterol in large HDL						
+		Total cholesterol to total lipids ratio in large HDL						
+		Cholesterol esters in large HDL						
+		Cholesteryl esters to total lipids ratio in large HDL	metab_lhdlcepct					
+		Free cholesterol in large HDL	metab_lhdlfc					
+		Free cholesterol to total lipids ratio in large HDL	metab_lhdlfcpct					
+		Total lipids in large HDL	metab_lhdll					
+		Concentration of large HDL particles	metab_lhdlp					
+		Phospholipids in large HDL	metab_lhdlpl					
+		Phospholipids to total lipids ratio in large HDL	metab_lhdlplpct					
+		Triglycerides in large HDL	metab_lhdltg					
+		Triglycerides to total lipids ratio in large HDL	metab_lhdltgpct					
+		Total cholesterol in large LDL						
+		Total cholesterol to total lipids ratio in large LDL						
+		Cholesterol esters in large LDL						
+		Cholesteryl esters to total lipids ratio in large LDL	metab_lldlcepct					
+		Free cholesterol in large LDL	metab_lldlfc					
+		Free cholesterol to total lipids ratio in large LDL	metab_lldlfcpct					
+		Total lipids in large LDL	metab_lldll					
+		Concentration of large LDL particles	metab_lldlp					
+		Phospholipids in large LDL	metab_lldlpl					
+		Phospholipids to total lipids ratio in large LDL	metab_lldlplpct					
+		Triglycerides in large LDL	metab_lldltg					
+		Triglycerides to total lipids ratio in large LDL	metab_lldltgpct					
+		Total Cholesterol in large VLDL						
+		Total cholesterol to total lipids ratio in large VLDL						
+		Cholesterol esters in large VLDL						
+		Cholesteryl esters to total lipids ratio in large VLDL	metab_lvldlcepct					
+		Free cholesterol in large VLDL	metab_lvldlfc					
+		Free cholesterol to total lipids ratio in large VLDL	metab_lvldlfcpct					
+		Total lipids in large VLDL	metab_lvldll					
+		Concentration of large VLDL particles	metab_lvldlp					
+		Phospholipids in large VLDL	metab_lvldlpl					
+		Phospholipids to total lipids ratio in large VLDL	metab_lvldlplpct					
+		Triglycerides in large VLDL	metab_lvldltg					
+		Triglycerides to total lipids ratio in large VLDL	metab_lvldltgpct					
+		Total cholesterol levels in medium HDL						
+		Total cholesterol to total lipids ratio in medium HDL						
+		Cholesterol esters in medium HDL						
+		Cholesteryl esters to total lipids ratio in medium HDL	metab_mhdlcepct					
+		Free cholesterol in medium HDL	metab_mhdlfc					
+		Free cholesterol to total lipids ratio in medium HDL	metab_mhdlfcpct					
+		Total lipids in medium HDL	metab_mhdll					
+		Concentration of medium HDL particles	metab_mhdlp					
+		Phospholipids in medium HDL	metab_mhdlpl					
+		Phospholipids to total lipids ratio in medium HDL	metab_mhdlplpct					
+		Triglycerides in medium HDL	metab_mhdltg					
+		Triglycerides to total lipids ratio in medium HDL	metab_mhdltgpct					
+		Total cholesterol in medium LDL						
+		Total cholesterol to total lipids ratio in medium LDL						
+		Cholesterol esters in medium LDL						
+		Cholesteryl esters to total lipids ratio in medium LDL	metab_mldlcepct					
+		Free cholesterol in medium LDL	metab_mldlfc					
+		Free cholesterol to total lipids ratio in medium LDL	metab_mldlfcpct					
+		Total lipid levels in medium LDL						
+		Concentration of medium LDL particles	metab_mldlp					
+		Phospholipids in medium LDL	metab_mldlpl					
+		Phospholipids to total lipids ratio in medium LDL	metab_mldlplpct					
+		Triglycerides in medium LDL	metab_mldltg					
+		Triglycerides to total lipids ratio in medium LDL	metab_mldltgpct					
+		"Monounsaturated fatty acids (16:1, 18:1) levels"						
+		Ratio of monounsaturated fatty acids to total fatty acids	metab_mufapct					
+		Total cholesterol in medium VLDL						
+		Total cholesterol to total lipids ratio in medium VLDL						
+		Cholesterol esters in medium VLDL						
+		Cholesteryl esters to total lipids ratio in medium VLDL	metab_mvldlcepct					
+		Free cholesterol in medium VLDL	metab_mvldlfc					
+		Free cholesterol to total lipids ratio in medium VLDL	metab_mvldlfcpct					
+		Total lipids in medium VLDL	metab_mvldll					
+		Concentration of medium VLDL particles	metab_mvldlp					
+		Phospholipids in medium VLDL	metab_mvldlpl					
+		Phospholipids to total lipids ratio in medium VLDL	metab_mvldlplpct					
+		Triglycerides in medium VLDL	metab_mvldltg					
+		Triglycerides to total lipids ratio in medium VLDL	metab_mvldltgpct					
+		Phosphatidylcholine and other choline levels						
+		Phenylalanine levels	metab_phe					
+		Polyunsaturated fatty acids	metab_pufa					
+		Ratio of polyunsaturated fatty acids to total fatty acids	metab_pufapct					
+		Pyruvate levels	metab_pyruvate					
+		"Remnant cholesterol (non-HDL, non-LDL -cholesterol)"	metab_remnantc					
+		Serum total cholesterol levels						
+		Serum total triglyceride levels						
+		Saturated fatty acids	metab_sfa					
+		Ratio of saturated fatty acids to total fatty acids	metab_sfapct					
+		Total cholesterol levels in small HDL						
+		Total cholesterol to total lipids ratio in small HDL						
+		Cholesterol esters in small HDL						
+		Cholesteryl esters to total lipids ratio in small HDL	metab_shdlcepct					
+		Free cholesterol in small HDL	metab_shdlfc					
+		Free cholesterol to total lipids ratio in small HDL	metab_shdlfcpct					
+		Total lipids in small HDL	metab_shdll					
+		Concentration of small HDL particles	metab_shdlp					
+		Phospholipids in small HDL	metab_shdlpl					
+		Phospholipids to total lipids ratio in small HDL	metab_shdlplpct					
+		Triglycerides in small HDL	metab_shdltg					
+		Triglycerides to total lipids ratio in small HDL	metab_shdltgpct					
+		Total Cholesterol in small LDL						
+		Total cholesterol to total lipids ratio in small LDL						
+		Cholesterol esters in small LDL						
+		Cholesteryl esters to total lipids ratio in small LDL	metab_sldlcepct					
+		Free cholesterol in small LDL	metab_sldlfc					
+		Free cholesterol to total lipids ratio in small LDL	metab_sldlfcpct					
+		Total lipids in small LDL	metab_sldll					
+		Concentration of small LDL particles	metab_sldlp					
+		Phospholipids in small LDL	metab_sldlpl					
+		Phospholipids to total lipids ratio in small LDL	metab_sldlplpct					
+		Triglycerides in small LDL	metab_sldltg					
+		Triglycerides to total lipids ratio in small LDL	metab_sldltgpct					
+		Sphingomyelins levels	metab_sphingomyelins					
+		Total cholesterol in small VLDL						
+		Total cholesterol to total lipids ratio in small VLDL						
+		Cholesterol esters in small VLDL						
+		Cholesteryl esters to total lipids ratio in small VLDL	metab_svldlcepct					
+		Free cholesterol in small VLDL	metab_svldlfc					
+		Free cholesterol to total lipids ratio in small VLDL	metab_svldlfcpct					
+		Total lipids in small VLDL	metab_svldll					
+		Concentration of small VLDL particles	metab_svldlp					
+		Phospholipids in small VLDL	metab_svldlpl					
+		Phospholipids to total lipids ratio in small VLDL	metab_svldlplpct					
+		Triglycerides in small VLDL	metab_svldltg					
+		Triglycerides to total lipids ratio in small VLDL	metab_svldltgpct					
+		Ratio of triglycerides to phosphoglycerides	metab_tgpg					
+		Total cholines levels	metab_cholines					
+		Total fatty acids	metab_totalfa					
+		Total phosphoglycerides levels						
+		Tyrosine levels	metab_tyr					
+		Estimated degree of unsaturation						
+		Valine levels	metab_val					
+		Total cholesterol levels in VLDL						
+		Mean diameter of VLDL particles						
+		Triglyceride levels in VLDL						
+		Total cholesterol levels in very large HDL						
+		Total cholesterol to total lipids ratio in very large HDL						
+		Cholesterol esters in very large HDL						
+		Cholesteryl esters to total lipids ratio in very large HDL	metab_xlhdlcepct					
+		Free cholesterol in very large HDL	metab_xlhdlfc					
+		Free cholesterol to total lipids ratio in very large HDL	metab_xlhdlfcpct					
+		Total lipids in very large HDL	metab_xlhdll					
+		Concentration of very large HDL particles	metab_xlhdlp					
+		Phospholipids in very large HDL	metab_xlhdlpl					
+		Phospholipids to total lipids ratio in very large HDL	metab_xlhdlplpct					
+		Triglycerides in very large HDL	metab_xlhdltg					
+		Triglycerides to total lipids ratio in very large HDL	metab_xlhdltgpct					
+		Total cholesterol in very large VLDL						
+		Total cholesterol to total lipids ratio in very large VLDL						
+		Cholesterol esters in very large VLDL						
+		Cholesteryl esters to total lipids ratio in very large VLDL	metab_xlvldlcepct					
+		Free cholesterol in very large VLDL	metab_xlvldlfc					
+		Free cholesterol to total lipids ratio in very large VLDL	metab_xlvldlfcpct					
+		Total lipids in very large VLDL	metab_xlvldll					
+		Concentration of very large VLDL particles	metab_xlvldlp					
+		Phospholipids in very large VLDL	metab_xlvldlpl					
+		Phospholipids to total lipids ratio in very large VLDL	metab_xlvldlplpct					
+		Triglycerides in very large VLDL	metab_xlvldltg					
+		Triglycerides to total lipids ratio in very large VLDL	metab_xlvldltgpct					
+		Total cholesterol in very small VLDL						
+		Total cholesterol to total lipids ratio in very small VLDL						
+		Cholesterol esters in very small VLDL						
+		Cholesteryl esters to total lipids ratio in very small VLDL	metab_xsvldlcepct					
+		Free cholesterol in very small VLDL	metab_xsvldlfc					
+		Free cholesterol to total lipids ratio in very small VLDL	metab_xsvldlfcpct					
+		Total lipids in very small VLDL	metab_xsvldll					
+		Concentration of very small VLDL particles	metab_xsvldlp					
+		Phospholipids in very small VLDL	metab_xsvldlpl					
+		Phospholipids to total lipids ratio in very small VLDL	metab_xsvldlplpct					
+		Triglycerides in very small VLDL	metab_xsvldltg					
+		Triglycerides to total lipids ratio in very small VLDL	metab_xsvldltgpct					
+		Total cholesterol levels in chylomicrons and extremely large VLDL						
+		Total cholesterol to total lipids ratio in chylomicrons and extremely large VLDL						
+		Cholesteryl ester levels in chylomicrons and extremely large VLDL						
+		Cholesteryl esters to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldlcepct					
+		Free cholesterol levels in chylomicrons and extremely large VLDL						
+		Free cholesterol to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldlfcpct					
+		Total lipid levels in chylomicrons and extremely large VLDL						
+		Concentration of chylomicrons and extremely large VLDL particles	metab_xxlvldlp					
+		Phospholipid levels in chylomicrons and extremely large VLDL						
+		Phospholipids to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldlplpct					
+		Triglyceride levels in chylomicrons and extremely large VLDL						
+		Triglycerides to total lipids ratio in chylomicrons and extremely large VLDL	metab_xxlvldltgpct					
+		Carnitine levels	metab_compid_15500					
+		Benzoate levels	metab_compid_15778					
+		Maltotriose levels	metab_compid_44688					
+		Hippurate levels	metab_compid_15753					
+		Methionine sulfoxide levels	metab_compid_18374					
+		Xanthurenate levels	metab_compid_15679					
+		N-alpha-acetylornithine levels						
+		3-methylhistidine levels	metab_compid_15677					
+		Glycerophosphorylcholine (GPC) levels	metab_compid_15990					
+		Phenylacetate levels	metab_compid_57745					
+		3-methyl-2-oxovalerate levels	metab_compid_15676					
+		Tartarate levels	metab_compid_15336					
+		Suberate (C8-DC) levels	metab_compid_15730					
+		5-hydroxylysine levels	metab_compid_15685					
+		3-phenylpropionate hydrocinnamate levels						
+		Kynurenine levels	metab_compid_15140					
+		N-acetylglutamate levels	metab_compid_15720					
+		Glycerol 3-phosphate levels	metab_compid_43847					
+		Imidazole lactate levels	metab_compid_15716					
+		4-guanidinobutanoate levels	metab_compid_15681					
+		Glucuronate levels	metab_compid_15443					
+		Ribitol levels	metab_compid_15772					
+		Glycodeoxycholate levels	metab_compid_18477					
+		Theobromine levels	metab_compid_18392					
+		Quinate levels	metab_compid_18335					
+		Gentisate levels	metab_compid_18280					
+		Theophylline levels	metab_compid_18394					
+		"1,5-anhydroglucitol (1,5-ag) levels"	metab_compid_20675					
+		1-stearoyl-2-arachidonoyl-GPI (18:0/20:4) levels	metab_compid_52449					
+		Indolelactate levels	metab_compid_18349					
+		Docosahexaenoate DHA; 22:6n3 levels						
+		1-stearoyl-2-oleoyl-GPS (18:0/18:1) levels	metab_compid_19265					
+		1-myristoyl-2-palmitoyl-gpc (14:0/16:0) levels	metab_compid_19258					
+		Paraxanthine levels	metab_compid_18254					
+		4-methyl-2-oxopentanoate levels	metab_compid_22116					
+		3-indoxyl sulfate levels	metab_compid_27672					
+		Sphingosine 1-phosphate levels	metab_compid_34445					
+		Alpha-hydroxyisocaproate levels	metab_compid_22132					
+		1-stearoyl-GPI (18:0) levels	metab_compid_19324					
+		"1,2-dipalmitoyl-gpc (16:0/16:0) levels"	metab_compid_19130					
+		Maleate levels	metab_compid_20676					
+		Isovalerate (i5:0) levels	metab_compid_44656					
+		4-acetylphenol sulfate levels	metab_compid_44620					
+		Phenyllactate (pla) levels	metab_compid_22130					
+		N-acetylaspartate (naa) levels	metab_compid_22185					
+		Palmitoylcarnitine (C16) levels	metab_compid_44681					
+		Erythritol levels	metab_compid_20699					
+		Hexanoylcarnitine levels						
+		Acetylcarnitine (c2) levels	metab_compid_32198					
+		Iminodiacetate (IDA) levels						
+		Cysteine s-sulfate levels	metab_compid_22176					
+		Oxalate (ethanedioate) levels	metab_compid_20694					
+		DHEAS levels						
+		3-hydroxymyristate levels	metab_compid_21158					
+		Homoarginine levels	metab_compid_22137					
+		1-oleoylglycerol (18:1) levels	metab_compid_21184					
+		3-methyl-2-oxobutyrate levels	metab_compid_44526					
+		Tartronate (hydroxymalonate) levels	metab_compid_20693					
+		"2,3-dihydroxypyridine levels"						
+		3-hydroxyoctanoate levels	metab_compid_22001					
+		2-hydroxyoctanoate levels	metab_compid_22036					
+		Homocitrulline levels	metab_compid_22138					
+		Indoleacetate levels	metab_compid_27513					
+		1-linoleoylglycerol (18:2) levels	metab_compid_27447					
+		2-linoleoylglycerol (18:2) levels	metab_compid_32506					
+		Indolepropionate levels	metab_compid_32405					
+		Threonate levels	metab_compid_27738					
+		N-acetylglycine levels	metab_compid_27710					
+		Glycolithocholate levels	metab_compid_31912					
+		EDTA levels	metab_compid_22163					
+		1-methylhistidine levels	metab_compid_30460					
+		Citramalate levels						
+		3-hydroxydecanoate levels	metab_compid_22053					
+		"1,3-dimethylurate levels"	metab_compid_32391					
+		Galactonate levels	metab_compid_27719					
+		Trigonelline (n'-methylnicotinate) levels	metab_compid_32401					
+		Dodecanedioate (C12-DC) levels	metab_compid_32388					
+		Isobutyrylcarnitine (c4) levels	metab_compid_33441					
+		3-methylxanthine levels	metab_compid_32445					
+		3-hydroxylaurate levels	metab_compid_32457					
+		Pyridoxate levels	metab_compid_31555					
+		5-hydroxyhexanoate levels	metab_compid_31938					
+		Gamma-glutamylvaline levels	metab_compid_43829					
+		3-hydroxysebacate levels	metab_compid_31943					
+		Propionylglycine levels	metab_compid_31932					
+		Butyrylglycine levels	metab_compid_31850					
+		Pro-hydroxy-pro levels	metab_compid_35127					
+		Propionylcarnitine (c3) levels	metab_compid_32452					
+		Adrenate (22:4n6) levels	metab_compid_32980					
+		Docosatrienoate (22:3n3) levels						
+		Docosadienoate (22:2n6) levels	metab_compid_32415					
+		3-carboxy-4-methyl-5-propyl-2-furanpropanoate (cmpf) levels	metab_compid_31787					
+		Docosapentaenoate n3 DPA; 22:5n3 levels						
+		3-hydroxy-2-ethylpropionate levels	metab_compid_32397					
+		Myristoleate (14:1n5) levels	metab_compid_32418					
+		10-undecenoate (11:1n1) levels	metab_compid_32497					
+		1-methyl-4-imidazoleacetate levels	metab_compid_32350					
+		Sebacate (C10-DC) levels	metab_compid_32398					
+		Tauro-beta-muricholate levels	metab_compid_33983					
+		Octanoylcarnitine (c8) levels	metab_compid_33936					
+		Stearidonate (18:4n3) levels	metab_compid_33969					
+		Decanoylcarnitine (C10) levels	metab_compid_33941					
+		5-dodecenoate (12:1n7) levels	metab_compid_33968					
+		N-acetylisoleucine levels	metab_compid_33967					
+		Campesterol levels	metab_compid_33997					
+		N-acetylthreonine levels	metab_compid_33939					
+		1-oleoyl-GPC (18:1) levels	metab_compid_48258					
+		10-nonadecenoate (19:1n9) levels	metab_compid_33972					
+		Piperine levels	metab_compid_33935					
+		Myristoylcarnitine (C14) levels	metab_compid_33952					
+		10-heptadecenoate (17:1n7) levels	metab_compid_33971					
+		1-stearoyl-gpc (18:0) levels	metab_compid_33961					
+		1-palmitoyl-GPC (16:0) levels	metab_compid_33955					
+		Hyocholate levels	metab_compid_34093					
+		N-acetylhistidine levels	metab_compid_33946					
+		Alpha-hydroxyisovalerate levels	metab_compid_46537					
+		N-acetylproline levels	metab_compid_34387					
+		Stachydrine levels	metab_compid_34384					
+		Salicyluric glucuronide levels	metab_compid_33384					
+		P-cresol sulfate levels	metab_compid_36103					
+		Gamma-glutamylglycine levels	metab_compid_33949					
+		1-linoleoyl-GPC (18:2) levels	metab_compid_34419					
+		Stearoylcarnitine (C18) levels	metab_compid_34409					
+		Eicosenoate (20:1) levels	metab_compid_33587					
+		Aconitate [cis or trans] levels	metab_compid_46173					
+		Erythronate levels	metab_compid_42420					
+		Isovalerylcarnitine (C5) levels	metab_compid_34407					
+		Linolenate [alpha or gamma; (18:3n3 or 6)] levels	metab_compid_34035					
+		Gamma-glutamylthreonine levels	metab_compid_33364					
+		Laurylcarnitine levels						
+		Gamma-glutamylmethionine levels	metab_compid_44872					
+		Epiandrosterone sulfate levels	metab_compid_33973					
+		Gamma-glutamyltryptophan levels	metab_compid_33947					
+		7-methylxanthine levels	metab_compid_34390					
+		"3,7-dimethylurate levels"	metab_compid_34399					
+		"1,7-dimethyluric acid levels"						
+		"1,3,7-trimethylurate levels"	metab_compid_34404					
+		N4-acetylcytidine levels	metab_compid_35130					
+		Indolebutyrate levels	metab_compid_34402					
+		5-acetylamino-6-amino-3-methyluracil levels	metab_compid_34424					
+		N1-methylinosine levels	metab_compid_48351					
+		N6-carbamoylthreonyladenosine levels	metab_compid_35157					
+		1-methylxanthine levels	metab_compid_34389					
+		"N2,n2-dimethylguanosine levels"	metab_compid_35137					
+		4-hydroxyhippurate levels	metab_compid_35527					
+		3-(3-amino-3-carboxypropyl)uridine levels	metab_compid_52525					
+		"5,6-dihydrouridine levels"	metab_compid_61833					
+		Phenylacetylglutamine levels	metab_compid_35126					
+		3-hydroxydodecanedioate levels	metab_compid_62915					
+		1-arachidonylglycerol (20:4) levels	metab_compid_34397					
+		7-methylguanine levels	metab_compid_35114					
+		1-stearoyl-GPE (18:0) levels	metab_compid_42398					
+		Phenol sulfate levels	metab_compid_32553					
+		Oleoylcarnitine (C18:1) levels	metab_compid_35160					
+		Gamma-glutamylisoleucine levels	metab_compid_34456					
+		Malonylcarnitine levels						
+		1-palmitoleoyl-GPC (16:1) levels	metab_compid_33230					
+		N1-methyl-2-pyridone-5-carboxamide levels	metab_compid_40469					
+		Gamma-glutamyl-2-aminobutyrate levels						
+		1-stearoyl-GPG (18:0) levels	metab_compid_34437					
+		Hexanoylglycine levels						
+		Glutamine degradant levels						
+		5-methyluridine (ribothymidine) levels	metab_compid_35136					
+		Cysteine-glutathione disulfide levels	metab_compid_35159					
+		Isovalerylglycine levels						
+		2-hydroxy-3-methylvalerate levels	metab_compid_36746					
+		Homostachydrine levels	metab_compid_33009					
+		1-arachidonoyl-GPC (20:4n6) levels	metab_compid_33228					
+		2-palmitoyl-GPC (16:0) levels	metab_compid_35253					
+		2-palmitoleoyl-GPC (16:1) levels	metab_compid_47118					
+		1-arachidonoyl-GPE (20:4n6) levels	metab_compid_35186					
+		1-palmitoyl-GPE (16:0) levels	metab_compid_35631					
+		1-linoleoyl-GPE (18:2) levels	metab_compid_36600					
+		1-oleoyl-GPE (18:1) levels	metab_compid_35628					
+		2-hydroxypalmitate levels	metab_compid_35675					
+		Docosapentaenoate (n6 DPA; 22:5n6) levels	metab_compid_37478					
+		Gulonate levels	metab_compid_46957					
+		Isobutyrylglycine levels	metab_compid_35437					
+		Glutarylcarnitine (c5-dc) levels	metab_compid_44664					
+		Tiglylcarnitine (C5:1-DC) levels	metab_compid_35428					
+		Hydroquinone sulfate levels	metab_compid_35322					
+		Beta-hydroxyisovaleroylcarnitine levels	metab_compid_35433					
+		Catechol sulfate levels	metab_compid_35320					
+		7-alpha-hydroxy-3-oxo-4-cholestenoate (7-hoca) levels	metab_compid_36776					
+		Octadecanedioate (C18-DC) levels	metab_compid_36754					
+		Tetradecanedioate (C14-DC) levels	metab_compid_35669					
+		Hexadecanedioate (C16-DC) levels	metab_compid_35678					
+		Glycerophosphoethanolamine levels	metab_compid_37455					
+		Taurolithocholate 3-sulfate levels	metab_compid_36850					
+		1-palmitoyl-GPI (16:0) levels	metab_compid_35305					
+		Glycolithocholate sulfate levels	metab_compid_32620					
+		3-(3-hydroxyphenyl)propionate levels	metab_compid_35635					
+		Deoxycarnitine levels	metab_compid_36747					
+		Alpha-hydroxycaproate levels	metab_compid_37073					
+		1-ribosyl-imidazoleacetate levels	metab_compid_61868					
+		"3,4-dihydroxybutyrate levels"	metab_compid_62952					
+		Indoleacetylglutamine levels	metab_compid_42087					
+		Mannitol/sorbitol levels	metab_compid_46142					
+		Tryptophan betaine levels	metab_compid_37097					
+		Dihomo-linolenate (20:3n3 or n6) levels	metab_compid_35718					
+		1-linoleoyl-GPI (18:2) levels	metab_compid_36594					
+		1-oleoyl-GPI (18:1) levels	metab_compid_36602					
+		O-cresol sulfate levels	metab_compid_36845					
+		4-vinylphenol sulfate levels	metab_compid_36098					
+		Pyrraline levels	metab_compid_48428					
+		N6-acetyllysine levels	metab_compid_36752					
+		Thymol sulfate levels	metab_compid_36095					
+		N-acetylserine levels	metab_compid_37076					
+		3-methyladipate levels	metab_compid_36749					
+		4-ethylphenylsulfate levels	metab_compid_36099					
+		1-stearoyl-2-oleoyl-GPE (18:0/18:1) levels	metab_compid_42448					
+		Dimethylarginine (sdma + adma) levels	metab_compid_36808					
+		Hexanoylglutamine levels	metab_compid_54907					
+		Gamma-glutamylalanine levels	metab_compid_37063					
+		"5alpha-androstan-3beta,17beta-diol disulfate levels"	metab_compid_37190					
+		N-methylproline levels	metab_compid_37431					
+		Beta-cryptoxanthin levels	metab_compid_57591					
+		"5alpha-pregnan-3beta,20alpha-diol disulfate levels"	metab_compid_37198					
+		Taurocholenate sulfate levels	metab_compid_32807					
+		Pregnenediol disulfate (C21H34O8S2) levels	metab_compid_32562					
+		Glycocholenate sulfate levels	metab_compid_32599					
+		"Androstenediol (3beta,17beta) disulfate (1) levels"	metab_compid_37202					
+		Chiro-inositol levels						
+		1-palmitoyl-2-linoleoyl-GPE (16:0/18:2) levels	metab_compid_42449					
+		Sphinganine-1-phosphate levels	metab_compid_52605					
+		Glycosyl-N-stearoyl-sphingosine (d18:1/18:0) levels	metab_compid_52234					
+		4-allylphenol sulfate levels	metab_compid_37181					
+		Succinylcarnitine (C4DC) levels						
+		21-hydroxypregnenolone disulfate levels	metab_compid_46115					
+		"5alpha-androstan-3alpha,17alpha-diol monosulfate levels"	metab_compid_37183					
+		"Androstenediol (3beta,17beta) disulfate (2) levels"	metab_compid_37203					
+		"5alpha-androstan-3beta,17alpha-diol disulfate levels"	metab_compid_37187					
+		"5alpha-pregnan-3beta,20beta-diol monosulfate (1) levels"	metab_compid_37196					
+		"5alpha-pregnan-3beta,20alpha-diol monosulfate (2) levels"	metab_compid_37200					
+		"5alpha-androstan-3beta,17beta-diol monosulfate (2) levels"	metab_compid_37192					
+		"Androstenediol (3alpha, 17alpha) monosulfate (3) levels"	metab_compid_37209					
+		5alpha-pregnan-diol disulfate levels	metab_compid_46172					
+		"5alpha-androstan-3alpha,17beta-diol monosulfate (1) levels"	metab_compid_37186					
+		"5alpha-androstan-3alpha,17beta-diol disulfate levels"	metab_compid_37184					
+		Andro steroid monosulfate C19H28O6S (1) levels	metab_compid_32827					
+		Pregnenediol sulfate (C21H34O5S) levels	metab_compid_32619					
+		4-hydroxycoumarin levels	metab_compid_37445					
+		16a-hydroxy DHEA 3-sulfate levels	metab_compid_38168					
+		Gamma-CEHC levels	metab_compid_44876					
+		2-hydroxyglutarate levels	metab_compid_37253					
+		N-acetyl-beta-alanine levels	metab_compid_37432					
+		Tridecenedioate (C13:1-DC) levels	metab_compid_46598					
+		N-acetyl-3-methylhistidine levels	metab_compid_43256					
+		3-hydroxyhippurate levels	metab_compid_39600					
+		4-cholesten-3-one levels	metab_compid_38125					
+		"Androstenediol (3beta,17beta) monosulfate (2) levels"	metab_compid_37210					
+		"Androstenediol (3beta,17beta) monosulfate (1) levels"	metab_compid_37211					
+		Pregnenolone sulfate levels	metab_compid_38170					
+		S-methylmethionine levels						
+		13-HODE + 9-HODE levels	metab_compid_37752					
+		Palmitoyl sphingomyelin (d18:1/16:0) levels	metab_compid_37506					
+		Indole-3-carboxylate levels	metab_compid_38116					
+		"Sphingomyelin (d18:1/18:1, d18:2/18:0) levels"	metab_compid_37529					
+		Ergothioneine levels	metab_compid_37459					
+		Cis-4-decenoylcarnitine (C10:1) levels	metab_compid_38178					
+		5-(galactosylhydroxy)-L-lysine levels	metab_compid_43582					
+		"2s,3R-dihydroxybutyrate levels"	metab_compid_62950					
+		Cysteinylglycine disulfide levels	metab_compid_62103					
+		"2,3-dihydroxyisovalerate levels"	metab_compid_38276					
+		Alpha-ketoglutaramate levels	metab_compid_62101					
+		3-methylglutaconate levels	metab_compid_57747					
+		(16 or 17)-methylstearate (a19:0 or i19:0) levels	metab_compid_38296					
+		Cinnamoylglycine levels	metab_compid_38637					
+		"2R,3R-dihydroxybutyrate levels"	metab_compid_63109					
+		4-hydroxyglutamate levels	metab_compid_40499					
+		S-methylcysteine levels	metab_compid_39592					
+		Isoursodeoxycholate levels	metab_compid_57577					
+		Cis-4-decenoate (10:1n6) levels	metab_compid_48992					
+		4-oxo-retinoic acid levels						
+		1-lignoceroyl-GPC (24:0) levels	metab_compid_49617					
+		Sulfate levels	metab_compid_46960					
+		4-hydroxy-2-oxoglutaric acid levels						
+		Glycoursodeoxycholate levels	metab_compid_39379					
+		1-(1-enyl-palmitoyl)-GPC (p-16:0) levels	metab_compid_52474					
+		Argininate levels	metab_compid_57461					
+		1-methyl-5-imidazoleacetate levels	metab_compid_47787					
+		Hydantoin-5-propionate levels	metab_compid_40473					
+		2-oxoarginine levels	metab_compid_55072					
+		Pantoate levels	metab_compid_63061					
+		Formiminoglutamate levels	metab_compid_43493					
+		1-(1-enyl-palmitoyl)-GPE (p-16:0) levels	metab_compid_39270					
+		S-methylcysteine sulfoxide levels	metab_compid_43378					
+		2-o-methylascorbic acid levels	metab_compid_46961					
+		Eicosanedioate (C20-DC) levels	metab_compid_39831					
+		1-(1-enyl-stearoyl)-GPE (p-18:0) levels	metab_compid_39271					
+		Beta-citrylglutamate levels	metab_compid_54923					
+		N-oleoyltaurine levels	metab_compid_39732					
+		Docosadioate (C22-DC) levels	metab_compid_39837					
+		Oleoyl-linoleoyl-glycerol (18:1/18:2) [2] levels	metab_compid_46799					
+		Imidazole propionate levels	metab_compid_40730					
+		Carnitine C18:2 levels						
+		Pregnanediol-3-glucuronide levels	metab_compid_40708					
+		Carboxyethyl-gaba levels						
+		Alliin levels	metab_compid_41494					
+		Trimethylamine n-oxide levels	metab_compid_40406					
+		Dihydroferulate levels	metab_compid_40481					
+		Prolylglycine levels	metab_compid_40703					
+		N-palmitoylglycine levels	metab_compid_42092					
+		N-methyltaurine levels	metab_compid_42989					
+		Succinimide levels	metab_compid_41888					
+		N-acetylcarnosine levels	metab_compid_43488					
+		Histidine betaine (hercynine) levels	metab_compid_62278					
+		2-stearoyl-GPE (18:0) levels	metab_compid_41220					
+		Margaroylcarnitine (C17) levels	metab_compid_57512					
+		(R)-3-hydroxybutyrylcarnitine levels	metab_compid_43264					
+		Lanthionine levels	metab_compid_42002					
+		Mannonate levels	metab_compid_62864					
+		3b-hydroxy-5-cholenoic acid levels						
+		2-hydroxydecanoate levels	metab_compid_42489					
+		Glycohyocholate levels	metab_compid_42574					
+		3-methyl catechol sulfate (2) levels						
+		2-aminooctanoate levels	metab_compid_43343					
+		3-methyl catechol sulfate (1) levels	metab_compid_46165					
+		4-methylcatechol sulfate levels	metab_compid_46146					
+		Guaiacol sulfate levels	metab_compid_46111					
+		Gamma-CEHC glucuronide levels	metab_compid_42381					
+		Dimethyl sulfone levels	metab_compid_43424					
+		2-piperidinone levels	metab_compid_43400					
+		Indolin-2-one levels						
+		"Sphingomyelin (d18:1/14:0, d16:1/16:0) levels"	metab_compid_42463					
+		3-acetylphenol sulfate levels						
+		"Sphingomyelin (d18:2/16:0, d18:1/16:1) levels"	metab_compid_42459					
+		S-allylcysteine levels	metab_compid_43239					
+		6-oxopiperidine-2-carboxylate levels	metab_compid_43231					
+		2-aminophenol sulfate levels	metab_compid_43266					
+		N-acetylalliin levels	metab_compid_45404					
+		2-aminoheptanoate levels	metab_compid_43761					
+		3-methoxytyramine sulfate levels	metab_compid_44618					
+		"N2,N5-diacetylornithine levels"	metab_compid_43591					
+		Ferulic acid 4-sulfate levels						
+		1H-indole-7-acetic acid levels	metab_compid_57783					
+		3-(3-hydroxyphenyl)propionate sulfate levels						
+		1-linolenoyl-GPC (18:3) levels	metab_compid_45951					
+		O-sulfo-l-tyrosine levels	metab_compid_45413					
+		N-formylanthranilic acid levels	metab_compid_43549					
+		Methionine sulfone levels	metab_compid_44878					
+		Acisoga levels	metab_compid_43258					
+		17alpha-hydroxypregnanolone glucuronide levels	metab_compid_47403					
+		Etiocholanolone glucuronide levels	metab_compid_47112					
+		Fructosyllysine levels	metab_compid_46227					
+		1-(1-enyl-oleoyl)-GPE (p-18:1) levels	metab_compid_44621					
+		N-acetyltaurine levels	metab_compid_48187					
+		1-palmitoyl-GPG (16:0) levels	metab_compid_45970					
+		1-oleoyl-GPG (18:1) levels	metab_compid_45968					
+		Octadecenedioylcarnitine (C18:1-DC) levels	metab_compid_61865					
+		3-methylglutarylcarnitine (2) levels	metab_compid_46548					
+		"Sphingomyelin (d18:1/24:1, d18:2/24:0) levels"	metab_compid_47153					
+		Methyl glucopyranoside (alpha + beta) levels	metab_compid_46144					
+		9-hydroxystearate levels	metab_compid_47120					
+		"Sphingomyelin (d18:2/14:0, d18:1/14:1) levels"	metab_compid_47154					
+		1-dihomo-linolenylglycerol (20:3) levels	metab_compid_48341					
+		4-hydroxychlorothalonil levels	metab_compid_48441					
+		Vanillactate levels	metab_compid_54910					
+		Myristoleoylcarnitine (C14:1) levels	metab_compid_48182					
+		N-formylphenylalanine levels						
+		2-acetamidophenol sulfate levels	metab_compid_48580					
+		4-vinylguaiacol sulfate levels	metab_compid_48442					
+		"5alpha-androstan-3alpha,17beta-diol monosulfate (2) levels"	metab_compid_37185					
+		Vanillic alcohol sulfate levels						
+		Methyl-4-hydroxybenzoate sulfate levels	metab_compid_48429					
+		Eugenol sulfate levels	metab_compid_48715					
+		2-methoxyresorcinol sulfate levels	metab_compid_48445					
+		Tyramine O-sulfate levels	metab_compid_48408					
+		4-methylguaiacol sulfate levels	metab_compid_48418					
+		3-hydroxypyridine sulfate levels	metab_compid_48448					
+		Arabonate/xylonate levels	metab_compid_48255					
+		Octadecanedioylcarnitine (C18-DC) levels	metab_compid_61867					
+		Phenylacetylcarnitine levels	metab_compid_48425					
+		Ethylparaben sulfate levels						
+		"Sphingomyelin (d18:1/20:2, d18:2/20:1, d16:1/22:2) levels"	metab_compid_57481					
+		"Sphingomyelin (d18:1/20:1, d18:2/20:0) levels"	metab_compid_48491					
+		Behenoyl sphingomyelin (d18:1/22:0) levels	metab_compid_48492					
+		Propyl 4-hydroxybenzoate sulfate levels	metab_compid_48460					
+		4-methoxyphenol sulfate levels	metab_compid_48457					
+		Umbelliferone sulfate levels	metab_compid_48674					
+		"Sphingomyelin (d18:1/20:0, d16:1/22:0) levels"	metab_compid_48490					
+		6-hydroxyindole sulfate levels	metab_compid_48698					
+		P-cresol glucuronide levels	metab_compid_48841					
+		N-carbamoylalanine levels	metab_compid_52340					
+		Citraconate/glutaconate levels	metab_compid_47076					
+		"1,2,3-benzenetriol sulfate (2) levels"	metab_compid_48762					
+		3-methoxycatechol sulfate (2) levels	metab_compid_48752					
+		C-glycosyltryptophan levels	metab_compid_48782					
+		3-methoxycatechol sulfate (1) levels	metab_compid_48763					
+		"Sphingomyelin (d18:1/22:1, d18:2/22:0, d16:1/24:1) levels"	metab_compid_48493					
+		Arabitol/xylitol levels	metab_compid_48885					
+		3-hydroxyhexanoate levels	metab_compid_53230					
+		"Sphingomyelin (d18:1/22:2, d18:2/22:1, d16:1/24:2) levels"	metab_compid_57477					
+		3beta-hydroxy-5-cholestenoate levels	metab_compid_54805					
+		N-acetylkynurenine (2) levels	metab_compid_48757					
+		Dopamine 4-sulfate levels	metab_compid_48406					
+		"Sphingomyelin (d17:1/16:0, d18:1/15:0, d16:1/17:0) levels"	metab_compid_52433					
+		Adipoylcarnitine (C6-DC) levels	metab_compid_52988					
+		Dopamine 3-o-sulfate levels	metab_compid_48407					
+		Lignoceroyl sphingomyelin (d18:1/24:0) levels	metab_compid_57330					
+		N-acetylglucosamine/n-acetylgalactosamine levels	metab_compid_46539					
+		Glycochenodeoxycholate 3-sulfate levels	metab_compid_52974					
+		"Trans 3,4-methyleneheptanoate levels"						
+		Taurodeoxycholic acid 3-sulfate levels	metab_compid_46655					
+		Phenol glucuronide levels						
+		Glycodeoxycholate 3-sulfate levels	metab_compid_52975					
+		4-hydroxyphenylacetoylcarnitine levels						
+		1-stearoyl-2-oleoyl-gpc (18:0/18:1) levels	metab_compid_52438					
+		Linoleoyl ethanolamide levels	metab_compid_52608					
+		"1,2-dilinoleoyl-GPC (18:2/18:2) levels"	metab_compid_52603					
+		Nonanoylcarnitine (C9) levels	metab_compid_61775					
+		2-hydroxybutyrate/2-hydroxyisobutyrate levels	metab_compid_52281					
+		"Sphingomyelin (d18:2/23:0, d18:1/23:1, d17:1/24:1) levels"	metab_compid_52435					
+		Tricosanoyl sphingomyelin (d18:1/23:0) levels	metab_compid_52436					
+		Palmitoyl dihydrosphingomyelin (d18:0/16:0) levels	metab_compid_52434					
+		1-palmitoleoylglycerol (16:1) levels	metab_compid_52431					
+		1-stearoyl-2-linoleoyl-gpc (18:0/18:2) levels	metab_compid_52452					
+		1-palmitoyl-2-palmitoleoyl-gpc (16:0/16:1) levels	metab_compid_52470					
+		1-stearoyl-2-linoleoyl-GPE (18:0/18:2) levels	metab_compid_52446					
+		"Sphingomyelin (d18:2/24:1, d18:1/24:2) levels"	metab_compid_52437					
+		1-palmitoyl-2-stearoyl-gpc (16:0/18:0) levels	metab_compid_52616					
+		Oleate/vaccenate (18:1) levels	metab_compid_52285					
+		1-palmitoyl-2-docosahexaenoyl-GPC (16:0/22:6) levels	metab_compid_52610					
+		1-(1-enyl-stearoyl)-2-oleoyl-GPE (p-18:0/18:1) levels	metab_compid_52614					
+		1-stearoyl-2-arachidonoyl-GPE (18:0/20:4) levels	metab_compid_52447					
+		1-stearoyl-2-docosahexaenoyl-gpc (18:0/22:6) levels	metab_compid_52611					
+		"Sphingomyelin (d18:1/17:0, d17:1/18:0, d19:1/16:0) levels"	metab_compid_52615					
+		1-(1-enyl-palmitoyl)-2-arachidonoyl-GPE (p-16:0/20:4) levels	metab_compid_52673					
+		Myristoyl dihydrosphingomyelin (d18:0/14:0) levels	metab_compid_57365					
+		5-hydroxyindole sulfate levels	metab_compid_52914					
+		1-palmitoyl-2-dihomo-linolenoyl-GPC (16:0/20:3n3 or 6) levels	metab_compid_52454					
+		1-(1-enyl-palmitoyl)-2-arachidonoyl-GPC (P-16:0/20:4) levels	metab_compid_52689					
+		"Sphingomyelin (d18:1/21:0, d17:1/22:0, d16:1/23:0) levels"	metab_compid_52495					
+		1-palmitoyl-2-arachidonoyl-GPE (16:0/20:4) levels	metab_compid_52464					
+		Lactosyl-N-palmitoyl-sphingosine (d18:1/16:0) levels	metab_compid_53010					
+		"Sphingomyelin (d18:0/18:0, d19:0/17:0) levels"	metab_compid_57473					
+		1-(1-enyl-palmitoyl)-2-oleoyl-GPC (P-16:0/18:1) levels	metab_compid_52478					
+		1-(1-enyl-stearoyl)-2-arachidonoyl-GPE (p-18:0/20:4) levels	metab_compid_52475					
+		Behenoyl dihydrosphingomyelin (d18:0/22:0) levels	metab_compid_57331					
+		1-(1-enyl-palmitoyl)-2-linoleoyl-GPC (p-16:0/18:2) levels	metab_compid_52682					
+		1-(1-enyl-palmitoyl)-2-oleoyl-GPE (p-16:0/18:1) levels	metab_compid_52477					
+		1-palmitoyl-2-arachidonoyl-GPI (16:0/20:4) levels	metab_compid_52467					
+		1-palmitoyl-2-docosahexaenoyl-GPE (16:0/22:6) levels	metab_compid_52465					
+		N-palmitoyl-sphinganine (d18:0/16:0) levels	metab_compid_52604					
+		1-stearoyl-2-docosahexaenoyl-GPE (18:0/22:6) levels	metab_compid_52466					
+		Gamma-tocopherol/beta-tocopherol levels	metab_compid_52473					
+		1-stearoyl-2-linoleoyl-GPI (18:0/18:2) levels	metab_compid_52468					
+		"1,2-dilinoleoyl-GPE (18:2/18:2) levels"						
+		Phenylacetylglutamate levels	metab_compid_52925					
+		1-(1-enyl-palmitoyl)-2-palmitoleoyl-GPC (P-16:0/16:1) levels	metab_compid_52713					
+		Palmitoylcholine levels	metab_compid_52944					
+		Thioproline levels	metab_compid_53231					
+		1-linoleoyl-2-arachidonoyl-GPC (18:2/20:4n6) levels	metab_compid_52710					
+		1-linoleoyl-GPG (18:2) levels	metab_compid_54885					
+		1-(1-enyl-palmitoyl)-2-linoleoyl-GPE (p-16:0/18:2) levels	metab_compid_52677					
+		1-(1-enyl-stearoyl)-2-linoleoyl-GPE (p-18:0/18:2) levels	metab_compid_52748					
+		1-stearoyl-2-oleoyl-GPI (18:0/18:1) levels	metab_compid_52726					
+		1-myristoyl-2-arachidonoyl-GPC (14:0/20:4) levels	metab_compid_53195					
+		1-oleoyl-2-arachidonoyl-GPE (18:1/20:4) levels	metab_compid_55041					
+		1-palmitoyl-2-oleoyl-GPI (16:0/18:1) levels	metab_compid_52669					
+		1-oleoyl-2-docosahexaenoyl-GPC (18:1/22:6) levels	metab_compid_52697					
+		1-oleoyl-2-linoleoyl-GPE (18:1/18:2) levels	metab_compid_52687					
+		1-(1-enyl-palmitoyl)-2-palmitoyl-GPC (P-16:0/16:0) levels	metab_compid_52716					
+		Oleoylcholine levels	metab_compid_53260					
+		Glycosyl-N-palmitoyl-sphingosine (d18:1/16:0) levels	metab_compid_53013					
+		Arachidonoylcholine levels	metab_compid_53261					
+		2-methylserine levels						
+		(S)-3-hydroxybutyrylcarnitine levels	metab_compid_52984					
+		Methylsuccinoylcarnitine levels						
+		Dihomo-linolenoyl-choline levels	metab_compid_53262					
+		Docosahexaenoylcholine levels	metab_compid_53263					
+		Glycocholate glucuronide (1) levels	metab_compid_52977					
+		Caffeic acid sulfate levels	metab_compid_53254					
+		Ascorbic acid 2-sulfate levels	metab_compid_63590					
+		1-linoleoyl-2-linolenoyl-GPC (18:2/18:3) levels	metab_compid_53176					
+		Catechol glucuronide levels						
+		Furaneol sulfate levels						
+		Lactosyl-N-nervonoyl-sphingosine (d18:1/24:1) levels	metab_compid_57370					
+		N-oleoylserine levels	metab_compid_57664					
+		Perfluorooctanesulfonate (PFOS) levels	metab_compid_57564					
+		Pimeloylcarnitine/3-methyladipoylcarnitine (C7-DC) levels						
+		1-palmitoleoyl-2-linolenoyl-GPC (16:1/18:3) levels	metab_compid_53180					
+		Linoleoyl-arachidonoyl-glycerol (18:2/20:4) [1] levels	metab_compid_54955					
+		Hexadecadienoate (16:2n6) levels	metab_compid_57652					
+		Glycosyl-N-behenoyl-sphingadienine (d18:2/22:0) levels	metab_compid_57421					
+		4-hydroxyphenylacetylglutamine levels	metab_compid_55017					
+		Gamma-glutamyl-alpha-lysine levels	metab_compid_55015					
+		N-palmitoyl-sphingadienine (d18:2/16:0) levels	metab_compid_57416					
+		Linoleoyl-arachidonoyl-glycerol (18:2/20:4) [2] levels	metab_compid_54956					
+		Palmitoleoylcarnitine (C16:1) levels	metab_compid_53223					
+		N-stearoyl-sphingadienine (d18:2/18:0) levels	metab_compid_57417					
+		"2,3-dihydroxy-2-methylbutyrate levels"	metab_compid_57547					
+		Stearoylcholine levels	metab_compid_57464					
+		Glycosyl-N-tricosanoyl-sphingadienine (d18:2/23:0) levels	metab_compid_57445					
+		N-palmitoyl-heptadecasphingosine (d17:1/16:0) levels	metab_compid_57430					
+		"Ceramide (d18:1/14:0, d16:1/16:0) levels"	metab_compid_57432					
+		Glycosyl-N-(2-hydroxynervonoyl)-sphingosine (d18:1/24:1(2OH)) levels	metab_compid_57444					
+		"Glycosyl ceramide (d18:2/24:1, d18:1/24:2) levels"	metab_compid_57453					
+		"Glycosyl ceramide (d18:1/23:1, d17:1/24:1) levels"	metab_compid_57448					
+		Sphingadienine levels	metab_compid_57426					
+		"Ceramide (d18:1/17:0, d17:1/18:0) levels"	metab_compid_57434					
+		Nisinate (24:6n3) levels	metab_compid_57810					
+		"Sphingomyelin (d18:0/20:0, d16:0/22:0) levels"	metab_compid_57476					
+		Sphingomyelin (d18:2/24:2) levels	metab_compid_57479					
+		"Sphingomyelin (d17:2/16:0, d18:2/15:0) levels"	metab_compid_57483					
+		Sphingomyelin (d18:2/23:1) levels	metab_compid_57482					
+		Behenoylcarnitine (C22) levels	metab_compid_57514					
+		Sphingomyelin (d18:2/18:1) levels	metab_compid_57474					
+		"Sphingomyelin (d18:2/21:0, d16:2/23:0) levels"	metab_compid_57480					
+		Linoleoylcholine levels	metab_compid_57463					
+		"Sphingomyelin (d18:1/19:0, d19:1/18:0) levels"	metab_compid_57475					
+		Linolenoylcarnitine (C18:3) levels	metab_compid_57511					
+		Heneicosapentaenoate (21:5n3) levels						
+		"Sphingomyelin (d18:1/25:0, d19:0/24:1, d20:1/23:0, d19:1/24:0) levels"	metab_compid_57478					
+		Arachidoylcarnitine (C20) levels	metab_compid_57513					
+		Cerotoylcarnitine (C26) levels	metab_compid_57516					
+		Lignoceroylcarnitine (C24) levels	metab_compid_57515					
+		Docosatrienoate (22:3n6) levels						
+		Dihomo-linolenoylcarnitine (C20:3n3 or 6) levels	metab_compid_57521					
+		Carotene diol (2) levels	metab_compid_57636					
+		Ethyl alpha-glucopyranoside levels	metab_compid_63152					
+		Carotene diol (1) levels	metab_compid_57635					
+		Nervonoylcarnitine (C24:1) levels	metab_compid_57531					
+		Dihomo-linoleoylcarnitine (C20:2) levels	metab_compid_57520					
+		"Glycosyl ceramide (d18:1/20:0, d16:1/22:0) levels"	metab_compid_57595					
+		Docosahexaenoylcarnitine (C22:6) levels	metab_compid_57523					
+		"N,N,N-trimethyl-5-aminovalerate levels"	metab_compid_57687					
+		Eicosenoylcarnitine (C20:1) levels	metab_compid_57519					
+		Ximenoylcarnitine (C26:1) levels	metab_compid_57517					
+		Arachidonoylcarnitine (C20:4) levels	metab_compid_57518					
+		5-dodecenoylcarnitine (C12:1) levels	metab_compid_61769					
+		2-butenoylglycine levels						
+		(N(1) + N(8))-acetylspermidine levels	metab_compid_57814					
+		Hydroxy-cmpf levels	metab_compid_62277					
+		2-furoylcarnitine levels						
+		Cortolone glucuronide (1) levels	metab_compid_48011					
+		Carotene diol (3) levels	metab_compid_57637					
+		3-hydroxyoleoylcarnitine levels	metab_compid_61840					
+		Dodecenedioate (C12:1-DC) levels	metab_compid_61864					
+		Trans-2-hexenoylglycine levels	metab_compid_61798					
+		2-hydroxyarachidate levels	metab_compid_61700					
+		3-hydroxyphenylacetoylglutamine levels						
+		Heptenedioate (C7:1-DC) levels	metab_compid_61866					
+		Hexadecenedioate (C16:1-DC) levels	metab_compid_61862					
+		Octadecenedioate (C18:1-DC) levels	metab_compid_61861					
+		Dihydroferulic acid sulfate levels	metab_compid_62857					
+		Glutamine conjugate of C7H12O2 levels	metab_compid_47000					
+		Hydroxyasparagine levels						
+		"Sphingomyelin (d17:1/14:0, d16:1/15:0) levels"	metab_compid_62152					
+		Octadecadienedioate (C18:2-DC) levels	metab_compid_61860					
+		Perfluorooctanoate (PFOA) levels	metab_compid_62071					
+		3-carboxy-4-methyl-5-pentyl-2-furanpropionate (3-CMPFP) levels						
+		Glutamine conjugate of C6H10O2 (2) levels	metab_compid_63660					
+		3-hydroxybutyroylglycine levels						
+		Glycine conjugate of C10H14O2 (1) levels	metab_compid_62146					
+		Glutamine conjugate of C6H10O2 (1) levels	metab_compid_63657					
+		N-methylhydroxyproline levels						
+		Glucuronide of C10H18O2 (7) levels	metab_compid_61887					
+		Glyco-beta-muricholate levels						
+		Glucuronide of C12H22O4 (1) levels						
+		"N,n,n-trimethyl-alanylproline betaine (tmap) levels"	metab_compid_40097					
+		Glycine conjugate of C10H12O2 levels	metab_compid_62145					
+		N-acetyl-2-aminooctanoate levels	metab_compid_62059					
+		3-formylindole levels	metab_compid_46738					
+		Gamma-glutamylcitrulline levels	metab_compid_62104					
+		8-methoxykynurenate levels	metab_compid_57815					
+		Tetradecadienoate (14:2) levels	metab_compid_46618					
+		3-amino-2-piperidone levels	metab_compid_54704					
+		Glucuronide of piperine metabolite C17H21NO3 (3) levels	metab_compid_62290					
+		Dodecadienoate (12:2) levels	metab_compid_62276					
+		N-lactoyl tyrosine levels	metab_compid_64882					
+		"N,N-dimethylalanine levels"	metab_compid_63151					
+		Ethyl beta-glucopyranoside levels	metab_compid_49014					
+		N-lactoyl phenylalanine levels	metab_compid_64881					
+		N-acetyl-isoputreanine levels	metab_compid_62309					
+		"2,2'-Methylenebis(6-tert-butyl-p-cresol) levels"	metab_compid_62885					
+		N-lactoyl isoleucine levels	metab_compid_64879					
+		2-hydroxysebacate levels						
+		Ascorbic acid 3-sulfate levels	metab_compid_63687					
+		N-lactoyl valine levels	metab_compid_64883					
+		6-bromotryptophan levels	metab_compid_62503					
+		Delta-CEHC levels						
+		Indoleacetoylcarnitine levels	metab_compid_62279					
+		N-lactoyl leucine levels	metab_compid_64880					
+		3-indoleglyoxylic acid levels	metab_compid_49228					
+		Sulfate of piperine metabolite C18H21NO3 (1) levels	metab_compid_62297					
+		Methyl vanillate sulfate levels						
+		Glucuronide of piperine metabolite C17H21NO3 (4) levels	metab_compid_62291					
+		Sulfate of piperine metabolite C16H19NO3 (3) levels	metab_compid_62296					
+		Sulfate of piperine metabolite C16H19NO3 (2) levels	metab_compid_62295					
+		3-hydroxypyridine glucuronide levels	metab_compid_63236					
+		Glucuronide of piperine metabolite C17H21NO3 (5) levels	metab_compid_62292					
+		2-naphthol sulfate levels	metab_compid_62520					
+		11beta-hydroxyandrosterone glucuronide levels	metab_compid_46634					
+		4-ethylcatechol sulfate levels	metab_compid_46614					
+		Sulfate of piperine metabolite C18H21NO3 (3) levels	metab_compid_62299					
+		"(2,4 or 2,5)-dimethylphenol sulfate levels"	metab_compid_62533					
+		11beta-hydroxyetiocholanolone glucuronide levels	metab_compid_64418					
+		Cholic acid glucuronide levels	metab_compid_62571					
+		4-allylcatechol sulfate levels	metab_compid_46358					
+		Glycoursodeoxycholic acid sulfate (1) levels	metab_compid_63731					
+		Dihydrocaffeate sulfate (2) levels	metab_compid_62524					
+		4-methylhexanoylglutamine levels	metab_compid_62735					
+		2-ketocaprylate levels	metab_compid_46456					
+		3-hydroxy-2-methylpyridine sulfate levels	metab_compid_63227					
+		5-hydroxy-2-methylpyridine sulfate levels	metab_compid_63230					
+		3-ethylcatechol sulfate (2) levels						
+		3-hydroxyhexanoylcarnitine (1) levels	metab_compid_62557					
+		"2,6-dihydroxybenzoic acid levels"	metab_compid_46355					
+		3-ethylcatechol sulfate (1) levels	metab_compid_62796					
+		Lithocholate sulfate (1) levels	metab_compid_62526					
+		4-acetylcatechol sulfate (1) levels	metab_compid_62798					
+		"2,3-dihydroxy-5-methylthio-4-pentenoate (dmtpa) levels"	metab_compid_46260					
+		Picolinoylglycine levels	metab_compid_47909					
+		Succinoyltaurine levels	metab_compid_63678					
+		Undecenoylcarnitine (C11:1) levels	metab_compid_47821					
+		Palmitoyl-sphingosine-phosphoethanolamine (d18:1/16:0) levels	metab_compid_52135					
+		Pregnenetriol disulfate levels	metab_compid_46599					
+		Tetradecadienedioate (C14:2-DC) levels	metab_compid_62918					
+		"Hydroxy-N6,N6,N6-trimethyllysine levels"	metab_compid_52769					
+		Pregnenetriol sulfate levels	metab_compid_57715					
+		Taurochenodeoxycholic acid 3-sulfate levels	metab_compid_46652					
+		Hydroxypalmitoyl sphingomyelin (d18:1/16:0(OH)) levels						
+		5-hydroxymethyl-2-furoylcarnitine levels						
+		Eicosenedioate (C20:1-DC) levels	metab_compid_47652					
+		3-hydroxydecanoylcarnitine levels	metab_compid_63358					
+		Levulinoylcarnitine levels						
+		"Cis 3,4-methyleneheptanoate levels"						
+		"Branched-chain, straight-chain, or cyclopropyl 12:1 fatty acid levels"	metab_compid_48067					
+		Deoxycholic acid 12-sulfate levels	metab_compid_46677					
+		"Branched-chain, straight-chain, or cyclopropyl 10:1 fatty acid (1) levels"	metab_compid_63615					
+		"3,5-dichloro-2,6-dihydroxybenzoic acid levels"	metab_compid_46366					
+		Vanillic acid glycine levels						
+		(S)-a-amino-omega-caprolactam levels						
+		"3-bromo-5-chloro-2,6-dihydroxybenzoic acid levels"	metab_compid_46368					
+		Dibutyl sulfosuccinate levels						
+		Metabolonic lactone sulfate levels	metab_compid_46588					
+		2-hydroxy-4-(methylthio)butanoic acid levels	metab_compid_63739					
+		Pentose acid levels	metab_compid_63264					
+		Branched chain 14:0 dicarboxylic acid levels						
+		S-carboxyethylcysteine levels	metab_compid_64177					
+		N-succinyl-phenylalanine levels						
+		(2 or 3)-decenoate (10:1n7 or n8) levels	metab_compid_48996					
+		"Bilirubin degradation product, C17H20N2O5 (2) levels"						
+		"Bilirubin degradation product, C16H18N2O5 (4) levels"						
+		"Cis-3,4-methyleneheptanoylcarnitine levels"	metab_compid_64389					
+		Tetrahydrocortisol glucuronide levels	metab_compid_46662					
+		N-acetyl-2-aminoadipate levels	metab_compid_49466					
+		"Bilirubin degradation product, C17H20N2O5 (1) levels"						
+		2-methoxyhydroquinone sulfate (1) levels	metab_compid_64049					
+		"Bilirubin degradation product, C16H18N2O5 (3) levels"						
+		3-hydroxyoctanoylcarnitine (1) levels	metab_compid_46640					
+		2-methoxyhydroquinone sulfate (2) levels						
+		"Cis-3,4-methyleneheptanoylglycine levels"	metab_compid_47013					
+		"Bilirubin degradation product, C16H18N2O5 (2) levels"						
+		"2,4-di-tert-butylphenol levels"	metab_compid_46621					
+		"Bilirubin degradation product, C16H18N2O5 (1) levels"						
+		3-hydroxyoctanoylcarnitine (2) levels	metab_compid_64394					
+		Pantothenate levels	metab_compid_1508					
+		5-oxoproline levels	metab_compid_1494					
+		Phosphoethanolamine levels	metab_compid_1600					
+		Picolinate levels	metab_compid_1512					
+		3-ureidopropionate levels	metab_compid_3155					
+		Erucate (22:1n9) levels	metab_compid_1552					
+		Xanthine levels	metab_compid_3147					
+		Allantoin levels	metab_compid_1107					
+		N-acetylvaline levels	metab_compid_1591					
+		N-acetylleucine levels	metab_compid_1587					
+		N-acetylmethionine levels	metab_compid_1589					
+		Glycerate levels	metab_compid_1572					
+		Sarcosine levels	metab_compid_1516					
+		Trans-4-hydroxyproline levels	metab_compid_32306					
+		Thyroxine levels	metab_compid_2761					
+		Pipecolate levels	metab_compid_1444					
+		Gamma-glutamyltyrosine levels	metab_compid_2734					
+		Methyl indole-3-acetate levels	metab_compid_1584					
+		Ursodeoxycholate levels	metab_compid_1605					
+		3-hydroxy-3-methylglutarate levels	metab_compid_531					
+		Oleoyl ethanolamide levels	metab_compid_38102					
+		4-hydroxyphenylpyruvate levels	metab_compid_1669					
+		Gamma-glutamylglutamine levels	metab_compid_2730					
+		Alpha-tocopherol levels	metab_compid_1561					
+		N-acetylalanine levels	metab_compid_1585					
+		2-aminobutyrate levels	metab_compid_42374					
+		Butyrate/isobutyrate (4:0) levels	metab_compid_46898					
+		Urate levels	metab_compid_1604					
+		3-hydroxyisobutyrate levels	metab_compid_1549					
+		Vanillylmandelate (VMA) levels	metab_compid_1567					
+		3-aminoisobutyrate levels	metab_compid_1566					
+		4-acetamidobutanoate levels	metab_compid_1558					
+		2-hydroxystearate levels	metab_compid_17945					
+		N1-methyladenosine levels	metab_compid_15650					
+		N-acetylneuraminate levels	metab_compid_32377					
+		Gamma-glutamylhistidine levels	metab_compid_18245					
+		N-acetylglucosaminylasparagine levels	metab_compid_48149					
+		Homovanillate (hva) levels						
+		Acetoacetate levels	metab_acetoacetate					
+		"Cys-gly, oxidized levels"	metab_compid_18368					
+		Dihomo-linoleate (20:2n6) levels	metab_compid_17805					
+		Cholate levels	metab_compid_22842					
+		Beta-hydroxyisovalerate levels	metab_compid_12129					
+		Creatine levels	metab_compid_27718					
+		Anthranilate levels	metab_compid_4970					
+		Gamma-glutamylleucine levels	metab_compid_18369					
+		Choline levels	metab_compid_15506					
+		3-methoxytyrosine levels	metab_compid_12017					
+		3-phosphoglycerate levels						
+		1-palmitoyl-2-linoleoyl-GPC (16:0/18:2) levels	metab_compid_42446					
+		1-palmitoyl-2-oleoyl-GPE (16:0/18:1) levels	metab_compid_19263					
+		1-palmitoyl-2-linoleoyl-GPI (16:0/18:2) levels	metab_compid_52450					
+		Taurocholate levels	metab_compid_18497					
+		Taurodeoxycholate levels	metab_compid_12261					
+		Stearoyl sphingomyelin (d18:1/18:0) levels	metab_compid_19503					
+		N-palmitoyl-sphingosine (d18:1/16:0) levels	metab_compid_44877					
+		Taurochenodeoxycholate levels	metab_compid_18494					
+		4-hydroxyphenylacetate levels	metab_compid_541					
+		"5,6-dihydrothymine levels"	metab_compid_1418					
+		1-palmitoyl-2-oleoyl-GPC (16:0/18:1) levels	metab_compid_52461					
+		N-stearoyl-sphingosine (d18:1/18:0) levels	metab_compid_54979					
+		Glycochenodeoxycholate levels	metab_compid_32346					
+		N-formylmethionine levels	metab_compid_2829					
+		"N6,n6,n6-trimethyllysine levels"	metab_compid_1498					
+		S-adenosylhomocysteine (SAH) levels	metab_compid_42382					
+		4-acetaminophen sulfate levels	metab_compid_37475					
+		2-hydroxyhippurate (salicylurate) levels	metab_compid_18281					
+		Quinolinate levels	metab_compid_1899					
+		Eicosapentaenoate (EPA; 20:5n3) levels	metab_compid_18467					
+		Laurate (12:0) levels	metab_compid_1645					
+		N-acetylputrescine levels	metab_compid_37496					
+		Methylsuccinate levels	metab_compid_15745					
+		"9,10-DiHOME levels"	metab_compid_38399					
+		Linoleate (18:2n6) levels	metab_compid_1105					
+		Adenosine 5'-diphosphate (ADP) levels						
+		Adenosine 5'-monophosphate (AMP) levels	metab_compid_32342					
+		"Adenosine 3',5'-cyclic monophosphate (camp) levels"						
+		Arachidonate (20:4n6) levels	metab_compid_1110					
+		5-methylthioadenosine (mta) levels	metab_compid_1419					
+		Cortisone levels	metab_compid_1769					
+		Beta-alanine levels	metab_compid_55					
+		Succinate levels	metab_compid_1437					
+		Choline phosphate levels	metab_compid_34396					
+		Cysteinylglycine levels	metab_compid_35637					
+		Phenylpyruvate levels	metab_compid_566					
+		Cholesterol levels	metab_compid_63					
+		2-hydroxyphenylacetate levels	metab_compid_1432					
+		Aspartate levels	metab_compid_443					
+		3-(4-hydroxyphenyl)lactate levels	metab_compid_32197					
+		Arginine levels	metab_compid_1638					
+		Gluconate levels	metab_compid_587					
+		Sphinganine levels	metab_compid_17769					
+		Gamma-glutamylglutamate levels	metab_compid_36738					
+		Flavin adenine dinucleotide (FAD) levels						
+		Cortisol levels	metab_compid_1712					
+		Hypotaurine levels	metab_compid_590					
+		Glutarate (C5-DC) levels	metab_compid_396					
+		S-1-pyrroline-5-carboxylate levels	metab_compid_42370					
+		Cystine levels	metab_compid_56					
+		Cystathionine levels	metab_compid_15705					
+		Guanidinoacetate levels	metab_compid_43802					
+		Sphingosine levels	metab_compid_17747					
+		Deoxycholate levels	metab_compid_1114					
+		Glycocholate levels	metab_compid_18476					
+		Palmitoleate (16:1n7) levels	metab_compid_33447					
+		Stearate (18:0) levels	metab_compid_1358					
+		Methionine levels	metab_compid_1302					
+		Orotate levels	metab_compid_1505					
+		Phosphate levels	metab_compid_42109					
+		Inosine levels	metab_compid_1123					
+		Inosine 5'-monophosphate (IMP) levels						
+		Palmitate (16:0) levels	metab_compid_1336					
+		Malate levels	metab_compid_1303					
+		Nicotinamide levels	metab_compid_594					
+		Myo-inositol levels	metab_compid_1124					
+		Lysine levels	metab_compid_1301					
+		Citrulline levels	metab_compid_2132					
+		Ornithine levels	metab_compid_1493					
+		Retinol (Vitamin A) levels	metab_compid_1806					
+		1-methylnicotinamide levels	metab_compid_27665					
+		Uridine levels	metab_compid_606					
+		Pristanate levels	metab_compid_38271					
+		Phytanate levels	metab_compid_598					
+		Proline levels	metab_compid_1898					
+		Glutamate levels	metab_compid_57					
+		2'-deoxyuridine levels	metab_compid_52602					
+		Myristate (14:0) levels	metab_compid_1365					
+		Serine levels	metab_compid_1648					
+		Trans-urocanate levels	metab_compid_607					
+		Urea levels	metab_compid_1670					
+		Pyridoxal levels						
+		Taurine levels	metab_compid_2125					
+		Salicylate levels	metab_compid_1515					
+		Serotonin levels	metab_compid_2342					
+		Spermidine levels	metab_compid_485					
+		Dimethylglycine levels	metab_compid_5086					
+		Betaine levels	metab_compid_3141					
+		Xylose levels						
+		Caprate (10:0) levels	metab_compid_1642					
+		Cytidine levels	metab_compid_514					
+		Threonine levels	metab_compid_1284					
+		Cytosine levels						
+		"12,13-DiHOME levels"	metab_compid_38395					
+		Mannose levels	metab_compid_48153					
+		Caffeine levels	metab_compid_569					
+		Fructose levels	metab_compid_48195					
+		Alpha-ketobutyrate levels						
+		Cysteine levels	metab_compid_1868					
+		Tryptophan levels	metab_compid_54					
+		Pseudouridine levels	metab_compid_33442					
+		Dihydroorotate levels	metab_compid_601					
+		Caprylate (8:0) levels	metab_compid_32492					
+		Arachidate (20:0) levels	metab_compid_1118					
+		Maltose levels	metab_compid_15586					
+		N-stearoyl-sphinganine (d18:0/18:0) levels	metab_compid_1759					
+		Sucrose levels	metab_compid_1519					
+		Caproate (6:0) levels	metab_compid_32489					
+		Nonadecanoate (19:0) levels	metab_compid_1356					
+		Asparagine levels	metab_compid_512					
+		X-07765 levels	metab_compid_46590					
+		Kynurenate levels	metab_compid_1417					
+		Alpha-ketoglutarate levels	metab_compid_528					
+		X-11308 levels	metab_compid_46390					
+		Pentadecanoate (15:0) levels	metab_compid_1361					
+		X-11315 levels	metab_compid_49592					
+		Margarate (17:0) levels	metab_compid_1121					
+		X-11372 levels	metab_compid_46594					
+		X-10458 levels	metab_compid_47478					
+		X-11299 levels	metab_compid_46592					
+		X-11478 levels	metab_compid_46602					
+		X-11849 levels	metab_compid_46607					
+		X-11787 levels	metab_compid_33132					
+		X-11632 levels	metab_compid_47493					
+		X-11852 levels	metab_compid_46521					
+		X-11847 levels	metab_compid_46488					
+		X-11483 levels	metab_compid_47650					
+		X-11470 levels	metab_compid_46601					
+		X-11381 levels	metab_compid_32698					
+		X-11850 levels	metab_compid_46507					
+		X-11795 levels	metab_compid_33140					
+		X-11444 levels	metab_compid_46460					
+		X-11858 levels	metab_compid_47654					
+		X-11843 levels	metab_compid_46466					
+		X-12127 levels	metab_compid_47702					
+		X-12221 levels	metab_compid_47911					
+		X-12283 levels	metab_compid_47708					
+		X-12410 levels	metab_compid_47921					
+		X-12104 levels	metab_compid_52597					
+		X-12193 levels	metab_compid_46985					
+		X-12216 levels	metab_compid_46613					
+		X-12306 levels	metab_compid_47917					
+		X-12100 levels	metab_compid_47687					
+		X-12261 levels						
+		X-11880 levels	metab_compid_46608					
+		X-12117 levels						
+		X-12407 levels	metab_compid_46615					
+		X-12101 levels	metab_compid_47642					
+		X-12026 levels	metab_compid_47905					
+		X-12411 levels	metab_compid_46616					
+		X-12013 levels	metab_compid_46611					
+		X-12007 levels	metab_compid_46610					
+		X-12462 levels	metab_compid_46620					
+		X-12714 levels						
+		X-12740 levels	metab_compid_46627					
+		X-12730 levels						
+		X-12701 levels						
+		X-12816 levels						
+		X-12731 levels						
+		X-12707 levels	metab_compid_47929					
+		X-12729 levels	metab_compid_46623					
+		X-12830 levels	metab_compid_47662					
+		X-12818 levels						
+		X-12812 levels	metab_compid_46986					
+		X-12822 levels	metab_compid_46997					
+		X-12738 levels						
+		X-12544 levels	metab_compid_46510					
+		X-12680 levels	metab_compid_47201					
+		X-12906 levels	metab_compid_47955					
+		X-13684 levels	metab_compid_47790					
+		X-13507 levels	metab_compid_47439					
+		X-12851 levels	metab_compid_46639					
+		X-12849 levels						
+		X-12847 levels	metab_compid_46364					
+		X-13553 levels	metab_compid_47959					
+		X-12839 levels	metab_compid_47014					
+		X-13729 levels	metab_compid_47971					
+		X-13007 levels						
+		X-13844 levels	metab_compid_47977					
+		X-13728 levels	metab_compid_46645					
+		X-12844 levels	metab_compid_46633					
+		X-13695 levels						
+		X-13723 levels						
+		X-14056 levels	metab_compid_46632					
+		X-13866 levels	metab_compid_46417					
+		X-17146 levels	metab_compid_46691					
+		X-16397 levels	metab_compid_47802					
+		X-17335 levels	metab_compid_47820					
+		X-16964 levels	metab_compid_46685					
+		X-16935 levels	metab_compid_46681					
+		X-15486 levels	metab_compid_46266					
+		X-16580 levels	metab_compid_47804					
+		X-17325 levels	metab_compid_46672					
+		X-17328 levels	metab_compid_47818					
+		X-16087 levels	metab_compid_47988					
+		X-17010 levels	metab_compid_47993					
+		X-14939 levels	metab_compid_46657					
+		X-15461 levels	metab_compid_46283					
+		X-15523 levels						
+		X-15728 levels	metab_compid_46666					
+		X-15503 levels	metab_compid_46977					
+		X-16124 levels	metab_compid_46461					
+		X-17438 levels	metab_compid_46705					
+		X-17354 levels						
+		X-17654 levels	metab_compid_46709					
+		X-17676 levels	metab_compid_46970					
+		X-17367 levels	metab_compid_46994					
+		X-17357 levels	metab_compid_48009					
+		X-18886 levels	metab_compid_48047					
+		X-18887 levels	metab_compid_47301					
+		X-17653 levels	metab_compid_46707					
+		X-17346 levels						
+		X-17690 levels	metab_compid_46710					
+		X-18345 levels	metab_compid_47342					
+		X-17685 levels	metab_compid_48025					
+		X-18888 levels	metab_compid_48048					
+		X-18901 levels	metab_compid_46690					
+		X-17351 levels	metab_compid_48001					
+		X-18779 levels	metab_compid_46687					
+		X-21286 levels	metab_compid_46295					
+		X-21355 levels						
+		X-21319 levels	metab_compid_46363					
+		X-21258 levels	metab_compid_46259					
+		X-21364 levels	metab_compid_46409					
+		X-21353 levels	metab_compid_46398					
+		X-19438 levels	metab_compid_46261					
+		X-18913 levels	metab_compid_46695					
+		X-18921 levels	metab_compid_47671					
+		X-21339 levels	metab_compid_46384					
+		X-19299 levels						
+		X-18935 levels						
+		X-21310 levels	metab_compid_46354					
+		X-21283 levels	metab_compid_46285					
+		X-21285 levels	metab_compid_46294					
+		X-21312 levels	metab_compid_46356					
+		X-18922 levels	metab_compid_46700					
+		X-21442 levels	metab_compid_46487					
+		X-21796 levels	metab_compid_46972					
+		X-21441 levels	metab_compid_46486					
+		X-21752 levels	metab_compid_46923					
+		X-21807 levels						
+		X-21736 levels	metab_compid_46905					
+		X-21829 levels	metab_compid_47006					
+		X-21471 levels	metab_compid_46516					
+		X-21733 levels	metab_compid_46902					
+		X-21742 levels	metab_compid_46911					
+		X-21821 levels	metab_compid_46998					
+		X-21470 levels	metab_compid_46515					
+		X-21383 levels	metab_compid_46428					
+		X-21607 levels	metab_compid_46674					
+		X-21834 levels	metab_compid_47011					
+		X-21467 levels	metab_compid_46512					
+		X-22776 levels	metab_compid_48081					
+		X-23655 levels						
+		X-22834 levels	metab_compid_48185					
+		X-22771 levels	metab_compid_48076					
+		X-23639 levels	metab_compid_49515					
+		X-23648 levels	metab_compid_49525					
+		X-23654 levels	metab_compid_49531					
+		X-22520 levels	metab_compid_47784					
+		X-23641 levels						
+		X-23276 levels	metab_compid_48972					
+		X-21845 levels	metab_compid_47022					
+		X-22509 levels						
+		X-23644 levels	metab_compid_49521					
+		X-22162 levels	metab_compid_47417					
+		X-23587 levels	metab_compid_49463					
+		X-23593 levels	metab_compid_49469					
+		X-23636 levels						
+		X-23678 levels						
+		X-23680 levels	metab_compid_49557					
+		X-23780 levels	metab_compid_49679					
+		X-23974 levels	metab_compid_49883					
+		X-23659 levels	metab_compid_49536					
+		X-23665 levels	metab_compid_49542					
+		X-23782 levels	metab_compid_49681					
+		X-24295 levels	metab_compid_52483					
+		X-24243 levels	metab_compid_52286					
+		X-23739 levels	metab_compid_49637					
+		X-23997 levels	metab_compid_52025					
+		X-24241 levels	metab_compid_52280					
+		X-24328 levels	metab_compid_52524					
+		X-24456 levels						
+		X-24418 levels	metab_compid_52647					
+		X-24344 levels						
+		X-24556 levels	metab_compid_52877					
+		X-24337 levels	metab_compid_52533					
+		X-24546 levels	metab_compid_52867					
+		X-24306 levels						
+		X-24307 levels						
+		X-24334 levels	metab_compid_52530					
+		X-24518 levels						
+		X-24494 levels	metab_compid_52813					
+		X-24544 levels	metab_compid_52865					
+		X-24531 levels						
+		X-24811 levels	metab_compid_54839					
+		X-24757 levels						
+		X-24978 levels						
+		X-24970 levels						
+		X-24795 levels						
+		X-24951 levels	metab_compid_57718					
+		X-24728 levels	metab_compid_53157					
+		X-24565 levels						
+		X-24801 levels						
+		X-24736 levels						
+		X-24585 levels						
+		X-24588 levels	metab_compid_52909					
+		X-25109 levels	metab_compid_61682					
+		X-24947 levels	metab_compid_57714					
+		X-24949 levels	metab_compid_57716					
+		X-24812 levels	metab_compid_54840					
+		X-25217 levels						
+		X-25828 levels						
+		X-25371 levels	metab_compid_62664					
+		X-25419 levels	metab_compid_62716					
+		X-25265 levels						
+		X-25172 levels						
+		X-25957 levels						
+		X-25422 levels	metab_compid_62719					
+		X-25790 levels	metab_compid_63560					
+		X-25420 levels	metab_compid_62717					
+		X-25810 levels	metab_compid_63592					
+		X-25433 levels	metab_compid_62749					
+		X-25343 levels	metab_compid_62636					
+		X-25271 levels	metab_compid_62500					
+		X-25520 levels	metab_compid_62964					
+		X-25519 levels	metab_compid_62963					
+		X-26111 levels	metab_compid_64401					
+		X-26109 levels	metab_compid_64399					
+		X-26054 levels						
+		Butyrylcarnitine (C4) levels	metab_compid_32412					
+		Androsterone sulfate levels	metab_compid_31591					
+		N-acetyltyrosine levels	metab_compid_32390					
+		N-acetylglutamine levels	metab_compid_33943					
+		N-acetylphenylalanine levels	metab_compid_33950					
+		N-acetylasparagine levels	metab_compid_33942					
+		N-acetylarginine levels	metab_compid_33953					
+		5-acetylamino-6-formylamino-3-methyluracil levels	metab_compid_34401					
+		Orotidine levels	metab_compid_35172					
+		3-methylcytidine levels						
+		N-acetylcitrulline levels	metab_compid_48434					
+		N-acetyl-aspartyl-glutamate (naag) levels	metab_compid_35665					
+		1-stearoyl-2-arachidonoyl-gpc (18:0/20:4) levels	metab_compid_42450					
+		"Bilirubin (E,E) levels"	metab_compid_32586					
+		"Bilirubin (E,Z or Z,E) levels"	metab_compid_47886					
+		Androsterone glucuronide levels	metab_compid_61846					
+		N6-methyllysine levels	metab_compid_62249					
+		N-acetyl-1-methylhistidine levels	metab_compid_43255					
+		N-delta-acetylornithine levels	metab_compid_43249					
+		1-palmitoyl-2-arachidonoyl-GPC (16:0/20:4n6) levels	metab_compid_52462					
+		Glycochenodeoxycholate glucuronide (1) levels	metab_compid_52983					
+		2'-o-methylcytidine levels	metab_compid_57554					
+		2'-o-methyluridine levels	metab_compid_57655					
+		"N6,N6-dimethyllysine levels"	metab_compid_57839					
+		"N2-acetyl,N6,N6-dimethyllysine levels"	metab_compid_63254					
+		"N2-acetyl,N6-methyllysine levels"	metab_compid_62954					
+		Deoxycholic acid glucuronide levels	metab_compid_47651					
+		Decadienedioic acid (C10:2-DC) levels						
+		"Bilirubin degradation product, C17H18N2O4 (1) levels"						
+		"Bilirubin degradation product, C17H18N2O4 (2) levels"						
+		"Bilirubin degradation product, C17H18N2O4 (3) levels"						
+		"Bilirubin (z,z) levels"	metab_compid_43807					
+		Ethylmalonate levels	metab_compid_15765					
+		Biliverdin levels	metab_compid_2137					
+		X-12112 levels						
+		X-12798 levels	metab_compid_46624					
+		X-13431 levels	metab_compid_47788					
+		X-19141 levels	metab_compid_46701					
+		Spermidine to 5-methylthioadenosine (MTA) ratio						
+		Spermidine to ornithine ratio						
+		Alpha-ketoglutarate to alpha-ketobutyrate ratio						
+		Alpha-ketoglutarate to glutamate ratio						
+		Adenosine 5'-diphosphate (ADP) to phosphoethanolamine ratio						
+		3-phosphoglycerate to adenosine 5'-diphosphate (ADP) ratio						
+		Alpha-ketoglutarate to succinate ratio						
+		"Adenosine 3',5'-cyclic monophosphate (cAMP) to adenosine 5'-monophosphate (AMP) ratio"						
+		Adenosine 5'-diphosphate (ADP) to pantothenate ratio						
+		Adenosine 5'-diphosphate (ADP) to phosphate ratio						
+		S-adenosylhomocysteine (SAH) to leucine ratio						
+		S-adenosylhomocysteine (SAH) to 5-methyluridine (ribothymidine) ratio						
+		Cholate to taurocholate ratio						
+		Adenosine 5'-diphosphate (ADP) to creatine ratio						
+		N-acetylputrescine to (N(1) + N(8))-acetylspermidine ratio						
+		"Adenosine 3',5'-cyclic monophosphate (cAMP) to taurocholate ratio"						
+		Adenosine 5'-diphosphate (ADP) to Adenosine 5'-monophosphate (AMP) ratio						
+		3-phosphoglycerate to phosphate ratio						
+		Adenosine 5'-diphosphate (ADP) to fructose ratio						
+		Adenosine 5'-diphosphate (ADP) to mannose ratio						
+		Adenosine 5'-diphosphate (ADP) to tyrosine ratio						
+		Adenosine 5'-diphosphate (ADP) to N-acetylglucosamine to N-acetylgalactosamine ratio						
+		Adenosine 5'-monophosphate (AMP) to palmitate (16:0) ratio						
+		Arginine to ornithine ratio						
+		Adenosine 5'-diphosphate (ADP) to arginine ratio						
+		Adenosine 5'-diphosphate (ADP) to 2'-deoxyuridine ratio						
+		Adenosine 5'-monophosphate (AMP) to inosine 5'-monophosphate (IMP) ratio						
+		Adenosine 5'-monophosphate (AMP) to proline ratio						
+		Arachidonate (20:4n6) to oleate to vaccenate (18:1) ratio						
+		Adenosine 5'-monophosphate (AMP) to alanine ratio						
+		Aspartate to citrate ratio						
+		Arginine to citrulline ratio						
+		Arginine to glutamate ratio						
+		Adenosine 5'-monophosphate (AMP) to phenylalanine ratio						
+		Adenosine 5'-diphosphate (ADP) to gluconate ratio						
+		Adenosine 5'-monophosphate (AMP) to phosphate ratio						
+		Aspartate to glutamate ratio						
+		Arachidonate (20:4n6) to pyruvate ratio						
+		Aspartate to asparagine ratio						
+		Cortisone to cortisol ratio						
+		Succinate to acetoacetate ratio						
+		Aspartate to citrulline ratio						
+		Sphingosine to phosphate ratio						
+		Inosine 5'-monophosphate (IMP) to phosphate ratio						
+		Glycine to pyridoxal ratio						
+		Glycine to alanine ratio						
+		Glycine to serine ratio						
+		Histidine to trans-urocanate ratio						
+		Methionine to methionine sulfoxide ratio						
+		Citrulline to dimethylarginine (SDMA + ADMA) ratio						
+		Palmitate (16:0) to myristate (14:0) ratio						
+		Phosphate to N-acetylneuraminate ratio						
+		Phosphate to uridine ratio						
+		Phosphate to alanine ratio						
+		Phosphate to phosphoethanolamine ratio						
+		Phosphate to glucose ratio						
+		Phosphate to 2'-deoxyuridine ratio						
+		Phosphate to mannose ratio						
+		Phenylalanine to tyrosine ratio						
+		Phosphate to fructose ratio						
+		Phosphate to citrate ratio						
+		Serine to alpha-tocopherol ratio						
+		Uridine to pseudouridine ratio						
+		Serine to pyruvate ratio						
+		Glutamate to glutamine ratio						
+		Uridine to cytidine ratio						
+		Pyruvate to 3-methyl-2-oxobutyrate ratio						
+		Pyruvate to N-acetylneuraminate ratio						
+		Alanine to pyruvate ratio						
+		Glucose to maltose ratio						
+		Mannose to trans-4-hydroxyproline ratio						
+		Mannose to S-methylcysteine ratio						
+		Glutamate to cysteine ratio						
+		Cysteine to 5-oxoproline ratio						
+		Cysteine to alanine ratio						
+		Glutamine to asparagine ratio						
+		5-oxoproline to citrate ratio						
+		Alpha-tocopherol to sulfate ratio						
+		Thyroxine to taurocholate ratio						
+		Creatine to carnitine ratio						
+		Carnitine to palmitoylcarnitine (C16) ratio						
+		Glycolithocholate to glycolithocholate sulfate ratio						
+		Oleoyl-linoleoyl-glycerol (18:1 to 18:2) [2] to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [1] ratio						
+		Oleoyl-linoleoyl-glycerol (18:1 to 18:2) [2] to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [2] ratio						
+		Spermidine to (N(1) + N(8))-acetylspermidine ratio						
+		Spermidine to N-acetylputrescine ratio						
+		Dopamine 4-sulfate to dopamine 3-O-sulfate ratio						
+		Spermidine to adenosine 5'-diphosphate (ADP) ratio						
+		Spermidine to histidine ratio						
+		5-methylthioadenosine (MTA) to phosphate ratio						
+		Histidine to pyruvate ratio						
+		Spermidine to phosphate ratio						
+		Spermidine to pyruvate ratio						
+		Spermidine to carnitine ratio						
+		Spermidine to ergothioneine ratio						
+		Carnitine to ergothioneine ratio						
+		Spermidine to choline ratio						
+		Spermidine to taurocholate ratio						
+		Alpha-ketoglutarate to kynurenine ratio						
+		Choline to taurocholate ratio						
+		Glutamate to kynurenine ratio						
+		Ornithine to glutamate ratio						
+		Alpha-ketoglutarate to ornithine ratio						
+		3-hydroxyisobutyrate to adenosine 5'-diphosphate (ADP) ratio						
+		Alpha-ketoglutarate to aspartate ratio						
+		3-hydroxyisobutyrate to phosphate ratio						
+		Adenosine 5'-diphosphate (ADP) to glycerate ratio						
+		3-phosphoglycerate to glycerate ratio						
+		Adenosine 5'-diphosphate (ADP) to valine ratio						
+		Adenosine 5'-diphosphate (ADP) to glycine ratio						
+		Phosphate to valine ratio						
+		Adenosine 5'-diphosphate (ADP) to N-palmitoyl-sphingosine (d18:1 to 16:0) ratio						
+		Adenosine 5'-diphosphate (ADP) to sulfate ratio						
+		Phosphate to sulfate ratio						
+		Glycine to phosphate ratio						
+		Phosphate to N-palmitoyl-sphingosine (d18:1 to 16:0) ratio						
+		"Cholate to bilirubin (Z,Z) ratio"						
+		"Bilirubin (Z,Z) to taurocholate ratio"						
+		"Cholate to adenosine 3',5'-cyclic monophosphate (cAMP) ratio"						
+		Cholate to phosphate ratio						
+		Adenosine 5'-diphosphate (ADP) to citrate ratio						
+		Cholate to adenosine 5'-monophosphate (AMP) ratio						
+		Adenosine 5'-diphosphate (ADP) to glycerol 3-phosphate ratio						
+		Adenosine 5'-diphosphate (ADP) to glycerol ratio						
+		Glycerol to glycerol 3-phosphate ratio						
+		Adenosine 5'-diphosphate (ADP) to glutamate ratio						
+		Phosphate to glutamate ratio						
+		Adenosine 5'-diphosphate (ADP) to aspartate ratio						
+		Adenosine 5'-diphosphate (ADP) to flavin adenine dinucleotide (FAD) ratio						
+		Adenosine 5'-diphosphate (ADP) to oxalate (ethanedioate) ratio						
+		Citrate to oxalate (ethanedioate) ratio						
+		Adenosine 5'-monophosphate (AMP) to flavin adenine dinucleotide (FAD) ratio						
+		Aspartate to phosphate ratio						
+		Adenosine 5'-monophosphate (AMP) to citrate ratio						
+		Phenylalanine to phosphate ratio						
+		Phosphate to tryptophan ratio						
+		Adenosine 5'-monophosphate (AMP) to glutamine ratio						
+		Adenosine 5'-monophosphate (AMP) to threonine ratio						
+		Adenosine 5'-monophosphate (AMP) to tryptophan ratio						
+		Adenosine 5'-monophosphate (AMP) to glycine ratio						
+		Adenosine 5'-monophosphate (AMP) to arginine ratio						
+		Adenosine 5'-monophosphate (AMP) to tyrosine ratio						
+		Arginine to phosphate ratio						
+		Phosphate to threonine ratio						
+		Phosphate to glutamine ratio						
+		Adenosine 5'-monophosphate (AMP) to aspartate ratio						
+		Phosphate to tyrosine ratio						
+		Adenosine 5'-monophosphate (AMP) to asparagine ratio						
+		Adenosine 5'-monophosphate (AMP) to serine ratio						
+		Histidine to phosphate ratio						
+		Adenosine 5'-monophosphate (AMP) to methionine ratio						
+		Phosphate to serine ratio						
+		Methionine to phosphate ratio						
+		Adenosine 5'-monophosphate (AMP) to histidine ratio						
+		phosphate to asparagine ratio						
+		Adenosine 5'-monophosphate (AMP) to isoleucine ratio						
+		Isoleucine to phosphate ratio						
+		Adenosine 5'-monophosphate (AMP) to valine ratio						
+		Adenosine 5'-monophosphate (AMP) to acetoacetate ratio						
+		Adenosine 5'-monophosphate (AMP) to cysteine ratio						
+		Phosphate to cysteine ratio						
+		Cortisol to 4-cholesten-3-one ratio						
+		Cysteinylglycine to taurine ratio						
+		Cysteinylglycine to glutamate ratio						
+		Cortisone to 4-cholesten-3-one ratio						
+		Taurine to glutamate ratio						
+		Glutarate (C5-DC) to caprylate (8:0) ratio						
+		Adenosine 5'-monophosphate (AMP) to glutamate ratio						
+		Glutarate (C5-DC) to salicylate ratio						
+		Aspartate to N-acetylglucosamine to N-acetylgalactosamine ratio						
+		Aspartate to mannose ratio						
+		Phosphate to acetoacetate ratio						
+		Mannose to N-acetylglucosamine to N-acetylgalactosamine ratio						
+		Phenylpyruvate to citrate ratio						
+		Phenylpyruvate to 4-hydroxyphenylpyruvate ratio						
+		Cholesterol to cortisol ratio						
+		Citrate to 4-hydroxyphenylpyruvate ratio						
+		Cholesterol to taurocholate ratio						
+		Cortisol to taurocholate ratio						
+		Salicylate to caprylate (8:0) ratio						
+		Hypotaurine to taurine ratio						
+		Taurine to cysteine ratio						
+		Inosine to theophylline ratio						
+		Hypotaurine to cysteine ratio						
+		Inosine to EDTA ratio						
+		Theophylline to EDTA ratio						
+		Citrulline to phosphate ratio						
+		Citrulline to ornithine ratio						
+		Phosphate to oleoyl-linoleoyl-glycerol (18:1 to 18:2) [2] ratio						
+		Ornithine to phosphate ratio						
+		Phosphate to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [2] ratio						
+		Phosphate to glycerol ratio						
+		Phosphate to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [1] ratio						
+		Glucose to glycerol ratio						
+		2'-deoxyuridine to cytidine ratio						
+		Retinol (Vitamin A) to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [1] ratio						
+		Retinol (Vitamin A) to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [2] ratio						
+		Uridine to 2'-deoxyuridine ratio						
+		Retinol (Vitamin A) to oleoyl-linoleoyl-glycerol (18:1 to 18:2) [2] ratio						
+		Tryptophan to pyruvate ratio						
+		tryptophan to tyrosine ratio						
+		Glucose to sucrose ratio						
+		Tyrosine to pyruvate ratio						
+		Glucose to fructose ratio						
+		Fructose to sucrose ratio						
+		Alpha-ketobutyrate to 3-methyl-2-oxobutyrate ratio						
+		N-palmitoyl-sphingosine (d18:1 to 16:0) to N-palmitoyl-sphinganine (d18:0 to 16:0) ratio						
+		Caffeine to theophylline ratio						
+		Mannose to glycerol ratio						
+		Mannose to mannitol to sorbitol ratio						
+		Alpha-ketobutyrate to pyruvate ratio						
+		Glycerol to mannitol to sorbitol ratio						
+		Alpha-tocopherol to glycerol ratio						
+		Caffeine to theobromine ratio						
+		N-stearoyl-sphingosine (d18:1 to 18:0) to N-palmitoyl-sphinganine (d18:0 to 16:0) ratio						
+		Theophylline to theobromine ratio						
+		N-palmitoyl-sphingosine (d18:1 to 16:0) to N-stearoyl-sphingosine (d18:1 to 18:0) ratio						
+		Glycerol to carnitine ratio						
+		Carnitine to acetylcarnitine (C2) ratio						
+		Glycerol to sulfate ratio						
+		Glycerol to palmitoylcarnitine (C16) ratio						
+		Alpha-ketoglutarate to proline ratio						
+		Acetylcarnitine (C2) to propionylcarnitine (C3) ratio						
+		Carnitine to propionylcarnitine (C3) ratio						
+		Succinate to proline ratio						
+		Alpha-ketoglutarate to trans-4-hydroxyproline ratio						
+		Alpha-ketoglutarate to alanine ratio						
+		Proline to trans-4-hydroxyproline ratio						
+		Adenosine 5'-diphosphate (ADP) to EDTA ratio						
+		Succinate to trans-4-hydroxyproline ratio						
+		Glutamate to pyruvate ratio						
+		Phosphate to EDTA ratio						
+		Alpha-ketoglutarate to pyruvate ratio						
+		Adenosine 5'-monophosphate (AMP) to EDTA ratio						
+		Glutamate to alanine ratio						
+		Adenosine 5'-diphosphate (ADP) to glucose ratio						
+		Adenosine 5'-diphosphate (ADP) to mannitol to sorbitol ratio						
+		Adenosine 5'-diphosphate (ADP) to N-acetylneuraminate ratio						
+		Glucose to mannitol to sorbitol ratio						
+		Mannose to fructose ratio						
+		Adenosine 5'-diphosphate (ADP) to cytidine ratio						
+		Glucose-to-mannose ratio						
+		Cytidine to N-acetylneuraminate ratio						
+		Adenosine 5'-diphosphate (ADP) to choline phosphate ratio						
+		Cytidine to N-acetylglucosamine to N-acetylgalactosamine ratio						
+		N-acetylneuraminate to N-acetylglucosamine to N-acetylgalactosamine ratio						
+		Adenosine 5'-diphosphate (ADP) to choline ratio						
+		Choline phosphate to choline ratio						
+		Choline phosphate to phosphoethanolamine ratio						
+		Adenosine 5'-diphosphate (ADP) to ornithine ratio						
+		Adenosine 5'-diphosphate (ADP) to glutamine ratio						
+		Inosine 5'-monophosphate (IMP) to urate ratio						
+		Adenosine 5'-diphosphate (ADP) to 5-oxoproline ratio						
+		Glutamate to 5-oxoproline ratio						
+		Adenosine 5'-diphosphate (ADP) to uridine ratio						
+		Phosphate to urate ratio						
+		Phosphate to 5-oxoproline ratio						
+		Adenosine 5'-monophosphate (AMP) to N-palmitoyl-sphingosine (d18:1 to 16:0) ratio						
+		Adenosine 5'-monophosphate (AMP) to leucine ratio						
+		Leucine to phosphate ratio						
+		Leucine to N-palmitoyl-sphingosine (d18:1 to 16:0) ratio						
+		Proline to glutamate ratio						
+		Phosphate to proline ratio						
+		Arachidonate (20:4n6) to caffeine ratio						
+		Adenosine 5'-monophosphate (AMP) to urate ratio						
+		Arachidonate (20:4n6) to paraxanthine ratio						
+		Caffeine to paraxanthine ratio						
+		Arachidonate (20:4n6) to linoleate (18:2n6) ratio						
+		Phosphoethanolamine to choline ratio						
+		Caffeine to linoleate (18:2n6) ratio						
+		Paraxanthine to linoleate (18:2n6) ratio						
+		Cholesterol to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [1] ratio						
+		Cholesterol to benzoate ratio						
+		Cholesterol to oleoyl-linoleoyl-glycerol (18:1 to 18:2) [2] ratio						
+		Cholesterol to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [2] ratio						
+		Benzoate to oleoyl-linoleoyl-glycerol (18:1 to 18:2) [2] ratio						
+		Benzoate to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [1] ratio						
+		Histidine to asparagine ratio						
+		Benzoate to linoleoyl-arachidonoyl-glycerol (18:2 to 20:4) [2] ratio						
+		Histidine to alanine ratio						
+		Alanine to asparagine ratio						
+		Salicylate to oxalate (ethanedioate) ratio						
+		Glutamine to alanine ratio						
+		Salicylate to taurocholate ratio						
+		Citrate to taurocholate ratio						
+		Histidine to glutamine ratio						
+		Salicylate to citrate ratio						
+		Taurocholate to oxalate (ethanedioate) ratio						
+		Serine to threonine ratio						
+		Serine to alpha-ketobutyrate ratio						
+		Maltose to sucrose ratio						
+		Glucose to N-palmitoyl-sphingosine (d18:1 to 16:0) ratio						
+		Glucose to N-stearoyl-sphingosine (d18:1 to 18:0) ratio						
+		Fructose to maltose ratio						
+		Alpha-ketobutyrate to 3-methyl-2-oxovalerate ratio						
+		Glucose to N-palmitoyl-sphinganine (d18:0 to 16:0) ratio						
+		Threonine to alpha-ketobutyrate ratio						
+		Threonine to pyruvate ratio						
+		Alpha-ketobutyrate to 4-methyl-2-oxopentanoate ratio						
+		3-methyl-2-oxovalerate to 4-methyl-2-oxopentanoate ratio						
+		3-methyl-2-oxovalerate to 3-methyl-2-oxobutyrate ratio						
+		Androsterone glucuronide to etiocholanolone glucuronide ratio						
+		Glucuronate to androsterone glucuronide ratio						
+		"Bilirubin (Z,Z) to androsterone glucuronide ratio"						
+		"Bilirubin (Z,Z) to etiocholanolone glucuronide ratio"						
+		4-methyl-2-oxopentanoate to 3-methyl-2-oxobutyrate ratio						
+		"Bilirubin (Z,Z) to glucuronate ratio"						
+		Glucuronate to etiocholanolone glucuronide ratio						
+		Paraxanthine to 5-acetylamino-6-formylamino-3-methyluracil ratio						

@@ -1,0 +1,35 @@
+# local .env file
+.env
+
+# local data
+local_data/**
+
+# ignore R things
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+README.html
+Rplots.pdf
+
+# ignore output
+output/*
+!output/.gitkeep
+!output/figures/.gitkeep
+!output/tables/.gitkeep
+!output/tmp_objects/.gitkeep
+
+# snakemake
+.snakemake
+
+# mac things
+.DS_Store
+._*
+
+# pycharm things
+.idea/
+
+# other
+models_report.log
+docker_build.log

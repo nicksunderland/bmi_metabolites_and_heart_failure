@@ -1,0 +1,714 @@
+# metablites data
+# populated in make_config.py '["GCST" + str(i) for i in range(90301941, 90302174)]'
+metabolite_ids:
+  metabolon: []
+  nightingale: []
+
+# GWAS information and file mapping
+gwases: {
+  bmi: {
+    path: "gwas/bmi_pulit_2018/bmi.giant-ukbb.meta-analysis.combined.23May2018.txt.gz",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "SNP",                "type": "character" },
+      "chr":  { "name": "chr",     "alias": "CHR",                "type": "character" },
+      "bp":   { "name": "bp",      "alias": "POS",                "type": "integer"   },
+      "se":   { "name": "se",      "alias": "SE",                 "type": "numeric"   },
+      "p":    { "name": "p",       "alias": "P",                  "type": "numeric"   },
+      "n":    { "name": "n",       "alias": "N",                  "type": "integer"   },
+      "ea":   { "name": "ea",      "alias": "Tested_Allele",      "type": "character" },
+      "oa":   { "name": "oa",      "alias": "Other_Allele",       "type": "character" },
+      "beta": { "name": "beta",    "alias": "BETA",               "type": "numeric"   },
+      "eaf":  { "name": "eaf",     "alias": "Freq_Tested_Allele", "type": "numeric"   },
+    }
+  },
+  metabolites: {
+    map: {
+      "chr":  { "name": "chr",     "alias": "chromosome",               "type": "character" },
+      "bp":   { "name": "bp",      "alias": "base_pair_location",       "type": "integer"   },
+      "se":   { "name": "se",      "alias": "standard_error",           "type": "numeric"   },
+      "p":    { "name": "p",       "alias": "p_value",                  "type": "numeric"   },
+      "ea":   { "name": "ea",      "alias": "effect_allele",            "type": "character" },
+      "oa":   { "name": "oa",      "alias": "other_allele",             "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                     "type": "numeric"   },
+      "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency",  "type": "numeric"   }
+    }
+  },
+  default: {
+    map: {
+      "rsid":    {"name": "rsid",    "alias": "rsid", "type": "character" },
+      "chr":     {"name": "chr",     "alias": "chr",  "type": "character" },
+      "bp":      {"name": "bp",      "alias": "bp",   "type": "integer"   },
+      "se":      {"name": "se",      "alias": "se",   "type": "numeric"   },
+      "p":       {"name": "p",       "alias": "p",    "type": "numeric"   },
+      "n":       {"name": "n",       "alias": "n",    "type": "integer"   },
+      "ea":      {"name": "ea",      "alias": "ea",   "type": "character" },
+      "oa":      {"name": "oa",      "alias": "oa",   "type": "character" },
+      "beta":    {"name": "beta",    "alias": "beta", "type": "numeric"   },
+      "eaf":     {"name": "eaf",     "alias": "eaf",  "type": "numeric"   }
+    }
+  },
+  heart_failure: {
+    path: "gwas/hf_allcause_henry_2023/FORMAT-METAL_Pheno1_EUR.tsv.gz",
+    map: {
+      "rsid":  { "name": "rsid",    "alias": "rsID",     "type": "character" },
+      "chr":   { "name": "chr",     "alias": "chr",      "type": "character" },
+      "bp":    { "name": "bp",      "alias": "pos_b37",  "type": "integer"   },
+      "se":    { "name": "se",      "alias": "se",       "type": "numeric"   },
+      "p":     { "name": "p",       "alias": "pval",     "type": "numeric"   },
+      "ea":    { "name": "ea",      "alias": "A1",       "type": "character" },
+      "oa":    { "name": "oa",      "alias": "A2",       "type": "character" },
+      "beta":  { "name": "beta",    "alias": "A1_beta",  "type": "numeric"   },
+      "eaf":   { "name": "eaf",     "alias": "A1_freq",  "type": "numeric"   },
+      "n":     { "name": "n",       "alias": "N_total",  "type": "integer"   },
+      "ncase": { "name": "ncase",   "alias": "N_case",   "type": "integer"   }
+    }
+  },
+  hfref: {
+    path: "gwas/hf_nonisch_ref_henry_2023/FORMAT-METAL_Pheno3_EUR.tsv.gz",
+    map: {
+      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
+      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
+      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
+      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
+      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
+      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
+      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
+      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
+      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
+      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
+      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
+    }
+  },
+  hfpef: {
+    path: "gwas/hf_nonisch_pef_henry_2023/FORMAT-METAL_Pheno4_EUR.tsv.gz",
+    map: {
+      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
+      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
+      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
+      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
+      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
+      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
+      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
+      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
+      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
+      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
+      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
+    }
+  },
+  hfpef_mvp: {
+    path: "gwas/mvp_verma_2025/MVP_R4.1000G_AGR.GIA.PheCodes_CirculatorySystem_batch2/MVP_R4.1000G_AGR.Phe_428_4.EUR.GIA.dbGaP_b37_processed.txt.gz",
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsid",    "type": "character" },
+      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
+      "bp": { "name": "bp",      "alias": "bp", "type": "integer" },
+      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
+      "p": { "name": "p",       "alias": "p",    "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "ea",      "type": "character" },
+      "oa": { "name": "oa",      "alias": "oa",      "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta", "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "eaf", "type": "numeric" },
+      "n": { "name": "n",       "alias": "n", "type": "integer" },
+      "ncase": { "name": "ncase",   "alias": "ncase",  "type": "integer" }
+    }
+  }
+}
+
+pathway_instrument_search: {
+  branched_chain_amino_acids: {
+    gwases: {
+      valine: {
+        path: "metabolomic_karjalainen_2024/GCST90302122.fst",
+        build: "Hg19",
+        use_with: ["ppm1k", "bcat2"]
+      },
+      leucine: {
+        path: "metabolomic_karjalainen_2024/GCST90301994.fst",
+        build: "Hg19",
+        use_with: ["ppm1k", "bcat2"]
+      },
+      isoleucine: {
+        path: "metabolomic_karjalainen_2024/GCST90301987.fst",
+        build: "Hg19",
+        use_with: ["ppm1k", "bcat2"]
+      }
+    },
+    genes: {
+      ppm1k: {
+        chr: 4,
+        start: 89178772,
+        end: 89205921,
+        build: "Hg19"
+      },
+      bckdk: {
+        chr: 16,
+        start: 31117428,
+        end: 31124110,
+        build: "Hg19"
+      },
+      bckdha: {
+        chr: 19,
+        start: 41884215,
+        end: 41930910,
+        build: "Hg19"
+      },
+      bckdhb: {
+        chr: 6,
+        start: 80816364,
+        end: 81055987,
+        build: "Hg19"
+      },
+      dbt: {
+        chr: 1,
+        start: 100652475,
+        end: 100715390,
+        build: "Hg19"
+      },
+      bcat2: {
+        chr: 19,
+        start: 49298319,
+        end: 49314286,
+        build: "Hg19"
+
+      }
+    }
+  },
+  branched_chain_keto_acids: {
+    gwases: {
+      kiv: { # α-ketoisovalerate / 3-methyl-2-oxobutyrate
+        path: "metabolomic_chen_2023/GCST90199677.fst",
+        build: "Hg38",
+        use_with: [ "ppm1k" ]
+      },
+      kic: { # α-ketoisocaproate / 4-methyl-2-oxopentanoate
+        path: "metabolomic_chen_2023/GCST90199655.fst",
+        build: "Hg38",
+        use_with: [ "ppm1k" ]
+      },
+      kmv: { # α-keto-β-methylvalerate / 3-methyl-2-oxovalerate
+        path: "metabolomic_chen_2023/GCST90199631.fst",
+        build: "Hg38",
+        use_with: [ "ppm1k" ]
+      }
+    },
+    genes: {
+      ppm1k: {
+        chr: 4,
+        start: 89178772,
+        end: 89205921,
+        build: "Hg19"
+      },
+      bckdk: {
+        chr: 16,
+        start: 31117428,
+        end: 31124110,
+        build: "Hg19"
+      },
+      bckdha: {
+        chr: 19,
+        start: 41884215,
+        end: 41930910,
+        build: "Hg19"
+      },
+      bckdhb: {
+        chr: 6,
+        start: 80816364,
+        end: 81055987,
+        build: "Hg19"
+      },
+      dbt: {
+        chr: 1,
+        start: 100652475,
+        end: 100715390,
+        build: "Hg19"
+      },
+      bcat2: {
+        chr: 19,
+        start: 49298319,
+        end: 49314286,
+        build: "Hg19"
+
+      }
+    }
+  },
+  butyrylcarnitine_c4: { # image https://www.sciencedirect.com/topics/medicine-and-dentistry/butyryl-coa
+    gwases: {
+      butyrylcarnitine_c4: {
+        path: "metabolomic_chen_2023/GCST90200673.fst",
+        build: "Hg38",
+        use_with: ["acads", "octn2"]
+      }
+    },
+    genes: {
+      acads: { # short-chain acyl-CoA dehydrogenase; SCADD → elevated C4
+        chr: 12,
+        start: 121163538,
+        end: 121177811,
+        build: "Hg19"
+      },
+      octn2: { # OCTN2 (slc22a5) carnitine transporter; governs free carnitine supply
+        chr: 5,
+        start: 131705444,
+        end: 131731306,
+        build: "Hg19"
+      }
+    }
+  },
+  hydroxybutyrate_2: {
+    gwases: {
+      hydroxybutyrate_2: {
+        path: "metabolomic_chen_2023/GCST90200032.fst",
+        build: "Hg38",
+        use_with: []
+      }
+    },
+    genes: {
+      cth: { # cystathionase; transsulfuration → alpha-ketobutyrate → 2-hydroxybutyrate
+        chr: 1,
+        start: 70876901,
+        end: 70905534,
+        build: "Hg19"
+      },
+      ldha: { # reduces alpha-ketobutyrate → 2-hydroxybutyrate
+        chr: 11,
+        start: 18415935,
+        end: 18429972,
+        build: "Hg19"
+      },
+      ldhb: { # same reduction as LDHA; both isoforms relevant
+        chr: 12,
+        start: 21788276,
+        end: 21910791,
+        build: "Hg19"
+      }
+    }
+  },
+  ketones: {
+    gwases: {
+      hydroxybutyrate_3: {
+        path: "metabolomic_chen_2023/GCST90200367.fst",
+        build: "Hg38",
+        use_with: [ ]
+      },
+      acetoacetate: {
+        path: "metabolomic_chen_2023/GCST90200318.fst",
+        build: "Hg38",
+        use_with: [ ]
+      },
+      acetone: {
+        path: "metabolomic_karjalainen_2024/GCST90301942.fst",
+        build: "Hg19",
+        use_with: ["hmgcs2", "oxct1"]
+      }
+    },
+    genes: {
+      # transport
+      mct1: { # SLC16A1; monocarboxylate transporter 1; transports ketones and lactate across plasma membrane
+        chr: 1,
+        start: 113454469,
+        end: 113499635,
+        build: "Hg19"
+      },
+      # transport
+      mct2: { # SLC16A7; monocarboxylate transporter 2; transports ketones and lactate across plasma membrane
+        chr: 12,
+        start: 59989848,
+        end: 60176395,
+        build: "Hg19"
+      },
+      # --- Ketogenesis ---
+      hmgcs2: { # rate-limiting step; acetyl-CoA → HMG-CoA (mitochondrial isoform only)
+        chr: 1,
+        start: 120290619,
+        end: 120311528,
+        build: "Hg19"
+      },
+      hmgcl: { # HMG-CoA lyase; HMG-CoA → acetoacetate + acetyl-CoA
+        chr: 1,
+        start: 24128375,
+        end: 24165110,
+        build: "Hg19"
+      },
+      bdh1: { # mitochondrial; acetoacetate ↔ 3-HB; primary determinant of 3-HB:acetoacetate ratio
+        chr: 3,
+        start: 197236654,
+        end: 197300194,
+        build: "Hg19"
+      },
+      # --- Ketolysis ---
+      oxct1: { # rate-limiting for peripheral ketone oxidation; acetoacetate → acetoacetyl-CoA
+        chr: 5,
+        start: 41730167,
+        end: 41870621,
+        build: "Hg19"
+      }
+    }
+  },
+  glutamine: {
+    gwases: {
+      glutamine_nmr: {
+        path: "metabolomic_karjalainen_2024/GCST90301965.fst",
+        build: "Hg19",
+        use_with: ["glul", "gls", "gls2"]
+      }# ,
+#      glutamine_ms: {
+#        path: "metabolomic_chen_2023/GCST90200419.fst",
+#        build: "Hg38",
+#        use_with: [ "gls2" ]
+#      }
+    },
+    genes: {
+      glul: { # glutamine synthetase; glutamate + NH3 → glutamine (ATP-dependent)
+        chr: 1,
+        start: 182350839,
+        end: 182361341,
+        build: "Hg19"
+      },
+      gls: { # glutaminase; glutamine → glutamate (mitochondrial)
+        chr: 2,
+        start: 191745553,
+        end: 191830278,
+        build: "Hg19"
+      },
+      gls2: { # glutaminase 2; glutamine → glutamate (liver-specific isoform)
+        chr: 12,
+        start: 56864736,
+        end: 56882198,
+        build: "Hg19"
+      },
+      asct2: { # ASCT2 (slc1a5); dominant cellular glutamine and asparagine transporter
+        chr: 19,
+        start: 47278140,
+        end: 47291851,
+        build: "Hg19"
+      }
+    }
+  },
+  oxoproline_5: {
+    gwases: {
+      oxoproline_5: {
+        path: "metabolomic_chen_2023/GCST90200280.fst",
+        build: "Hg38",
+        use_with: ["oplah"]
+      }
+    },
+    genes: {
+      oplah: { # 5-oxoprolinase; ATP-dependent clearance of 5-oxoproline → glutamate
+        chr: 8,
+        start: 145106167,
+        end: 145118735,
+        build: "Hg19"
+      },
+      ggct: { # gamma-glutamylcyclotransferase; generates 5-oxoproline from gamma-glutamyl-AAs
+        chr: 7,
+        start: 30536237,
+        end: 30591095,
+        build: "Hg19"
+      }
+    }
+  },
+  n_acetylglycine: {
+    gwases: {
+      n_acetylglycine: {
+        path: "metabolomic_chen_2023/GCST90199688.fst",
+        build: "Hg38",
+        use_with: ["acy1", "cps1"]
+      }
+    },
+    genes: {
+      glyat: { # glycine N-acyltransferase; conjugates acetyl-CoA + glycine → N-acetylglycine
+        chr: 11,
+        start: 58407899,
+        end: 58499447,
+        build: "Hg19"
+      },
+      acy1: { # aminoacylase 1; degrades N-acetyl amino acids → free amino acid + acetate
+        chr: 3,
+        start: 52009066,
+        end: 52023213,
+        build: "Hg19"
+      },
+      cps1: { # allosteric activator of carbamoyl phosphate synthetase I (CPSI), the first and rate-limiting enzyme in the urea cycle
+        chr: 2,
+        start: 211342406,
+        end: 211543831,
+        build: "Hg19"
+      }
+    }
+  },
+  asparagine: {
+    gwases: {
+      asparagine: {
+        path: "metabolomic_chen_2023/GCST90200452.fst",
+        build: "Hg38",
+        use_with: ["asns", "aspg"]
+      }
+    },
+    genes: {
+      asns: { # asparagine synthetase;
+        chr: 7,
+        start: 97481430,
+        end: 97501854,
+        build: "Hg19"
+      },
+      aspg: { # asparaginase;
+        chr: 14,
+        start: 104552016,
+        end: 104579098,
+        build: "Hg19"
+      },
+      asct2: { # ASCT2 (slc1a5); transports asparagine and glutamine
+        chr: 19,
+        start: 47278140,
+        end: 47291851,
+        build: "Hg19"
+      }
+    }
+  },
+  phenylalanine: {
+    gwases: {
+      phenylalanine: {
+        path: "metabolomic_karjalainen_2024/GCST90302070.fst",
+        build: "Hg19",
+        use_with: ["pah", "gch1"]
+      }
+    },
+    genes: {
+      pah: { # phenylalanine hydroxylase; Phe → Tyr (BH4-dependent); PKU gene
+        chr: 12,
+        start: 103230663,
+        end: 103352188,
+        build: "Hg19"
+      },
+      gch1: { # GTP cyclohydrolase I; rate-limiting BH4 cofactor synthesis for PAH
+        chr: 14,
+        start: 55308726,
+        end: 55369570,
+        build: "Hg19"
+      }
+    }
+  },
+  tyrosine: {
+    gwases: {
+      tyrosine: {
+        path: "metabolomic_karjalainen_2024/GCST90302120.fst",
+        build: "Hg19",
+        use_with: ["pah", "tat", "hpd", "tat1"]
+      }
+    },
+    genes: {
+      pah: { # phenylalanine hydroxylase; Phe → Tyr (BH4-dependent); PKU gene
+        chr: 12,
+        start: 103230663,
+        end: 103352188,
+        build: "Hg19"
+      },
+      tat: { # tyrosine aminotransferase; first catabolic step Tyr → 4-hydroxyphenylpyruvate
+        chr: 16,
+        start: 71599563,
+        end: 71611033,
+        build: "Hg19"
+      },
+      hpd: { # 4-hydroxyphenylpyruvate dioxygenase; second catabolic step → homogentisate
+        chr: 12,
+        start: 122277433,
+        end: 122301502,
+        build: "Hg19"
+      },
+      tat1: { # TAT1 (slc16a10); aromatic amino acid transporter (Tyr, Phe, Trp)
+        chr: 6,
+        start: 111408781,
+        end: 111552397,
+        build: "Hg19"
+      }
+    }
+  }
+}
+
+#
+#pathway_targets: {
+#  # Asparagine Synthetase
+#  asns_asparagine: {
+#    gwas_path: "metabolomic_chen_2023/GCST90200452.fst",
+#    gwas_build: "Hg38",
+#    gene_chr: 7,
+#    gene_start: 97480989,
+#    gene_end: 97557753,
+#    gene_win: 250000,
+#    r2: 0.001,
+#    p1: 5e-8,
+#    kb: 250,
+#    fill_rsid: "b37_dbsnp156",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+#      "chr":  { "name": "chr",     "alias": "chromosome",             "type": "character" },
+#      "bp":   { "name": "bp",      "alias": "base_pair_location",     "type": "integer"   },
+#      "se":   { "name": "se",      "alias": "standard_error",         "type": "numeric"   },
+#      "p":    { "name": "p",       "alias": "p_value",                "type": "numeric"   },
+#      "ea":   { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+#      "oa":   { "name": "oa",      "alias": "other_allele",           "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric"   },
+#      "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric"  }
+#    }
+#  },
+#  aspg_asparagine: {
+#    gwas_path: "metabolomic_chen_2023/GCST90200452.fst",
+#    gwas_build: "Hg38",
+#    gene_chr: 14,
+#    gene_start: 104552037,
+#    gene_end: 104581919,
+#    gene_win: 250000,
+#    r2: 0.001,
+#    p1: 5e-8,
+#    kb: 250,
+#    fill_rsid: "b37_dbsnp156",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+#      "chr":  { "name": "chr",     "alias": "chromosome",             "type": "character" },
+#      "bp":   { "name": "bp",      "alias": "base_pair_location",     "type": "integer"   },
+#      "se":   { "name": "se",      "alias": "standard_error",         "type": "numeric"   },
+#      "p":    { "name": "p",       "alias": "p_value",                "type": "numeric"   },
+#      "ea":   { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+#      "oa":   { "name": "oa",      "alias": "other_allele",           "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric"   },
+#      "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric"  }
+#    }
+#  },
+#  ppm1k_kiv: { # α-ketoisovalerate / 3-methyl-2-oxobutyrate
+#    gwas_path: "metabolomic_chen_2023/GCST90199677.fst",
+#    gwas_build: "Hg38",
+#    gene_chr: 4,
+#    gene_start: 89178772,
+#    gene_end: 89205921,
+#    gene_win: 250000,
+#    r2: 0.001,
+#    p1: 5e-8,
+#    kb: 250,
+#    fill_rsid: "b37_dbsnp156",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+#      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+#      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+#      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+#    }
+#  },
+#  ppm1k_kic: { # α-ketoisocaproate / 4-methyl-2-oxopentanoate
+#    gwas_path: "metabolomic_chen_2023/GCST90199655.fst",
+#    gwas_build: "Hg38",
+#    gene_chr: 4,
+#    gene_start: 89178772,
+#    gene_end: 89205921,
+#    gene_win: 250000,
+#    r2: 0.001,
+#    p1: 5e-8,
+#    kb: 250,
+#    fill_rsid: "b37_dbsnp156",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+#      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+#      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+#      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+#    }
+#  },
+#  ppm1k_kmv: { # α-keto-β-methylvalerate / 3-methyl-2-oxovalerate
+#    gwas_path: "metabolomic_chen_2023/GCST90199631.fst",
+#    gwas_build: "Hg38",
+#    gene_chr: 4,
+#    gene_start: 89178772,
+#    gene_end: 89205921,
+#    gene_win: 250000,
+#    r2: 0.001,
+#    p1: 5e-8,
+#    kb: 250,
+#    fill_rsid: "b37_dbsnp156",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+#      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+#      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+#      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+#    }
+#  },
+#  ppm1k_valine: { # valine
+#    gwas_path: "metabolomic_karjalainen_2024/GCST90302122.fst",
+#    gwas_build: "Hg19",
+#    gene_chr: 4,
+#    gene_start: 89178772,
+#    gene_end: 89205921,
+#    gene_win: 250000,
+#    r2: 0.001,
+#    p1: 5e-8,
+#    kb: 250,
+#    fill_rsid: "b37_dbsnp156",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+#      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+#      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+#      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+#    }
+#  },
+#  ppm1k_leucine: {
+#    gwas_path: "metabolomic_karjalainen_2024/GCST90301994.fst",
+#    gwas_build: "Hg19",
+#    gene_chr: 4,
+#    gene_start: 89178772,
+#    gene_end: 89205921,
+#    gene_win: 250000,
+#    r2: 0.001,
+#    p1: 5e-8,
+#    kb: 250,
+#    fill_rsid: "b37_dbsnp156",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+#      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+#      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+#      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+#    }
+#  },
+#  ppm1k_isoleucine: {
+#    gwas_path: "metabolomic_karjalainen_2024/GCST90301987.fst",
+#    gwas_build: "Hg19",
+#    gene_chr: 4,
+#    gene_start: 89178772,
+#    gene_end: 89205921,
+#    gene_win: 250000,
+#    r2: 0.001,
+#    p1: 5e-8,
+#    kb: 250,
+#    fill_rsid: "b37_dbsnp156",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",                   "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chromosome",             "type": "character" },
+#      "bp": { "name": "bp",      "alias": "base_pair_location",     "type": "integer" },
+#      "se": { "name": "se",      "alias": "standard_error",         "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p_value",                "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "effect_allele",          "type": "character" },
+#      "oa": { "name": "oa",      "alias": "other_allele",           "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta",                   "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric" }
+#    }
+#  }
+#}
