@@ -21,7 +21,6 @@ model_rnt   <- snakemake@output[["model_rnt"]]
 log_file    <- snakemake@output[["log_file"]]
 ########################################################
 
-
 # requirements
 suppressPackageStartupMessages(library(data.table))
 library(cli)

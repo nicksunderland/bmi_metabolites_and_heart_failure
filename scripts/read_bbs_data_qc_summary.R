@@ -28,6 +28,13 @@ exc_features  <- snakemake@output[["exc_features"]]
 library(data.table)
 library(readxl)
 
+# test
+if (FALSE) {
+  rdata      = "/Volumes/bybandsleeve_wt/primary_dataset/metabolomic/mass_spec/metabolon/released/2025-06-04/data/woc_removed/metaboprep_release_2025_04_07/ReportData.Rdata"
+  clinical   = "/Volumes/bybandsleeve_wt/primary_dataset/clinical/released/2025-06-17/data/derived/03_sample_clinical_data_all_cols.csv"
+  withdrawal = "/Volumes/bybandsleeve_wt/primary_dataset/clinical/released/2025-06-17/data/withdrawals/WoC_20230608"
+}
+
 
 # load the metaboprep QC output
 load(rdata)
