@@ -22,7 +22,7 @@ git clone https://github.com/nicksunderland/bmi_metabolites_and_heart_failure $W
 module load apptainer
 conda activate snakemake
 cd $WORK/projects/bmi_metabolites_and_heart_failure
-snakemake --profile . all 
+snakemake --profile . all --rerun-triggers params -n
 ```
 
 ## Requirements
@@ -75,6 +75,8 @@ conda activate snakemake
 cd $WORK/projects/bmi_metabolites_and_heart_failure
 snakemake --profile . all -n
 ```
+
+[//]: # (find output/tmp_objects/mr_results -type f -exec touch {} +) 
 
 ### Workflow rule graph
 This executes the following work flows:  

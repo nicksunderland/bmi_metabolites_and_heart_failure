@@ -7,6 +7,7 @@ cluster:
   sbatch
     --partition=short,compute,test
     --account=$SLURM_ACCOUNT  
+    --exclude=bp1-compute104,bp1-compute133,bp1-compute136,bp1-compute138,bp1-compute140,bp1-compute157,bp1-compute159,bp1-compute061,bp1-compute165,bp1-compute082,bp1-compute124,bp1-compute081,bp1-compute064,bp1-compute131,bp1-compute070 
     --nodes={resources.nodes}
     --ntasks-per-node={resources.ntasks_per_node}
     --cpus-per-task={resources.cpus_per_task}

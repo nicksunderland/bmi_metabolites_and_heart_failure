@@ -3,115 +3,234 @@
 metabolite_ids:
   metabolon: []
   nightingale: []
+  nightingale_ukbb: []
 
 # GWAS information and file mapping
 gwases: {
+  default: {
+    dir_env_var: null,
+    ids: null,
+    paths: null,
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsid", "type": "character" },
+      "chr": { "name": "chr",     "alias": "chr",  "type": "character" },
+      "bp": { "name": "bp",      "alias": "bp",   "type": "integer" },
+      "se": { "name": "se",      "alias": "se",   "type": "numeric" },
+      "p": { "name": "p",       "alias": "p",    "type": "numeric" },
+      "n": { "name": "n",       "alias": "n",    "type": "integer" },
+      "ea": { "name": "ea",      "alias": "ea",   "type": "character" },
+      "oa": { "name": "oa",      "alias": "oa",   "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta", "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "eaf",  "type": "numeric" }
+    }
+  },
   bmi: {
-    path: "gwas/bmi_pulit_2018/bmi.giant-ukbb.meta-analysis.combined.23May2018.txt.gz",
+    dir_env_var: "DATA_DIR",
+    id_builder: null,
+    ids: null,
+    paths: [ "gwas/bmi_pulit_2018/bmi.giant-ukbb.meta-analysis.combined.23May2018.txt.gz" ],
+    gwas_build: "Hg19",
+    binary: false,
+    ncase: null,
+    ncontrol: null,
+    prevalence: null,
     map: {
       "rsid": { "name": "rsid",    "alias": "SNP",                "type": "character" },
-      "chr":  { "name": "chr",     "alias": "CHR",                "type": "character" },
-      "bp":   { "name": "bp",      "alias": "POS",                "type": "integer"   },
-      "se":   { "name": "se",      "alias": "SE",                 "type": "numeric"   },
-      "p":    { "name": "p",       "alias": "P",                  "type": "numeric"   },
-      "n":    { "name": "n",       "alias": "N",                  "type": "integer"   },
-      "ea":   { "name": "ea",      "alias": "Tested_Allele",      "type": "character" },
-      "oa":   { "name": "oa",      "alias": "Other_Allele",       "type": "character" },
-      "beta": { "name": "beta",    "alias": "BETA",               "type": "numeric"   },
-      "eaf":  { "name": "eaf",     "alias": "Freq_Tested_Allele", "type": "numeric"   },
+      "chr": { "name": "chr",     "alias": "CHR",                "type": "character" },
+      "bp": { "name": "bp",      "alias": "POS",                "type": "integer" },
+      "se": { "name": "se",      "alias": "SE",                 "type": "numeric" },
+      "p": { "name": "p",       "alias": "P",                  "type": "numeric" },
+      "n": { "name": "n",       "alias": "N",                  "type": "integer" },
+      "ea": { "name": "ea",      "alias": "Tested_Allele",      "type": "character" },
+      "oa": { "name": "oa",      "alias": "Other_Allele",       "type": "character" },
+      "beta": { "name": "beta",    "alias": "BETA",               "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "Freq_Tested_Allele", "type": "numeric" },
     }
   },
-  metabolites: {
+  ms_chen_metabs: {
+    dir_env_var: "METABOLON_METAB_DIR",
+    id_builder: "glob", # range 90199621, 90201021
+    ids: [ ],
+    paths: [ ],
+    gwas_build: "Hg38",
+    binary: false,
+    ncase: null,
+    ncontrol: null,
+    prevalence: null,
     map: {
-      "chr":  { "name": "chr",     "alias": "chromosome",               "type": "character" },
-      "bp":   { "name": "bp",      "alias": "base_pair_location",       "type": "integer"   },
-      "se":   { "name": "se",      "alias": "standard_error",           "type": "numeric"   },
-      "p":    { "name": "p",       "alias": "p_value",                  "type": "numeric"   },
-      "ea":   { "name": "ea",      "alias": "effect_allele",            "type": "character" },
-      "oa":   { "name": "oa",      "alias": "other_allele",             "type": "character" },
-      "beta": { "name": "beta",    "alias": "beta",                     "type": "numeric"   },
-      "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency",  "type": "numeric"   }
+      "chr": { "name": "chr",     "alias": "chromosome",               "type": "character" },
+      "bp": { "name": "bp",      "alias": "base_pair_location",       "type": "integer" },
+      "se": { "name": "se",      "alias": "standard_error",           "type": "numeric" },
+      "p": { "name": "p",       "alias": "p_value",                  "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "effect_allele",            "type": "character" },
+      "oa": { "name": "oa",      "alias": "other_allele",             "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                     "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency",  "type": "numeric" },
     }
   },
-  default: {
+  nmr_karjalainen_metabs: {
+    dir_env_var: "NIGHTINGALE_METAB_DIR",
+    id_builder: "glob", # range (90301941, 90302174)
+    ids: [ ],
+    paths: [ ],
+    gwas_build: "Hg19",
+    binary: false,
+    ncase: null,
+    ncontrol: null,
+    prevalence: null,
     map: {
-      "rsid":    {"name": "rsid",    "alias": "rsid", "type": "character" },
-      "chr":     {"name": "chr",     "alias": "chr",  "type": "character" },
-      "bp":      {"name": "bp",      "alias": "bp",   "type": "integer"   },
-      "se":      {"name": "se",      "alias": "se",   "type": "numeric"   },
-      "p":       {"name": "p",       "alias": "p",    "type": "numeric"   },
-      "n":       {"name": "n",       "alias": "n",    "type": "integer"   },
-      "ea":      {"name": "ea",      "alias": "ea",   "type": "character" },
-      "oa":      {"name": "oa",      "alias": "oa",   "type": "character" },
-      "beta":    {"name": "beta",    "alias": "beta", "type": "numeric"   },
-      "eaf":     {"name": "eaf",     "alias": "eaf",  "type": "numeric"   }
+      "chr": { "name": "chr",     "alias": "chromosome",               "type": "character" },
+      "bp": { "name": "bp",      "alias": "base_pair_location",       "type": "integer" },
+      "se": { "name": "se",      "alias": "standard_error",           "type": "numeric" },
+      "p": { "name": "p",       "alias": "p_value",                  "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "effect_allele",            "type": "character" },
+      "oa": { "name": "oa",      "alias": "other_allele",             "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                     "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency",  "type": "numeric" },
+    }
+  },
+  nmr_ukbb_metabs: {
+    dir_env_var: "NIGHTINGALE_UKBB_METAB_DIR",
+    id_builder: "glob",
+    ids: [ ],
+    paths: [ ],
+    gwas_build: "Hg19",
+    binary: false,
+    ncase: null,
+    ncontrol: null,
+    prevalence: null,
+    map: {
+      "chr": { "name": "chr",     "alias": "chromosome",               "type": "character" },
+      "bp": { "name": "bp",      "alias": "base_pair_location",       "type": "integer" },
+      "se": { "name": "se",      "alias": "standard_error",           "type": "numeric" },
+      "p": { "name": "p",       "alias": "neg_log_10_p_value",       "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "effect_allele",            "type": "character" },
+      "oa": { "name": "oa",      "alias": "other_allele",             "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                     "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency",  "type": "numeric" },
+      "n": { "name": "n",       "alias": "n",                        "type": "integer" }
     }
   },
   heart_failure: {
-    path: "gwas/hf_allcause_henry_2023/FORMAT-METAL_Pheno1_EUR.tsv.gz",
+    dir_env_var: "DATA_DIR",
+    id_builder: null,
+    ids: null,
+    paths: [ "gwas/hf_allcause_henry_2023/FORMAT-METAL_Pheno1_EUR.tsv.gz" ],
+    gwas_build: "Hg19",
+    binary: true,
+    ncase: 139533,
+    ncontrol: 1568809,
+    prevalence: 0.024,
     map: {
-      "rsid":  { "name": "rsid",    "alias": "rsID",     "type": "character" },
-      "chr":   { "name": "chr",     "alias": "chr",      "type": "character" },
-      "bp":    { "name": "bp",      "alias": "pos_b37",  "type": "integer"   },
-      "se":    { "name": "se",      "alias": "se",       "type": "numeric"   },
-      "p":     { "name": "p",       "alias": "pval",     "type": "numeric"   },
-      "ea":    { "name": "ea",      "alias": "A1",       "type": "character" },
-      "oa":    { "name": "oa",      "alias": "A2",       "type": "character" },
-      "beta":  { "name": "beta",    "alias": "A1_beta",  "type": "numeric"   },
-      "eaf":   { "name": "eaf",     "alias": "A1_freq",  "type": "numeric"   },
-      "n":     { "name": "n",       "alias": "N_total",  "type": "integer"   },
-      "ncase": { "name": "ncase",   "alias": "N_case",   "type": "integer"   }
+      "rsid": { "name": "rsid",    "alias": "rsID",     "type": "character" },
+      "chr": { "name": "chr",     "alias": "chr",      "type": "character" },
+      "bp": { "name": "bp",      "alias": "pos_b37",  "type": "integer" },
+      "se": { "name": "se",      "alias": "se",       "type": "numeric" },
+      "p": { "name": "p",       "alias": "pval",     "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "A1",       "type": "character" },
+      "oa": { "name": "oa",      "alias": "A2",       "type": "character" },
+      "beta": { "name": "beta",    "alias": "A1_beta",  "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "A1_freq",  "type": "numeric" },
+      "n": { "name": "n",       "alias": "N_total",  "type": "integer" },
+      "ncase": { "name": "ncase",   "alias": "N_case",   "type": "integer" }
     }
   },
-  hfref: {
-    path: "gwas/hf_nonisch_ref_henry_2023/FORMAT-METAL_Pheno3_EUR.tsv.gz",
+  hip_knee_osteoarthritis: {
+    dir_env_var: "DATA_DIR",
+    id_builder: null,
+    ids: null,
+    paths: [ "gwas/osteoarthritis_hatzikotoulas_2025/GO2.ALLANCESTRIES.HIPKNEE.AUTOSOMAL.12SEPT2023_processed.txt.gz" ],
+    gwas_build: "Hg19",
+    binary: true,
+    ncase: 213839,
+    ncontrol: 1080482,
+    prevalence: 0.076,
     map: {
-      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
-      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
-      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
-      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
-      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
-      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
-      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
-      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
-      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
-      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
-      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
+      "chr": { "name": "chr",     "alias": "CHR",      "type": "character" },
+      "bp": { "name": "bp",      "alias": "POS",  "type": "integer" },
+      "se": { "name": "se",      "alias": "SE",       "type": "numeric" },
+      "p": { "name": "p",       "alias": "P",     "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "EA",       "type": "character" },
+      "oa": { "name": "oa",      "alias": "NEA",       "type": "character" },
+      "beta": { "name": "beta",    "alias": "BETA",  "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "EAF",  "type": "numeric" },
+      "n": { "name": "n",       "alias": "N",  "type": "integer" }
     }
   },
-  hfpef: {
-    path: "gwas/hf_nonisch_pef_henry_2023/FORMAT-METAL_Pheno4_EUR.tsv.gz",
+  endometrial_cancer: {
+    dir_env_var: "DATA_DIR",
+    id_builder: null,
+    ids: null,
+    paths: [ "gwas/endometrial_cancer_omara_2018/GCST006464_GRCh37.tsv.gz" ],
+    gwas_build: "Hg19",
+    binary: true,
+    ncase: 12906,
+    ncontrol: 108979,
+    prevalence: 0.015,
     map: {
-      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
-      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
-      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
-      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
-      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
-      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
-      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
-      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
-      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
-      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
-      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
-    }
-  },
-  hfpef_mvp: {
-    path: "gwas/mvp_verma_2025/MVP_R4.1000G_AGR.GIA.PheCodes_CirculatorySystem_batch2/MVP_R4.1000G_AGR.Phe_428_4.EUR.GIA.dbGaP_b37_processed.txt.gz",
-    map: {
-      "rsid": { "name": "rsid",    "alias": "rsid",    "type": "character" },
-      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
-      "bp": { "name": "bp",      "alias": "bp", "type": "integer" },
-      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
-      "p": { "name": "p",       "alias": "p",    "type": "numeric" },
-      "ea": { "name": "ea",      "alias": "ea",      "type": "character" },
-      "oa": { "name": "oa",      "alias": "oa",      "type": "character" },
-      "beta": { "name": "beta",    "alias": "beta", "type": "numeric" },
-      "eaf": { "name": "eaf",     "alias": "eaf", "type": "numeric" },
-      "n": { "name": "n",       "alias": "n", "type": "integer" },
-      "ncase": { "name": "ncase",   "alias": "ncase",  "type": "integer" }
+      "rsid": { "name": "rsid",    "alias": "variant_id",     "type": "character" },
+      "chr": { "name": "chr",     "alias": "chromosome",      "type": "character" },
+      "bp": { "name": "bp",      "alias": "base_pair_location",  "type": "integer" },
+      "se": { "name": "se",      "alias": "standard_error",       "type": "numeric" },
+      "p": { "name": "p",       "alias": "p_value",     "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "effect_allele",       "type": "character" },
+      "oa": { "name": "oa",      "alias": "other_allele",       "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",  "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency",  "type": "numeric" }
     }
   }
 }
+#
+
+#  hfref: {
+#    path: "gwas/hf_nonisch_ref_henry_2023/FORMAT-METAL_Pheno3_EUR.tsv.gz",
+#    map: {
+#      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
+#      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
+#      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
+#      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
+#      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
+#      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
+#      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
+#      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
+#      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
+#      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
+#      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
+#    }
+#  },
+#  hfpef: {
+#    path: "gwas/hf_nonisch_pef_henry_2023/FORMAT-METAL_Pheno4_EUR.tsv.gz",
+#    map: {
+#      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
+#      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
+#      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
+#      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
+#      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
+#      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
+#      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
+#      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
+#      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
+#      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
+#      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
+#    }
+#  },
+#  hfpef_mvp: {
+#    path: "gwas/mvp_verma_2025/MVP_R4.1000G_AGR.GIA.PheCodes_CirculatorySystem_batch2/MVP_R4.1000G_AGR.Phe_428_4.EUR.GIA.dbGaP_b37_processed.txt.gz",
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",    "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
+#      "bp": { "name": "bp",      "alias": "bp", "type": "integer" },
+#      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p",    "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "ea",      "type": "character" },
+#      "oa": { "name": "oa",      "alias": "oa",      "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta", "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "eaf", "type": "numeric" },
+#      "n": { "name": "n",       "alias": "n", "type": "integer" },
+#      "ncase": { "name": "ncase",   "alias": "ncase",  "type": "integer" }
+#    }
+#  }
+#}
 
 pathway_instrument_search: {
   branched_chain_amino_acids: {

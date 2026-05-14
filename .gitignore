@@ -33,3 +33,4 @@ output/*
 # other
 models_report.log
 docker_build.log
+.positai

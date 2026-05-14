@@ -18,7 +18,7 @@ current_threads <- getDTthreads()
 cat("Current number of threads used by data.table:", current_threads, "\n")
 
 # cols for mapping
-cols <- c("variant_id", "chromosome", "base_pair_location", "effect_allele", "other_allele")
+cols <- c("chromosome", "base_pair_location", "effect_allele", "other_allele")
 
 # get metab file
 cat("Reading metabolite file:", metab_file, "\n")

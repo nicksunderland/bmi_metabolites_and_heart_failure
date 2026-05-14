@@ -99,9 +99,14 @@ RUN R -e 'install.packages("ggvenn", repos="https://cloud.r-project.org")'
 RUN R -e 'install.packages("RColorBrewer", repos="https://cloud.r-project.org")'
 RUN R -e 'install.packages("GenSA")'
 RUN R -e 'install.packages("eulerr", repos="https://cloud.r-project.org")'
+RUN R -e 'install.packages("patchwork")'
+RUN R -e 'install.packages("igraph")'
+RUN R -e 'install.packages("tidygraph")'
+RUN R -e 'install.packages("ggraph")'
+RUN R -e 'install.packages("mclust")'
+RUN R -e 'install.packages("vegan")'
 
-
-
+RUN apt-get update && apt-get install -y libglpk-dev && rm -rf /var/lib/apt/lists/*
 
 # run this when finished creating
 CMD ["/bin/bash"]

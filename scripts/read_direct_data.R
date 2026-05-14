@@ -20,23 +20,21 @@ assoc     <- snakemake@output[["assoc"]]
 ########################################################
 
 
-
 # testing
 if (FALSE) {
   plat <- "metabolon"
   #plat <- "nightingale"
   main_study <- "direct"
   if (plat == "nightingale") {
-    file     <- "/Volumes/MRC-IEU-research/projects/wt1/wp1/036/working/data/direct_nick_results/linear_mixed_associations_raw_z_direct_scaled_nightingale.tsv"
-    int_only <- "/Volumes/MRC-IEU-research/projects/wt1/wp1/036/working/data/direct_nick_results/linear_mixed_associations_raw_z_direct_scaled_intervention_only_nightingale.tsv"
+    file     <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "local_data/linear_mixed_associations_raw_z_direct_orig_scale_nightingale_listsize.tsv")
+    int_only <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "local_data/linear_mixed_associations_raw_z_direct_orig_scale_intervention_only_nightingale_listsize.tsv")
   } else {
-    file     <- "/Volumes/MRC-IEU-research/projects/wt1/wp1/036/working/data/direct_nick_results/linear_mixed_associations_rnt_direct_scaled_metabolon.tsv"
-    int_only <- "/Volumes/MRC-IEU-research/projects/wt1/wp1/036/working/data/direct_nick_results/linear_mixed_associations_rnt_direct_scaled_intervention_only_metabolon.tsv"
+    file     <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "local_data/linear_mixed_associations_rnt_direct_orig_scale_metabolon_listsize.tsv")
+    int_only <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "local_data/linear_mixed_associations_rnt_direct_orig_scale_intervention_only_metabolon_listsize.tsv")
   }
   data_type <- ifelse(plat=="metabolon", "rnt", "raw_z")
-  assoc <- paste0("/Users/xx20081/git/wt1_wp1_036_bmi_hf_metabolomics/.results/tables/linear_mixed_associations_", data_type, "_direct_", plat, ".tsv")
-  map   <- "/Users/xx20081/git/wt1_wp1_036_bmi_hf_metabolomics/scripts/gwas_metab_name_map.xlsx"
-
+  assoc <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), paste0("output/tables/linear_mixed_associations/linear_mixed_associations_", data_type, "_direct_", plat, ".tsv"))
+  map   <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "scripts/gwas_metab_name_map.xlsx")
 }
 
 # requirements
@@ -45,59 +43,90 @@ library(readxl)
 
 
 # read
-interaction <- fread(file)
-time_intervention_only <- fread(int_only)
+full_model     <- fread(file)
+int_only_model <- fread(int_only)
 
-
-# get interaction term
-interaction <- interaction[term=="timepointend:treatIntervention"][, list(
-  feature_id     = feature_id,
-  term           = term,
-  p.value        = p.value,
-  p.value_fdr    = p.adjust(p.value, method = "fdr"),
-  p.value_holm   = p.value_holm
+# ── Full model: interaction term (differential change, intervention vs control) ──
+dt_interaction <- full_model[term == "timepointend:treatIntervention", .(
+  feature_id               = feature_id,
+  estimate_interaction     = estimate,
+  se_interaction           = std.error,
+  p.value_interaction      = p.value,
+  p.value_interaction_fdr  = p.adjust(p.value, method = "fdr"),
+  p.value_interaction_holm = p.value_holm
 )]
 
-
-# get the timepoint term for the intervention only analysis
-formatted <- time_intervention_only[term=="timepointend"][, list(
-  feature_id     = feature_id,
-  raw_id         = NA_character_,
-  pathway        = NA_character_,
-  sub_pathway    = NA_character_,
-  derived_feature= NA,
-  missingness    = NA_real_,
-  outlier_count  = NA_integer_,
-  independent    = NA,
-  independent_k  = NA_integer_,
-  effect         = effect,
-  group          = group,
-  term           = term,
-  estimate       = estimate,
-  std.error      = std.error,
-  statistic      = statistic,
-  df             = df,
-  p.value        = p.value,
-  rsq_tot        = rsq_tot,
-  rsq_fixed      = rsq_fixed,
-  rsq_random     = rsq_random,
-  adj_rsq_tot    = adj_rsq_tot,
-  adj_rsq_fixed  = adj_rsq_fixed,
-  adj_rsq_random = adj_rsq_random,
-  n              = n,
-  main_study     = main_study,
-  data_type      = data_type,
-  platform       = platform,
-  model_name     = model_name,
-  formula        = formula,
-  error	         = error,
-  p.value_holm   = p.value_holm,
-  p.value_fdr    = p.adjust(p.value, method = "fdr")
+# ── Full model: time main effect (change in control group at end vs baseline) ──
+dt_time <- full_model[term == "timepointend", .(
+  feature_id       = feature_id,
+  estimate_time    = estimate,
+  se_time          = std.error,
+  p.value_time     = p.value,
+  p.value_time_fdr = p.adjust(p.value, method = "fdr"),
+  n                = n,
+  formula          = formula
 )]
 
-formatted[interaction, `:=`(p.value_interaction      = i.p.value,
-                            p.value_interaction_fdr  = i.p.value_fdr,
-                            p.value_interaction_holm = i.p.value_holm), on="feature_id"]
+# ── Intervention-only model: timepoint effect (total change in intervention arm) ──
+# estimate / std.error kept under original names for downstream compatibility
+formatted <- int_only_model[term == "timepointend", list(
+  feature_id      = feature_id,
+  raw_id          = NA_character_,
+  pathway         = NA_character_,
+  sub_pathway     = NA_character_,
+  derived_feature = NA,
+  missingness     = NA_real_,
+  outlier_count   = NA_integer_,
+  independent     = NA,
+  independent_k   = NA_integer_,
+  effect          = effect,
+  group           = group,
+  term            = term,
+  estimate        = estimate,   # int-only total intervention change — comparable to BBS
+  std.error       = std.error,
+  statistic       = statistic,
+  df              = df,
+  p.value         = p.value,
+  rsq_tot         = rsq_tot,
+  rsq_fixed       = rsq_fixed,
+  rsq_random      = rsq_random,
+  adj_rsq_tot     = adj_rsq_tot,
+  adj_rsq_fixed   = adj_rsq_fixed,
+  adj_rsq_random  = adj_rsq_random,
+  n               = n,
+  main_study      = main_study,
+  data_type       = data_type,
+  platform        = platform,
+  model_name      = model_name,
+  formula         = formula,
+  error           = error,
+  p.value_holm    = p.value_holm,
+  p.value_fdr     = p.adjust(p.value, method = "fdr")
+)]
+
+# ── Join full-model estimates onto formatted ──────────────────────────────────
+formatted[dt_interaction, `:=`(
+  estimate_interaction     = i.estimate_interaction,
+  se_interaction           = i.se_interaction,
+  p.value_interaction      = i.p.value_interaction,
+  p.value_interaction_fdr  = i.p.value_interaction_fdr,
+  p.value_interaction_holm = i.p.value_interaction_holm
+), on = "feature_id"]
+
+formatted[dt_time, `:=`(
+  estimate_time    = i.estimate_time,
+  se_time          = i.se_time,
+  p.value_time     = i.p.value_time,
+  p.value_time_fdr = i.p.value_time_fdr,
+  n_full           = i.n,
+  formula_full     = i.formula
+), on = "feature_id"]
+
+# ── Derived: total intervention change from full model ────────────────────────
+# β_time + β_interaction = expected change in intervention group
+# Should ≈ estimate (int-only); se_combined is approximate (ignores covariance)
+formatted[, estimate_combined := estimate_time + estimate_interaction]
+formatted[, se_combined        := sqrt(se_time^2 + se_interaction^2)]
 
 
 # format for this project
