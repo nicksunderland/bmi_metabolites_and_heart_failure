@@ -8,6 +8,7 @@ name_map_file    <- snakemake@input[["name_map_file"]]
 replicating_file <- snakemake@input[["replicating_file"]]
 circos_file      <- snakemake@output[["circos"]]
 scatter_file     <- snakemake@output[["scatter"]]
+results_out_file <- snakemake@output[["results_out_file"]]
 log_file         <- snakemake@log[["log"]]
 ########################################################
 
@@ -18,6 +19,7 @@ name_map_file    <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "scripts/gwas_m
 replicating_file <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/tables/replication/study_replication.tsv")
 circos_file      <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/figures/bmi_mr/bmi_metab_mr_circos.png")
 scatter_file     <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/figures/bmi_mr/bmi_metab_mr_scatter.png")
+results_out_file <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/tables/mr_results/formatted_bmi_on_metabolites.tsv")
 log_file         <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/logs/bmi_metab_mr_discordance.log")
 # ─────────────────────────────────────────────────────────────────────────────
 }
@@ -172,6 +174,22 @@ dt[, col   := sig_colour(b, p, p_fdr)]
   n_strong      <- length(strong_labels)
   pct_strong    <- round(100 * n_strong / n_mr, 1)
 
+  # h-j) sign concordance regardless of P value (only where trial data available)
+  dt_ivw_comp      <- dt_ivw[!is.na(trial_b)]
+  n_comp           <- uniqueN(dt_ivw_comp$label)
+  n_sign_discord   <- dt_ivw_comp[sign(b) != sign(trial_b), uniqueN(as.character(label))]
+  n_sign_concord   <- dt_ivw_comp[sign(b) == sign(trial_b), uniqueN(as.character(label))]
+  pct_sign_discord <- round(100 * n_sign_discord / n_comp, 1)
+  pct_sign_concord <- round(100 * n_sign_concord / n_comp, 1)
+
+  # k-m) sign concordance among nominal p<0.05
+  dt_ivw_nom          <- dt_ivw_comp[p < 0.05]
+  n_nom               <- uniqueN(dt_ivw_nom$label)
+  n_nom_sign_discord  <- dt_ivw_nom[sign(b) != sign(trial_b), uniqueN(as.character(label))]
+  n_nom_sign_concord  <- dt_ivw_nom[sign(b) == sign(trial_b), uniqueN(as.character(label))]
+  pct_nom_discord     <- round(100 * n_nom_sign_discord / n_nom, 1)
+  pct_nom_concord     <- round(100 * n_nom_sign_concord / n_nom, 1)
+
   log_lines <- c(
     "=== BMI -> Metabolite MR: Direction Discordance vs Trial Estimates ===",
     "",
@@ -183,10 +201,21 @@ dt[, col   := sig_colour(b, p, p_fdr)]
     sprintf("f) Strongly discordant (discordant on both IVW + Steiger):    %d", n_strong),
     sprintf("g) Strongly discordant %%:                                     %.1f%%", pct_strong),
     "",
+    sprintf("h) With trial comparison available:                           %d", n_comp),
+    sprintf("i) Sign discordant (any P, sign flip vs trial):               %d (%.1f%%)", n_sign_discord, pct_sign_discord),
+    sprintf("j) Sign concordant  (any P, same sign as trial):              %d (%.1f%%)", n_sign_concord, pct_sign_concord),
+    "",
+    sprintf("k) Nominal p<0.05 with trial comparison available:            %d", n_nom),
+    sprintf("l) Sign discordant (nominal p<0.05, sign flip vs trial):      %d (%.1f%%)", n_nom_sign_discord, pct_nom_discord),
+    sprintf("m) Sign concordant  (nominal p<0.05, same sign as trial):     %d (%.1f%%)", n_nom_sign_concord, pct_nom_concord),
+    "",
     "--- Definitions ---",
     "Discordant IVW:     IVW FDR p<0.05 AND sign(IVW beta) != sign(trial beta)",
     "Discordant Steiger: Steiger-filtered IVW FDR p<0.05 AND sign(Steiger beta) != sign(trial beta)",
     "Strongly discordant: meets both Discordant IVW AND Discordant Steiger criteria",
+    "Sign discordant:    sign(IVW beta) != sign(trial beta), regardless of P value",
+    "Sign concordant:    sign(IVW beta) == sign(trial beta), regardless of P value",
+    "Nominal p<0.05:     IVW p < 0.05 (unadjusted), with trial data available",
     "Trial direction:    sign(estimate_bbs), falling back to sign(estimate_direct) if missing"
   )
 
@@ -513,7 +542,7 @@ cat("Saved:", circos_file, "\n")
 # ── Scatter: trial estimate (x) vs BMI → metabolite MR estimate (y) ──────────
 # Negative slope expected if BMI mediates trial effects on metabolites
 ivw_mr <- dt[method == "Inverse variance weighted",
-             .(label = as.character(label), mr_b = b, mr_p_fdr = p_fdr)]
+             .(label = as.character(label), mr_b = b, mr_p = p, mr_p_fdr = p_fdr)]
 
 scatter_bbs <- rep[metab_meta,
                    .(label = i.label, trial_b = estimate_bbs, trial_fdr = p.value_fdr_bbs),
@@ -527,20 +556,41 @@ scatter_dir <- rep[metab_meta,
 scatter_dir[, trial := "Dietary programme (DiRECT)"]
 
 scatter_dt <- rbindlist(list(scatter_bbs, scatter_dir), use.names = TRUE)
-scatter_dt[ivw_mr, c("mr_b", "mr_p_fdr") := .(i.mr_b, i.mr_p_fdr), on = "label"]
+scatter_dt[ivw_mr, c("mr_b", "mr_p", "mr_p_fdr") := .(i.mr_b, i.mr_p, i.mr_p_fdr), on = "label"]
 scatter_dt <- scatter_dt[!is.na(trial_b) & !is.na(mr_b)]
+
+# point colour mirrors circos: direction × significance tier
+# split into base colour + alpha so ggplot renders transparency natively
+scatter_dt[, pt_base := fcase(
+  is.na(mr_p) | is.na(mr_b), "white",
+  mr_b < 0, col_blue,
+  mr_b > 0, col_red,
+  default = "white"
+)]
+scatter_dt[, pt_alpha := fcase(
+  is.na(mr_p) | is.na(mr_b), 0,
+  mr_p_fdr < 0.05,            1.00,
+  mr_p     < 0.05,            0.50,
+  default                   = 0.15
+)]
+
+trial_shape <- c("Bariatric surgery (BBS)" = 16L, "Dietary programme (DiRECT)" = 17L)
 trial_cols  <- c("Bariatric surgery (BBS)" = "#B2182B", "Dietary programme (DiRECT)" = "#2166AC")
-trial_shape <- c("Bariatric surgery (BBS)" = 16L,       "Dietary programme (DiRECT)" = 17L)
+
+trial_lty <- c("Bariatric surgery (BBS)" = "solid", "Dietary programme (DiRECT)" = "dashed")
 
 p_scatter <- ggplot(scatter_dt,
-                    aes(x = trial_b, y = mr_b, colour = trial, shape = trial)) +
+                    aes(x = trial_b, y = mr_b, shape = trial, linetype = trial)) +
   geom_hline(yintercept = 0, colour = "grey75", linewidth = 0.3) +
   geom_vline(xintercept = 0, colour = "grey75", linewidth = 0.3) +
-  geom_smooth(method = "lm", se = FALSE, linewidth = 0.5, alpha = 0.12,
+  geom_smooth(method = "lm", se = FALSE, linewidth = 0.5, colour = "black",
               formula = y ~ x) +
-  geom_point(size = 1.8, alpha = 0.75) +
-  scale_colour_manual(values = trial_cols, name = NULL) +
-  scale_shape_manual(values  = trial_shape, name = NULL) +
+  geom_point(aes(colour = I(pt_base), alpha = I(pt_alpha)), size = 1.8) +
+  scale_shape_manual(values = trial_shape, name = NULL) +
+  scale_linetype_manual(values = trial_lty, name = NULL) +
+  guides(
+    shape = guide_legend(override.aes = list(colour = "black", size = 2))
+  ) +
   labs(
     x = "Weight loss trial effect on metabolite\n(SD change with intervention)",
     y = "Life-time BMI effect on metabolite - IVW MR\n(SD change per 1-SD higher BMI)"
@@ -563,3 +613,33 @@ p_scatter <- ggplot(scatter_dt,
 
 ggsave(scatter_file, p_scatter, width = 5, height = 5, dpi = 300, bg = "transparent")
 cat("Saved:", scatter_file, "\n")
+
+# ── Write formatted results table ────────────────────────────────────────────
+out_dt <- copy(dt)
+out_dt[, label  := as.character(label)]
+out_dt[, method := as.character(method)]
+
+# join trial estimates (one row per metabolite × platform in rep)
+trial_cols_keep <- intersect(
+  c("label", "platform", "estimate_bbs", "estimate_direct"),
+  names(rep)
+)
+out_dt[rep[, trial_cols_keep, with = FALSE],
+       c("estimate_bbs", "estimate_direct") :=
+         .(i.estimate_bbs, i.estimate_direct),
+       on = c("raw_label" = "label", "platform")]
+
+col_order <- intersect(
+  c("label", "pathway_group", "pathway_broad", "platform",
+    "method", "b", "b_se", "p", "p_fdr",
+    "nsnp", "fstat", "nsnp_steiger_filtered",
+    "egger_intercept", "egger_intercept_se", "egger_intercept_p",
+    "Q", "Q_df", "Q_pval",
+    "estimate_bbs", "estimate_direct"),
+  names(out_dt)
+)
+out_dt <- out_dt[, col_order, with = FALSE]
+setorder(out_dt, pathway_broad, label, method)
+dir.create(dirname(results_out_file), recursive = TRUE, showWarnings = FALSE)
+fwrite(out_dt, results_out_file, sep = "\t")
+cat("Saved:", results_out_file, "\n")

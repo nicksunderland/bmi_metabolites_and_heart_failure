@@ -420,7 +420,7 @@ tee(sprintf(
   replication[, sum(same_direction,   na.rm = TRUE)],
   100 * replication[, sum(same_direction,   na.rm = TRUE)] / replication[, sum(!is.na(same_direction))],
   replication[, sum(both_significant, na.rm = TRUE)],
-  100 * replication[, sum(both_significant, na.rm = TRUE)] / replication[, sum(!is.na(both_significant))],
+  100 * replication[, sum(both_significant, na.rm = TRUE)] / replication[, sum(!is.na(estimate_bbs) & !is.na(estimate_direct))],
   replication[replicates %in% consistent_levels, .N],
   100 * replication[replicates %in% consistent_levels, .N] / replication[, sum(!is.na(estimate_bbs) & !is.na(estimate_direct), na.rm = TRUE)],
   replication[replicates %in% consistent_levels & sign(estimate_bbs) ==  1, .N],
@@ -432,6 +432,18 @@ tee(sprintf(
 ))
 
 replication[, uniqueN(interaction(label, platform)), by = "replicates"]
+
+# Pathway group breakdown of replicating metabolites
+n_consistent <- replication[replicates %in% consistent_levels, .N]
+pg_counts <- replication[replicates %in% consistent_levels,
+                          .N, by = pathway_group][order(-N)]
+tee("Replicating metabolites by pathway group (% of replicating):\n")
+for (i in seq_len(nrow(pg_counts))) {
+  tee(sprintf("  %-35s n=%i (%.1f%%)\n",
+              as.character(pg_counts$pathway_group[i]),
+              pg_counts$N[i],
+              100 * pg_counts$N[i] / n_consistent))
+}
 
 
 # BBS vs DiRECT correlation

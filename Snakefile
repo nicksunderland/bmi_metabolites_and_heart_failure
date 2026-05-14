@@ -380,8 +380,9 @@ rule plot_bmi_metab_mr:
     name_map_file    = "scripts/gwas_metab_name_map.xlsx",
     replicating_file = os.path.join("output", "tables", "replication", "study_replication.tsv")
   output:
-    circos  = os.path.join("output", "figures", "bmi_mr", "bmi_metab_mr_circos.png"),
-    scatter = os.path.join("output", "figures", "bmi_mr", "bmi_metab_mr_scatter.png")
+    circos           = os.path.join("output", "figures", "bmi_mr", "bmi_metab_mr_circos.png"),
+    scatter          = os.path.join("output", "figures", "bmi_mr", "bmi_metab_mr_scatter.png"),
+    results_out_file = os.path.join("output", "tables",  "mr_results", "formatted_bmi_on_metabolites.tsv")
   log:
     log = os.path.join("output", "logs", "bmi_metab_mr_discordance.log")
   script:
