@@ -69,7 +69,7 @@ Hg38_GWASES = {i: e for i, e in ALL_GWASES.items() if e["build"] == "Hg38"}
 Hg19_BASE   = next(iter(Hg19_GWASES.values())) if Hg19_GWASES else None
 Hg38_BASE   = next(iter(Hg38_GWASES.values())) if Hg38_GWASES else None
 BMI_GWAS          = {i: e for i, e in ALL_GWASES.items() if i == "bmi"}
-OUTCOME_GWASES    = {i: e for i, e in ALL_GWASES.items() if i in ["heart_failure","hip_knee_osteoarthritis","endometrial_cancer"]}
+OUTCOME_GWASES    = {i: e for i, e in ALL_GWASES.items() if i in ["heart_failure","hip_knee_osteoarthritis","kidney_cancer"]}
 METABOLITE_GWASES = {i: e for i, e in ALL_GWASES.items() if e["platform"] in ["ms_chen_metabs","nmr_karjalainen_metabs"]}
 
 # enumerate valid (pathway, gwas_name, gene_name) triples from use_with
@@ -239,7 +239,7 @@ rule make_genetic_instruments:
   resources:
     cpus_per_task = 2,
     mem_mb        = 5000,
-    time          = "00:10:00"
+    time          = "00:20:00"
   input:
     gwas_file    = lambda wc: ALL_GWASES[wc.id]["path"],
     mapping_file = "output/tables/global_variant_map.tsv.gz"
@@ -268,9 +268,13 @@ def consistent_metabolite_instrument_inputs(wildcards):
     metab_ids = [i for i in ids if i in METABOLITE_GWASES]
     return expand("output/tables/instruments/genome_wide/{id}_instrument.tsv", id=metab_ids)
 
+def all_metabolite_instrument_inputs(wildcards):
+    checkpoints.study_replication.get()  # keep checkpoint dependency
+    return expand("output/tables/instruments/genome_wide/{id}_instrument.tsv", id=list(METABOLITE_GWASES.keys()))
+
 rule instrument_clusters:
   input:
-    instrument_files    = consistent_metabolite_instrument_inputs,
+    instrument_files    = all_metabolite_instrument_inputs,
     consistent_ids_file = os.path.join("output", "tables", "replication", "consistent_gwas_ids.txt"),
     name_map_file       = "scripts/gwas_metab_name_map.xlsx",
     ld_block_file       = "scripts/ld_blocks_hg19.tsv"
@@ -281,9 +285,29 @@ rule instrument_clusters:
     cluster_table   = os.path.join("output", "tables",  "instruments", "cluster_membership.tsv"),
     cluster_bar_fig = os.path.join("output", "figures", "instruments", "cluster_bar.png"),
     ld_blk_ari_fig      = os.path.join("output", "figures", "instruments", "ld_block_ari_stability.png"),
-    ld_blk_overlap_fig  = os.path.join("output", "figures", "instruments", "ld_block_overlap_graph.png")
+    ld_blk_overlap_fig  = os.path.join("output", "figures", "instruments", "ld_block_overlap_graph.png"),
+    snp_share_file  = os.path.join("output", "tables", "instruments", "snp_share_counts.tsv")
+  log:
+    log = os.path.join("output", "logs", "instrument_clusters.log")
   script:
     "scripts/02_instrument_clusters.R"
+
+
+rule instrument_overlap:
+  input:
+    metabolite_instrument_files = all_metabolite_instrument_inputs,
+    outcome_instrument_files    = expand("output/tables/instruments/genome_wide/{id}_instrument.tsv", id=list(OUTCOME_GWASES.keys())),
+    consistent_ids_file         = os.path.join("output", "tables", "replication", "consistent_gwas_ids.txt"),
+    cluster_file                = os.path.join("output", "tables", "instruments", "cluster_membership.tsv"),
+    name_map_file               = "scripts/gwas_metab_name_map.xlsx"
+  output:
+    overlap_table     = os.path.join("output", "tables",  "instruments", "metab_outcome_instrument_overlap.tsv"),
+    overlap_heatmap   = os.path.join("output", "figures", "instruments", "metab_outcome_instrument_overlap.png"),
+    outcome_snp_table = os.path.join("output", "tables",  "instruments", "outcome_snps_metab_overlap.tsv")
+  log:
+    log = os.path.join("output", "logs", "instrument_overlap.log")
+  script:
+    "scripts/03_instrument_overlap.R"
 
 
 """
@@ -370,6 +394,54 @@ rule concat_mr_outcomes_to_metabolites:
     Rscript -e "library(data.table); f <- commandArgs(TRUE); rbindlist(lapply(f[-length(f)], fread), fill=TRUE, use.names=TRUE) |> fwrite(f[length(f)], sep='\t')" {input} {output}
     """
 
+"""
+SECTION: RUN MENDELIAN RANDOMIZATION (UNIQUE INSTRUMENTS)
+"""
+def consistent_metab_outcome_unique_inputs(wildcards):
+    co = checkpoints.study_replication.get()
+    ids = [i for i in open(co.output.consistent_ids).read().splitlines() if i]
+    return expand(
+        "output/tmp_objects/mr_results_unique/{exp}_on_{out}_mr_unique.tsv",
+        exp = ids,
+        out = list(OUTCOME_GWASES.keys()),
+    )
+
+rule run_mr_unique:
+  resources:
+    cpus_per_task = 2,
+    mem_mb        = 15000,
+    time          = "02:00:00"
+  input:
+    instrument_file = "output/tables/instruments/genome_wide/{exp_id}_instrument.tsv",
+    outcome_file    = lambda wc: ALL_GWASES[wc.out_id]["path"],
+    mapping_file    = "output/tables/global_variant_map.tsv.gz",
+    snp_share_file  = os.path.join("output", "tables", "instruments", "snp_share_counts.tsv")
+  params:
+    exp_id         = lambda wc: wc.exp_id,
+    exp_binary     = lambda wc: config["gwases"][ALL_GWASES[wc.exp_id]["platform"]]["binary"],
+    exp_ncase      = lambda wc: config["gwases"][ALL_GWASES[wc.exp_id]["platform"]]["ncase"],
+    exp_ncontrol   = lambda wc: config["gwases"][ALL_GWASES[wc.exp_id]["platform"]]["ncontrol"],
+    exp_prevalence = lambda wc: config["gwases"][ALL_GWASES[wc.exp_id]["platform"]]["prevalence"],
+    out_id         = lambda wc: wc.out_id,
+    outcome_map    = lambda wc: config["gwases"][ALL_GWASES[wc.out_id]["platform"]]["map"],
+    out_build      = lambda wc: ALL_GWASES[wc.out_id]["build"],
+    out_binary     = lambda wc: config["gwases"][ALL_GWASES[wc.out_id]["platform"]]["binary"],
+    out_ncase      = lambda wc: config["gwases"][ALL_GWASES[wc.out_id]["platform"]]["ncase"],
+    out_ncontrol   = lambda wc: config["gwases"][ALL_GWASES[wc.out_id]["platform"]]["ncontrol"],
+    out_prevalence = lambda wc: config["gwases"][ALL_GWASES[wc.out_id]["platform"]]["prevalence"],
+  output:
+    results_file = "output/tmp_objects/mr_results_unique/{exp_id}_on_{out_id}_mr_unique.tsv"
+  script:
+    "scripts/run_mr_unique.R"
+
+rule concat_mr_unique_metabolites_to_outcomes:
+  input: consistent_metab_outcome_unique_inputs
+  output: "output/tables/mr_results/metabolites_on_outcomes_unique.tsv"
+  shell:
+    r"""
+    Rscript -e "library(data.table); f <- commandArgs(TRUE); rbindlist(lapply(f[-length(f)], fread), fill=TRUE, use.names=TRUE) |> fwrite(f[length(f)], sep='\t')" {input} {output}
+    """
+
 
 """
 SECTION: VISUALISATION
@@ -398,8 +470,20 @@ rule plot_metab_outcome_mr:
   output:
     heatmap = os.path.join("output", "figures", "outcomes", "metab_outcome_mr.png"),
     circos  = os.path.join("output", "figures", "outcomes", "metab_outcome_mr_circos.png")
+  log:
+    log = os.path.join("output", "logs", "metab_outcome_mr_instruments.log")
   script:
     "scripts/plot_metab_outcome_mr.R"
+
+rule plot_metab_outcome_mr_unique:
+  input:
+    results_file  = "output/tables/mr_results/metabolites_on_outcomes.tsv",
+    unique_file   = "output/tables/mr_results/metabolites_on_outcomes_unique.tsv",
+    name_map_file = "scripts/gwas_metab_name_map.xlsx"
+  output:
+    scatter = os.path.join("output", "figures", "outcomes", "metab_outcome_mr_unique_correlation.png")
+  script:
+    "scripts/plot_metab_outcome_mr_unique.R"
 
 
 """
@@ -407,9 +491,11 @@ SECTION: Project-wide target for full run
 """
 rule all:
   input:
+    #"output/tables/global_variant_map.tsv.gz"
     # SECTION: CONCATENATE MR RESULTS
     "output/tables/mr_results/bmi_on_metabolites.tsv",
     "output/tables/mr_results/metabolites_on_outcomes.tsv",
+    "output/tables/mr_results/metabolites_on_outcomes_unique.tsv",
     "output/tables/mr_results/outcomes_on_metabolites.tsv",
     # SECTION: INSTRUMENT CLUSTERING
     os.path.join("output", "figures", "instruments", "overlap_graph.png"),
@@ -420,6 +506,7 @@ rule all:
     os.path.join("output", "figures", "bmi_mr",  "bmi_metab_mr_scatter.png"),
     os.path.join("output", "figures", "outcomes", "metab_outcome_mr.png"),
     os.path.join("output", "figures", "outcomes", "metab_outcome_mr_circos.png"),
+    os.path.join("output", "figures", "outcomes", "metab_outcome_mr_unique_correlation.png"),
 
     #"output/tables/instruments/genome_wide/bmi_instrument.tsv"
     #"output/tmp_objects/mapping/GCST90501056_variants.tsv.gz"

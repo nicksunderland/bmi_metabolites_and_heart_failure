@@ -9,6 +9,7 @@ name_map_file    <- snakemake@input[["name_map_file"]]
 replicating_file <- snakemake@input[["replicating_file"]]
 cluster_file     <- snakemake@input[["cluster_file"]]
 output_file      <- snakemake@output[["heatmap"]]
+log_file         <- snakemake@log[["log"]]
 ########################################################
 
 if (FALSE) {
@@ -25,7 +26,8 @@ name_map_file    <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "scripts/gwas_m
 replicating_file <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/tables/replication/study_replication.tsv")
 cluster_file     <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/tables/instruments/cluster_membership.tsv")
 output_file      <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/figures/outcomes/metab_outcome_mr.png")
-
+log_file         <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/logs/metab_outcome_mr_instruments.log")
+formatted_mr_results <- file.path(Sys.getenv("HF_METABOLITE_REPO2"), "output/tables/mr_results/formatted_metabolites_on_outcomes.tsv")
 # ─────────────────────────────────────────────────────────────────────────────
 }
 
@@ -33,70 +35,96 @@ library(data.table)
 library(ggplot2)
 library(readxl)
 
-dt         <- fread(results_file, sep = "\t")
-dt_steiger <- dt[steiger_filtering == TRUE & method == "Inverse variance weighted"]
-dt_steiger[, method := paste(method, "Steiger filtered")]
-dt  <- rbind(
-  dt[steiger_filtering == FALSE],
-  dt_steiger
-)[order(exp_id, out_id, method)]
-rep            <- fread(replicating_file)
-map            <- read_xlsx(name_map_file, sheet=1) |> as.data.table()
-clust          <- fread(cluster_file, sep = "\t")
-rev_mr         <- fread(rev_mr_file)
-rev_mr_steiger <- rev_mr[steiger_filtering == TRUE & method == "Inverse variance weighted"]
-rev_mr_steiger[, method := paste(method, "Steiger filtered")]
-rev_mr  <- rbind(
-  rev_mr[steiger_filtering == FALSE],
-  rev_mr_steiger
-)[order(exp_id, out_id, method)]
-
-dt[map, c("label","pathway_group","platform") := .(i.label, i.pathway_group, i.platform), on = c("exp_id"="gwas_id")]
-dt[, pathway_broad := fcase(
-  pathway_group == "Lipid metabolism", "Lipid metabolism",
-  pathway_group == "Lipoproteins",     "Lipoproteins",
-  pathway_group == "Amino acid metabolism", "Amino acids",
-  default = "Other"
-)]
-dt[, pathway_broad := factor(pathway_broad,
-                                      levels = c("Lipid metabolism", "Lipoproteins", "Amino acids", "Other"))]
-dt[, label := fcoalesce(label, exp_id)]
-dt[rep, replicates := i.replicates, on = "label"]
-dt <- dt[replicates == "Trial consistent (interaction)"]
+dt     <- fread(results_file, sep = "\t")
+rev_mr <- fread(rev_mr_file)
+clust  <- fread(cluster_file, sep = "\t")
+rep    <- fread(replicating_file)
+map    <- read_xlsx(name_map_file, sheet=1) |> as.data.table()
 
 # disambiguate labels that appear on more than one platform
 platform_suffix <- c("nightingale" = "NMR", "metabolon" = "MS")
-dup_labels      <- dt[, .(n = uniqueN(exp_id)), by = label][n > 1, label]
-dt[label %in% dup_labels,
-   label := paste0(label, " (", platform_suffix[platform], ")")]
+dup_labels      <- map[, .(n = uniqueN(gwas_id)), by = label][n > 1, label]
+map[label %in% dup_labels,
+    label := paste0(label, " (", platform_suffix[platform], ")")]
+rep[label %in% dup_labels,
+    label := paste0(label, " (", platform_suffix[platform], ")")]
 
-# propagate updated labels to clust so the cluster track join still works
+# annotate
+dt[map, c("label","pathway_group","platform") := .(i.label, i.pathway_group, i.platform), on = c("exp_id"="gwas_id")]
+dt[, label := fcoalesce(label, exp_id)]
+dt[rep, replicates := i.replicates, on = "label"]
+dt <- dt[replicates == "Trial consistent (interaction)"]
+dt[clust, c("cluster_id","cluster_singleton") := .(i.cluster_id, i.cluster_singleton), on = c("exp_id"="gwas_id")]
+dt <- dt[!is.na(cluster_id),]
 clust[unique(dt[, .(gwas_id = exp_id, label)]), label := i.label, on = "gwas_id"]
 
-# Per-outcome 6-method dataset: rebuilt from raw file so IVW Steiger is not lost
-# through the 5-method processing chain applied to the main dt above.
-{
-  d_raw <- fread(results_file, sep = "\t")
-  d_st  <- d_raw[steiger_filtering == TRUE & method == "Inverse variance weighted"]
-  d_st[, method := "Inverse variance weighted Steiger filtered"]
-  dt_per_out <- rbind(d_raw[steiger_filtering == FALSE], d_st)
-}
-dt_per_out[map, c("label", "pathway_group", "platform") := .(i.label, i.pathway_group, i.platform),
-           on = c("exp_id" = "gwas_id")]
-dt_per_out[, label := fcoalesce(label, exp_id)]
-dt_per_out[rep, replicates := i.replicates, on = "label"]
-dt_per_out <- dt_per_out[replicates == "Trial consistent (interaction)"]
-dt_per_out[label %in% dup_labels, label := paste0(label, " (", platform_suffix[platform], ")")]
-dt_per_out[, out_label := tools::toTitleCase(gsub("_", " ", out_id))]
-dt_per_out[, p_fdr    := p.adjust(p, method = "fdr"), by = .(out_id, method)]
-dt_per_out <- dt_per_out[method %in% c(
-  "Inverse variance weighted",
-  "Inverse variance weighted Steiger filtered",
-  "MR-PRESSO-corrected",
-  "Weighted median",
-  "Weighted mode",
-  "MR Egger"
+# adjust pvalue
+dt[, p_fdr := p.adjust(p, method = "fdr", n = .N), by = .(out_id, method, steiger_filtering)]
+setcolorder(dt, c("p_fdr"), after = "p")
+
+# write out forward MR
+exp_meta <- dt[steiger_filtering == FALSE, .(
+  label      = label[1],
+  pathway_group = pathway_group[1],
+  platform   = platform[1],
+  cluster_id = cluster_id[1],
+  cluster_singleton = cluster_singleton[1],
+  fstat      = fstat[1],
+  exp_snp_r2 = exp_snp_r2[1],
+  out_snp_r2 = out_snp_r2[1]
+), by = exp_id]
+
+dt_formatted <- dt[steiger_filtering == FALSE, .(
+  exp_id, out_id, method,
+  nsnp,
+  b, b_se,
+  p, p_fdr, Q, Q_pval,
+  egger_intercept, egger_intercept_se, egger_intercept_p,
+  presso_error, presso_global_p, n_outliers, prop_outliers, distortion_p,
+  steiger_correct_dir, steiger_p
 )]
+
+complete_grid <- CJ(
+  exp_id = dt_formatted[, unique(exp_id)],
+  out_id = dt_formatted[, unique(out_id)],
+  method = dt_formatted[, unique(method)]
+)
+
+dt_formatted <- dt_formatted[complete_grid, on = .(exp_id, out_id, method)]
+dt_formatted <- exp_meta[dt_formatted, on = "exp_id"]
+dt_formatted[is.na(b) | !grepl("Inverse variance weighted|Wald ratio", method),
+             c("steiger_correct_dir","steiger_p","exp_snp_r2","out_snp_r2") := NA]
+dt_formatted[, or := ifelse(is.na(b),
+                            NA_character_,
+                            sprintf("%.3f (%.3f-%.3f)", exp(b), exp(b - 1.96*b_se), exp(b + 1.96*b_se)))]
+setcolorder(dt_formatted, "or", before = "b")
+dt_formatted[, c("b","b_se") := NULL]
+setcolorder(dt_formatted, c("exp_snp_r2","out_snp_r2"), after = "steiger_p")
+dt_formatted[, method := factor(method,
+  levels = c("Wald ratio", "Inverse variance weighted", "MR Egger",
+             "Weighted median", "Weighted mode", "MR-PRESSO-raw", "MR-PRESSO-corrected")
+)]
+dt_formatted <- dt_formatted[order(out_id, exp_id, method)]
+#dt_formatted <- dt_formatted[, lapply(.SD, function(x) ifelse(is.na(x) | x=="", "-", as.character(x)))]
+
+fwrite(dt_formatted, formatted_mr_results, sep="\t")
+
+
+
+# Rename Wald ratio → IVW and append Steiger-filtered IVW as a separate method level
+merge_steiger <- function(d) {
+  d[method == "Wald ratio", method := "Inverse variance weighted"]
+  st <- d[steiger_filtering == TRUE & method == "Inverse variance weighted"]
+  st[, method := "Inverse variance weighted Steiger filtered"]
+  rbind(d[steiger_filtering == FALSE], st)[order(exp_id, out_id, method)]
+}
+
+# 6-method per-outcome stream — built before dt is reduced to 5 methods below
+dt_per_out <- merge_steiger(copy(dt))
+dt_per_out[, out_label := tools::toTitleCase(gsub("_", " ", out_id))]
+
+dt     <- merge_steiger(dt)
+rev_mr <- merge_steiger(rev_mr)
 
 method_levels <- c(
   "Inverse variance weighted",
@@ -119,41 +147,46 @@ dt[, method := factor(method, levels = method_levels)]
 # signed -log10(p): positive = increases risk, negative = reduces risk
 dt[, signed_log10p := sign(b) * (-log10(p))]
 
-# FDR correction within each outcome × method
-dt[, p_fdr := p.adjust(p, method = "fdr"), by = .(out_id, method)]
-
 # outcome labels
 dt[, out_label := tools::toTitleCase(gsub("_", " ", out_id))]
 
-# per-label mean IVW -log10(p) for ordering (most significant = top of each facet)
+# per-label mean IVW -log10(p) for ordering within each cluster
 ivw_ord <- dt[method == "Inverse variance weighted",
-              .(mean_log10p  = mean(-log10(p), na.rm = TRUE),
-                pathway_broad = pathway_broad[1L]),
+              .(mean_log10p = mean(-log10(p), na.rm = TRUE)),
               by = label]
 
-# join cluster membership; singletons (cluster == 0) sort last within each group
 ivw_ord[clust, cluster := i.cluster, on = "label"]
 ivw_ord[is.na(cluster), cluster := 0L]
 
-get_levels <- function(grp) {
-  ivw_ord[pathway_broad == grp][
-    order(ifelse(cluster == 0L, .Machine$integer.max, cluster), mean_log10p)
-  ][, as.character(label)]
-}
-
-lipid_levels <- get_levels("Lipid metabolism")
-lipo_levels  <- get_levels("Lipoproteins")
-aa_levels    <- get_levels("Amino acids")
-other_levels <- get_levels("Other")
-
-label_levels <- c(lipid_levels, lipo_levels, aa_levels, other_levels)
+non_sing_clusters <- sort(unique(ivw_ord[cluster > 0L, cluster]))
+label_levels <- c(
+  unlist(lapply(non_sing_clusters, function(cl)
+    ivw_ord[cluster == cl][order(mean_log10p), as.character(label)]
+  )),
+  ivw_ord[cluster == 0L][order(mean_log10p), as.character(label)]
+)
 dt[, label := factor(label, levels = label_levels)]
+
+# cluster_group column for faceting
+cluster_group_levels <- c(paste0("Cluster ", non_sing_clusters), "Singletons")
+dt[ivw_ord, cluster := i.cluster, on = "label"]
+dt[, cluster_group := factor(
+  fifelse(cluster == 0L, "Singletons", paste0("Cluster ", cluster)),
+  levels = cluster_group_levels
+)]
+
+# sector colours for inner circos track — derived from the cluster colour table
+sector_col_dt <- clust[, .(
+  cluster_group = fifelse(cluster == 0L, "Singletons", paste0("Cluster ", cluster)),
+  color         = fifelse(cluster == 0L, "grey80", color)
+)][, .(color = color[1L]), by = cluster_group]
+sector_cols <- setNames(sector_col_dt$color, sector_col_dt$cluster_group)[cluster_group_levels]
 
 # instrument info panel: nsnp + fstat per label × out_label, from IVW row
 dt_info <- dt[method == "Inverse variance weighted",
               .(nsnp  = nsnp[1L],
                 fstat = if ("fstat" %in% names(dt)) fstat[1L] else NA_real_),
-              by = .(label, out_label, pathway_broad)]
+              by = .(label, out_label, cluster_group)]
 dt_info[, method    := "Instruments"]
 dt_info[, info_label := paste0(nsnp, "/", ifelse(is.na(fstat), "?", round(fstat, 0)))]
 
@@ -166,6 +199,66 @@ dt_plot <- rbind(dt, dt_info, fill = TRUE)
 dt_plot[, method := factor(as.character(method), levels = all_levels)]
 
 method_labels["Instruments"] <- "N SNPs / F"
+
+# ── Instrument summary log ────────────────────────────────────────────────────
+{
+  rep[map, gwas_id := i.gwas_id, on = "label"]
+  n_rep_total        <- uniqueN(rep[replicates == "Trial consistent (interaction)", .(label, platform)])
+  n_with_gwas_ids    <- rep[replicates == "Trial consistent (interaction)" & !is.na(gwas_id), .N]
+  n_with_instruments <- dt[method == "Inverse variance weighted", uniqueN(label)]
+  pct_instruments    <- round(100 * n_with_instruments / n_rep_total, 1)
+  n_with_instruments_post_harm <- dt[method == "Inverse variance weighted" & nsnp > 0, uniqueN(label)]
+  pct_instruments_post_harm    <- round(100 * n_with_instruments_post_harm / n_rep_total, 1)
+
+
+  nsnp_vals  <- dt_info[!is.na(nsnp),  nsnp]
+  fstat_vals <- dt_info[!is.na(fstat), fstat]
+
+  fmt_stats <- function(vals) {
+    sprintf(
+      "range %d-%d, median %d, IQR %d-%d",
+      as.integer(min(vals)), as.integer(max(vals)),
+      as.integer(median(vals)),
+      as.integer(quantile(vals, 0.25)), as.integer(quantile(vals, 0.75))
+    )
+  }
+
+  ivw_dt <- dt[as.character(method) == "Inverse variance weighted"]
+  out_sig <- ivw_dt[, .(
+    n_total  = uniqueN(label),
+    n_nom    = sum(p     < 0.05, na.rm = TRUE),
+    n_fdr    = sum(p_fdr < 0.05, na.rm = TRUE)
+  ), by = out_label][order(out_label)]
+
+  out_sig_lines <- apply(out_sig, 1, function(r) {
+    sprintf("  %-35s total=%s  p<0.05: %s (%.1f%%)  FDR p<0.05: %s (%.1f%%)",
+            r["out_label"],
+            r["n_total"],
+            r["n_nom"], 100 * as.integer(r["n_nom"]) / as.integer(r["n_total"]),
+            r["n_fdr"], 100 * as.integer(r["n_fdr"]) / as.integer(r["n_total"]))
+  })
+
+  log_lines <- c(
+    "=== Metabolite -> Outcome MR: Instrument Summary ===",
+    "",
+    sprintf("a) Replicating metabolites (Trial consistent) in replication file:  %d", n_rep_total),
+    sprintf("b) Replicating metabolites (Trial consistent) with a GWAS ID:       %d", n_with_gwas_ids),
+    sprintf("c) Of these with genetic instruments:                               %d (%.1f%%)", n_with_instruments, pct_instruments),
+    sprintf("d) Of these with valid genetic instruments (in MR analysis):        %d (%.1f%%)", n_with_instruments_post_harm, pct_instruments_post_harm),
+    "",
+    "--- IVW nSNP distribution (across all metabolite x outcome analyses) ---",
+    sprintf("    %s", fmt_stats(nsnp_vals)),
+    "",
+    "--- IVW F-statistic distribution (across all metabolite x outcome analyses) ---",
+    sprintf("    %s", fmt_stats(fstat_vals)),
+    "",
+    "--- IVW significant associations per outcome ---",
+    out_sig_lines
+  )
+
+  dir.create(dirname(log_file), recursive = TRUE, showWarnings = FALSE)
+  writeLines(log_lines, log_file)
+}
 
 # cap colour scale at 99th percentile to prevent outliers dominating
 abs_max <- quantile(abs(dt$signed_log10p), 0.99, na.rm = TRUE)
@@ -201,7 +294,7 @@ p <- ggplot(dt_plot, aes(x = method, y = label)) +
     na.value = "grey88"
   ) +
   scale_x_discrete(limits = all_levels, labels = method_labels) +
-  facet_grid(pathway_broad ~ out_label, scales = "free", space = "free_y") +
+  facet_grid(cluster_group ~ out_label, scales = "free", space = "free_y") +
   labs(x = NULL, y = "Metabolite (exposure)") +
   theme_bw(base_size = 11) +
   theme(
@@ -241,30 +334,22 @@ cat("Saved:", output_file, "\n")
 library(circlize)
 
 metab_order <- levels(dt$label)
-lookup_dt <- unique(
-  dt[, .(label, pathway_broad)]
-)
-pw_lookup <- lookup_dt[
-  match(metab_order, as.character(lookup_dt$label)),
-  pathway_broad
-]
+lookup_dt   <- unique(dt[, .(label, cluster_group)])
 pathway_split <- factor(
-  as.character(pw_lookup),
-  levels = c(
-    "Lipid metabolism",
-    "Lipoproteins",
-    "Amino acids",
-    "Other"
-  )
+  as.character(lookup_dt[match(metab_order, as.character(lookup_dt$label)), cluster_group]),
+  levels = cluster_group_levels
 )
 length(pathway_split)
 length(metab_order)
 table(pathway_split, useNA = "ifany")
-#stopifnot(length(pathway_split) == nrow(circ_mats[[1]]))
 
-# explicit outer→inner order: heart failure, osteoarthritis, endometrial cancer
+gap <- 18
+gap_after_vals <- setNames(rep(3, nlevels(pathway_split)), levels(pathway_split))
+gap_after_vals[levels(pathway_split)[nlevels(pathway_split)]] <- gap
+
+# explicit outer→inner order
 outcomes_vec  <- intersect(
-  c("Heart Failure", "Hip Knee Osteoarthritis", "Endometrial Cancer"),
+  c("Heart Failure", "Hip Knee Osteoarthritis", "Kidney Cancer" ),
   unique(dt$out_label)
 )
 n_out         <- length(outcomes_vec)
@@ -314,8 +399,8 @@ circ_mats <- setNames(lapply(outcomes_vec, make_circ_mat), outcomes_vec)
 all_col_vals <- unique(unlist(lapply(circ_mats, as.vector)))
 col_disc     <- setNames(all_col_vals, all_col_vals)
 
-# Per-metabolite average nSNP and Fstat across outcomes (for instrument track)
-metab_nsnp  <- dt_info[, .(avg_nsnp  = mean(nsnp,  na.rm = TRUE)), by = label]
+# Per-metabolite average nSNP (across outcomes that actually had an instrument) and Fstat across outcomes (for instrument track)
+metab_nsnp  <- dt_info[, .(avg_nsnp  = mean(nsnp[!is.na(fstat)],  na.rm = TRUE)), by = label]
 metab_fstat <- dt_info[, .(avg_fstat = mean(fstat,  na.rm = TRUE)), by = label]
 
 nsnp_vec  <- metab_nsnp[ match(metab_order, as.character(label)), avg_nsnp]
@@ -341,12 +426,10 @@ egger_y <- n_meth - match("MR Egger", method_levels) + 0.5
 circos_file <- sub("\\.png$", "_circos.png", output_file)
 meth_abbr   <- rev(c("IVW", "PRESSO", "W.Med", "W.Mode", "Egger"))
 
-gap <- 18
-
 png(circos_file, width = 10, height = 10, units = "in", res = 600, bg = "white")
 circos.clear()
 circos.par(
-  gap.after               = setNames(c(3, 3, 3, gap), levels(pathway_split)),
+  gap.after               = gap_after_vals,
   track.margin            = c(0.005, 0.018),  # 0.018 outer margin = space for label band
   cell.padding            = c(0, 0, 0, 0),
   start.degree            = 270 - gap,
@@ -380,6 +463,18 @@ circos.heatmap(
   cell.border        = NA
 )
 clust_tidx <- get.current.track.index()
+
+for (sec in names(sector_mets)) {
+  n_in_sec <- length(sector_mets[[sec]])
+  if (n_in_sec == 0) next
+  circos.text(
+    x = n_in_sec / 2, y = 0.5,
+    labels = if (sec == "Singletons") "Singletons" else paste0("C", sub("^Cluster ", "", sec)),
+    sector.index = sec, track.index = clust_tidx,
+    facing = "bending.inside", niceFacing = TRUE,
+    cex = 0.25, col = "white", adj = c(0.5, 0.5)
+  )
+}
 
 x_right_clust <- get.cell.meta.data("xlim", sector.index = last_sector,
                                      track.index = clust_tidx)[2]
@@ -519,30 +614,6 @@ for (i in seq_along(outcomes_vec)) {
   }
 }
 
-# Inner pathway-group label track — one coloured band per sector
-pw_cols <- c(
-  "Lipid metabolism" = "#E8A838",
-  "Lipoproteins"     = "#6BAED6",
-  "Amino acids"      = "#74C476",
-  "Other"            = "#BCBCBC"
-)
-circos.track(
-  ylim         = c(0, 1),
-  track.height = 0.03,
-  track.margin = c(0.005, 0.005),  # override global 0.018 outer margin — no label needed here
-  bg.border    = NA,
-  panel.fun    = function(x, y) {
-    sec  <- get.cell.meta.data("sector.index")
-    xlim <- get.cell.meta.data("xlim")
-    ylim <- get.cell.meta.data("ylim")
-    circos.rect(xlim[1], ylim[1], xlim[2], ylim[2],
-                col = pw_cols[sec], border = NA)
-    circos.text(mean(xlim), mean(ylim), labels = sec,
-                facing = "bending.inside", niceFacing = TRUE,
-                cex = 0.45, col = "white", font = 2)
-  }
-)
-
 # Outcome labels — white arc in the outer track-margin of each heatmap ring,
 # with a single text label at 12 o'clock (x=0, y=r in circlize canvas coords).
 for (i in seq_along(outcomes_vec)) {
@@ -560,7 +631,7 @@ for (i in seq_along(outcomes_vec)) {
   y_label <- n_meth + 0.013 / 0.13 * n_meth
   op <- par(xpd = NA)   # disable clipping so text outside ylim is still drawn
   circos.text(
-    x            = 90 + 7,
+    x            = 90 + 28,
     y            = y_label,
     labels       = outcomes_vec[i],
     sector.index = first_sec,
@@ -619,14 +690,13 @@ n_meth_per_out    <- length(method_levels_per_out)
 meth_abbr_per_out <- rev(c("IVW", "IVW Steiger", "PRESSO", "W.Med", "W.Mode", "Egger"))
 egger_y_per_out   <- n_meth_per_out - match("MR Egger", method_levels_per_out) + 0.5
 
-# Prepare reverse MR
 rev_mr <- rev_mr[method %in% method_levels_per_out]
 rev_mr[, method := factor(method, levels = method_levels_per_out)]
 rev_mr[label_lookup, label := i.label, on = c("out_id" = "gwas_id")]
 rev_mr[, p_fdr_rev := p.adjust(p, method = "fdr"), by = .(exp_id, method)]
 
-# Prepare forward MR
-dt_per_out[, method := factor(method, method_levels_per_out)]
+dt_per_out <- dt_per_out[method %in% method_levels_per_out]
+dt_per_out[, method := factor(method, levels = method_levels_per_out)]
 
 
 for (this_outcome in outcomes_vec) {
@@ -692,7 +762,7 @@ for (this_outcome in outcomes_vec) {
   png(out_circos_file, width = 10, height = 10, units = "in", res = 600, bg = "white")
   circos.clear()
   circos.par(
-    gap.after               = setNames(c(3, 3, 3, gap), levels(pathway_split)),
+    gap.after               = gap_after_vals,
     track.margin            = c(0.005, 0.018),
     cell.padding            = c(0, 0, 0, 0),
     start.degree            = 270 - gap,
@@ -709,6 +779,19 @@ for (this_outcome in outcomes_vec) {
     rownames.cex = 0.3, rownames.font = 1, cell.border = NA
   )
   clust_ti <- get.current.track.index()
+
+  for (sec in names(sector_mets)) {
+    n_in_sec <- length(sector_mets[[sec]])
+    if (n_in_sec == 0) next
+    circos.text(
+      x = n_in_sec / 2, y = 0.5,
+      labels = if (sec == "Singletons") "Singletons" else paste0("C", sub("^Cluster ", "", sec)),
+      sector.index = sec, track.index = clust_ti,
+      facing = "bending.inside", niceFacing = TRUE,
+      cex = 0.25, col = "white", adj = c(0.5, 0.5)
+    )
+  }
+
   circos.text(
     x = get.cell.meta.data("xlim", sector.index = last_sector, track.index = clust_ti)[2],
     y = 0.5, labels = "Instrument Cluster ",
@@ -725,7 +808,7 @@ for (this_outcome in outcomes_vec) {
   fwd_label_ti <- get.current.track.index()
   op <- par(xpd = NA)
   circos.text(
-    x = 90 + 7, y = 0.5,
+    x = 90 + 27, y = 0.5,
     labels = paste0("Metabolite → ", this_outcome, " MR"),
     sector.index = first_sec, track.index = fwd_label_ti,
     facing = "bending.inside", niceFacing = TRUE,
@@ -841,7 +924,7 @@ for (this_outcome in outcomes_vec) {
     rev_label_ti <- get.current.track.index()
     op <- par(xpd = NA)
     circos.text(
-      x = 90 + 7, y = 0.5,
+      x = 90 + 28, y = 0.5,
       labels = paste0(this_outcome, " → Metabolite MR"),
       sector.index = first_sec, track.index = rev_label_ti,
       facing = "bending.inside", niceFacing = TRUE,
@@ -934,23 +1017,7 @@ for (this_outcome in outcomes_vec) {
 
   }
 
-  # ── Pathway label track ───────────────────────────────────────────────────
-  circos.track(
-    ylim = c(0, 1), track.height = 0.03, track.margin = c(0.005, 0.005),
-    bg.border = NA,
-    panel.fun = function(x, y) {
-      sec  <- get.cell.meta.data("sector.index")
-      xlim <- get.cell.meta.data("xlim")
-      ylim <- get.cell.meta.data("ylim")
-      circos.rect(xlim[1], ylim[1], xlim[2], ylim[2], col = pw_cols[sec], border = NA)
-      circos.text(mean(xlim), mean(ylim), labels = sec,
-                  facing = "bending.inside", niceFacing = TRUE,
-                  cex = 0.45, col = "white", font = 2)
-    }
-  )
-
-  title(this_outcome, cex.main = 0.8, col.main = "grey30", line = -1)
-  legend("topright", inset = 0.01,
+  legend("topright", inset = c(0.1, 0.15),
          legend = c("FDR p<0.05 (risk)", "p<0.05 (risk)", "p≥05 (risk)",
                     "p≥05 (protective)", "p<0.05 (protective)", "FDR p<0.05 (protective)"),
          fill   = c(c_red_fdr, c_red_nom, c_red_ns, c_blue_ns, c_blue_nom, c_blue_fdr),

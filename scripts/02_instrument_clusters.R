@@ -15,6 +15,8 @@ cluster_table       <- snakemake@output[["cluster_table"]]
 cluster_bar_fig     <- snakemake@output[["cluster_bar_fig"]]
 ld_blk_ari_fig      <- snakemake@output[["ld_blk_ari_fig"]]
 ld_blk_overlap_fig  <- snakemake@output[["ld_blk_overlap_fig"]]
+snp_share_file      <- snakemake@output[["snp_share_file"]]
+log_file            <- snakemake@log[["log"]]
 ########################################################
 
 if (FALSE) {
@@ -23,7 +25,7 @@ repo_dir            <- Sys.getenv("HF_METABOLITE_REPO2")
 instrument_files    <- list.files(file.path(repo_dir, "output/tables/instruments/genome_wide"), full.names = T)
 consistent_ids_file <- file.path(repo_dir, "output/tables/replication/consistent_gwas_ids.txt")
 name_map_file       <- file.path(repo_dir, "scripts/gwas_metab_name_map.xlsx")
-  ld_block_file    <- file.path(repo_dir, "scripts/ld_blocks_hg19.tsv")
+ld_block_file       <- file.path(repo_dir, "scripts/ld_blocks_hg19.tsv")
 overlap_fig         <- file.path(repo_dir, "output/figures/instruments/overlap_graph.png")
 heatmap_fig         <- file.path(repo_dir, "output/figures/instruments/overlap_heatmap.png")
 ari_fig             <- file.path(repo_dir, "output/figures/instruments/cluster_ari_stability.png")
@@ -31,6 +33,8 @@ cluster_table       <- file.path(repo_dir, "output/tables/instruments/cluster_me
 cluster_bar_fig     <- file.path(repo_dir, "output/figures/instruments/cluster_bar.png")
 ld_blk_ari_fig      <- file.path(repo_dir, "output/figures/instruments/ld_block_ari_stability.png")
 ld_blk_overlap_fig  <- file.path(repo_dir, "output/figures/instruments/ld_block_overlap_graph.png")
+snp_share_file      <- file.path(repo_dir, "output/tables/instruments/snp_share_counts.tsv")
+log_file            <- file.path(repo_dir, "output/logs/instrument_clusters.log")
 # ─────────────────────────────────────────────────────────────────────────────
 }
 
@@ -45,15 +49,28 @@ library(ggraph)
 library(mclust)
 suppressPackageStartupMessages(library(data.table))
 
+dir.create(dirname(log_file), recursive = TRUE, showWarnings = FALSE)
+log_con <- file(log_file, open = "wt")
+on.exit(close(log_con))
+tee <- function(...) { cat(...); cat(..., file = log_con, append = TRUE) }
+
+set.seed(42)  # cluster_louvain() is stochastic
 
 # set overlap threshold for clustering
-thr <- 0.2  # overlap coefficient threshold: ≥33% of the smaller instrument shared
+thr <- 0.25  # overlap coefficient threshold: ≥33% of the smaller instrument shared
 
 
 
 
 # meta data ====
 map <- read_xlsx(name_map_file, sheet = 1) |> as.data.table()
+
+# disambiguate labels that appear on more than one platform
+platform_suffix <- c("nightingale" = "NMR", "metabolon" = "MS")
+dup_labels      <- map[, .(n = uniqueN(gwas_id)), by = label][n > 1, label]
+map[label %in% dup_labels,
+    label := paste0(label, " (", platform_suffix[platform], ")")]
+
 consistent_ids <- fread(
   consistent_ids_file,
   header = FALSE,
@@ -75,18 +92,32 @@ if (!is.null(ld_block_file) && file.exists(ld_block_file)) {
 
 # load instruments ====
 instruments <- lapply(instrument_files, function(fp) {
+  if (!grepl("^GCST", basename(fp))) return(NULL)
   id <- sub("(GCST[0-9]+)_instrument.tsv", "\\1", basename(fp))
-  if (id %in% consistent_ids$gwas_id) {
-    d <- fread(fp)
-    if (nrow(d) == 0) {
-      d <- data.table(trait = id)
-    }
-    d
-  } else {
-    NULL
+  if (!(id %in% consistent_ids$gwas_id)) return(NULL)
+  d <- fread(fp)
+  if (nrow(d) == 0) {
+    d <- data.table(trait = id)
   }
+  d
 }) |> rbindlist(use.names = TRUE, fill = TRUE)
-instruments[map, label := i.label, on = c("trait" = "gwas_id")]
+
+# add label / name (NAs are ones not measured in BBS/DiRECT)
+instruments[
+  map,
+  c("label", "pathway_group") := .(i.label, i.pathway_group),
+  on = c("trait" = "gwas_id")
+]
+
+no_label_n <- instruments[is.na(label), uniqueN(trait)]
+tee(sprintf("%i metabolite GWAS traits not found in map / not in BBS or DIRECT\n", no_label_n))
+instruments <- instruments[!is.na(label)]
+
+tee(sprintf(
+  "Instruments loaded: %i metabolites; %i unique SNPs across all instruments\n",
+  instruments[!is.na(rsid), uniqueN(trait)],
+  instruments[!is.na(rsid), uniqueN(rsid)]
+))
 
 
 # Build SNP sets per trait ====
@@ -113,6 +144,79 @@ for (i in seq_len(nrow(snp_list))) {
   mat_snp[i, idx] <- 1
 }
 
+# metabolite instrument table
+instr_info_tab <- data.table(gwas_id = rownames(mat_snp))
+instr_info_tab[
+  map,
+  c("label", "pathway_group") := .(i.label, i.pathway_group),
+  on = .(gwas_id)
+]
+
+instr_info_tab[, c("nsnp", "snps", "overlapping_traits", "max_overlap") := {
+  mat_sub   <- mat_snp[gwas_id, , drop = FALSE]
+  n_snp     <- rowSums(mat_sub)
+  snp_lists <- apply(mat_sub, 1, function(x) {
+    paste(names(x)[x > 0], collapse = ";")
+  })
+
+  # For each metabolite: which *other* metabolites share ≥1 instrument
+  # Returns semicolon-delimited gwas_ids (or labels if you prefer)
+  overlapping <- sapply(rownames(mat_sub), function(focal_id) {
+    focal_snps <- colnames(mat_sub)[mat_sub[focal_id, ] > 0]
+    if (length(focal_snps) == 0) return(NA_character_)
+
+    others <- setdiff(
+      rownames(mat_snp)[rowSums(mat_snp[, focal_snps, drop = FALSE]) > 0],
+      focal_id
+    )
+    if (length(others) == 0) return(NA_character_)
+
+    overlap_strs <- sapply(others, function(other_id) {
+      other_snps  <- colnames(mat_snp)[mat_snp[other_id, ] > 0]
+      shared      <- length(intersect(focal_snps, other_snps))
+      pct_focal   <- round(100 * shared / length(focal_snps), 1)
+      pct_other   <- round(100 * shared / length(other_snps), 1)
+      other_label <- instr_info_tab[gwas_id == other_id, label]
+      list(
+        str     = sprintf("%s|%s|%.0f%%|%.0f%%", other_id, other_label, pct_focal, pct_other),
+        max_pct = max(pct_focal, pct_other)
+      )
+    }, simplify = FALSE)
+
+    # Sort by max overlap descending
+    ord <- order(sapply(overlap_strs, `[[`, "max_pct"), decreasing = TRUE)
+    paste(sapply(overlap_strs[ord], `[[`, "str"), collapse = "; ")
+  })
+
+  max_overlap <- sapply(overlapping, function(s) {
+    if (is.na(s)) return(0.0)
+    first_entry <- strsplit(s, "; ")[[1]][1]
+    pcts <- regmatches(first_entry, gregexpr("[0-9]+(?=%)", first_entry, perl = TRUE))[[1]]
+    max(as.numeric(pcts))
+  })
+
+  .(n_snp, snp_lists, overlapping, max_overlap)
+}]
+
+
+
+tee(sprintf(
+  "Instrument overlap summary (SNP-level):
+  Total metabolites with instruments: %i
+  Instrument size (SNPs): min=%i, median=%.0f, max=%i
+  Metabolites with >=1 overlapping partner: %i (%.1f%%)
+  Metabolites with max overlap >= threshold (%.2f): %i (%.1f%%)\n",
+  nrow(instr_info_tab),
+  min(instr_info_tab$nsnp),
+  median(instr_info_tab$nsnp),
+  max(instr_info_tab$nsnp),
+  instr_info_tab[!is.na(overlapping_traits), .N],
+  100 * instr_info_tab[!is.na(overlapping_traits), .N] / nrow(instr_info_tab),
+  thr,
+  instr_info_tab[max_overlap >= thr * 100, .N],
+  100 * instr_info_tab[max_overlap >= thr * 100, .N] / nrow(instr_info_tab)
+))
+
 
 # SNP similarity (overlap coefficient = |A∩B| / min(|A|,|B|)) ====
 int_mat <- mat_snp %*% t(mat_snp)          # intersection counts
@@ -121,8 +225,25 @@ size_vec <- rowSums(mat_snp)               # instrument sizes
 overlap_i <- sweep(int_mat, 1, size_vec, "/")   # divide by row size
 overlap_j <- sweep(int_mat, 2, size_vec, "/")   # divide by col size
 sim <- pmax(overlap_i, overlap_j)
-
 diag(sim) <- 0
+
+upper_tri <- sim[upper.tri(sim)]
+tee(sprintf(
+  "Overlap coefficient (SNP-level) pairwise summary:
+  Total pairs: %i
+  Pairs with any overlap (>0): %i (%.1f%%)
+  Pairs above threshold (>=%.2f): %i (%.1f%%)
+  Overlap coeff distribution among overlapping pairs: median=%.3f, 90th pctile=%.3f, max=%.3f\n",
+  length(upper_tri),
+  sum(upper_tri > 0),
+  100 * sum(upper_tri > 0) / length(upper_tri),
+  thr,
+  sum(upper_tri >= thr),
+  100 * sum(upper_tri >= thr) / length(upper_tri),
+  median(upper_tri[upper_tri > 0]),
+  quantile(upper_tri[upper_tri > 0], 0.9),
+  max(upper_tri)
+))
 
 
 # Threshold graph ====
@@ -158,15 +279,35 @@ for (i in seq(2, length(cluster_list))) {
   )
 }
 
-p_ari <- ggplot(
-  data.frame(threshold = thr_seq[-1], ARI = ari_vals),
-  aes(x = threshold, y = ARI)
-) +
-  geom_line(colour = "grey40") +
-  geom_point(size = 2, colour = "grey20") +
-  scale_y_continuous(limits = c(0, 1)) +
-  labs(x = "Overlap coefficient threshold", y = "Cluster stability (ARI)") +
-  theme_bw(base_size = 11)
+n_nonsing_vec <- sapply(cluster_list, function(cl) sum(table(cl) > 1))
+max_nonsing   <- max(n_nonsing_vec, 1L)
+
+ari_df <- data.frame(
+  threshold = thr_seq[-1],
+  ARI       = ari_vals,
+  n_nonsing = n_nonsing_vec[-1]
+)
+
+p_ari <- ggplot(ari_df, aes(x = threshold)) +
+  geom_line(aes(y = ARI), colour = "grey40") +
+  geom_point(aes(y = ARI), size = 2, colour = "grey20") +
+  geom_line(aes(y = n_nonsing / max_nonsing), colour = "#2171b5", linetype = "dashed") +
+  geom_point(aes(y = n_nonsing / max_nonsing), size = 2, colour = "#2171b5", shape = 17) +
+  scale_y_continuous(
+    limits   = c(0, 1),
+    name     = "Cluster stability (ARI)",
+    sec.axis = sec_axis(~ . * max_nonsing,
+                        name   = "Non-singleton clusters (n)",
+                        breaks = scales::pretty_breaks(n = 5)(c(0, max_nonsing)))
+  ) +
+  labs(x = "Overlap coefficient threshold") +
+  theme_bw(base_size = 11) +
+  theme(
+    axis.title.y.right = element_text(colour = "#2171b5"),
+    axis.text.y.right  = element_text(colour = "#2171b5"),
+    axis.ticks.y.right = element_line(colour = "#2171b5")
+  )
+p_ari
 
 dir.create(dirname(ari_fig), recursive = TRUE, showWarnings = FALSE)
 ggsave(ari_fig, p_ari, width = 6, height = 4, dpi = 300, bg = "white")
@@ -190,6 +331,7 @@ deg <- degree(g)
 is_singleton <- deg == 0
 cl <- cluster_louvain(g)
 clusters <- cl$membership
+ori_clusters <- clusters
 clusters[is_singleton] <- 0
 
 
@@ -207,6 +349,8 @@ cols <- setNames(
   cluster_ids
 )
 
+V(g)$cluster_id <- ori_clusters
+V(g)$cluster_singleton <- is_singleton
 V(g)$cluster <- clusters
 V(g)$color <- ifelse(
   clusters == 0,
@@ -214,15 +358,62 @@ V(g)$color <- ifelse(
   cols[as.character(clusters)]
 )
 
+clust_tab <- table(clusters[clusters > 0])
+tee(sprintf(
+  "SNP-based Louvain clustering (threshold=%.2f):
+  Total metabolites: %i
+  Non-singleton clusters: %i (containing %i metabolites)
+  Singletons: %i
+  Cluster sizes: %s\n",
+  thr,
+  length(clusters),
+  length(clust_tab),
+  sum(clust_tab),
+  sum(clusters == 0),
+  paste(sort(as.integer(clust_tab), decreasing = TRUE), collapse = ", ")
+))
+
+
 # export cluster membership ====
-cluster_export <- data.table(
+cluster_dat <- data.table(
   gwas_id = V(g)$name,
   label   = V(g)$label,
   cluster = as.integer(clusters),
+  cluster_id = as.integer(V(g)$cluster_id),
+  cluster_singleton = V(g)$cluster_singleton,
   color   = V(g)$color
 )
+
+instr_info_tab[cluster_dat, `:=`(
+  cluster_id = i.cluster_id,
+  cluster_singleton = i.cluster_singleton
+), on = "gwas_id"]
+
+# per-cluster within-cluster similarity: median (Q1-Q3) across all pairs in the cluster
+cluster_sim_str <- instr_info_tab[cluster_singleton == FALSE, {
+  ids   <- gwas_id
+  vals  <- sim[ids, ids, drop = FALSE]
+  diag(vals) <- NA
+  v <- as.vector(vals)
+  v <- v[!is.na(v)]
+  .(cluster_sim = sprintf("%.3f (%.3f-%.3f)",
+                          median(v), quantile(v, 0.25), quantile(v, 0.75)))
+}, by = cluster_id]
+
+instr_info_tab[cluster_sim_str, cluster_sim := i.cluster_sim, on = "cluster_id"]
+instr_info_tab[is.na(cluster_sim), cluster_sim := NA_character_]
+
+
+# write SNP share counts
+fwrite(
+  instr_info_tab,
+  snp_share_file,
+  sep = "\t"
+)
+
+# write cluster membership table
 dir.create(dirname(cluster_table), recursive = TRUE, showWarnings = FALSE)
-fwrite(cluster_export, cluster_table, sep = "\t")
+fwrite(cluster_dat, cluster_table, sep = "\t")
 
 
 # tidygraph ====
@@ -353,7 +544,7 @@ if (length(shared) > 0) {
     clusters[match(shared, snp_names)],
     clusters_blk[match(shared, blk_names)]
   )
-  message(sprintf("ARI (SNP-based vs LD block-based clusters): %.4f", ari_cross))
+  tee(sprintf("ARI (SNP-based vs LD block-based clusters): %.4f\n", ari_cross))
 }
 
 # LD block network graph plot
@@ -385,14 +576,14 @@ p_graph_blk <- ggraph(tg_blk, layout = "fr", niter = 2000) +
 ggsave(ld_blk_overlap_fig, p_graph_blk, width = 12, height = 12, dpi = 300, bg = "white")
 
 # append cluster_blk and re-save cluster table
-cluster_export[, cluster_blk := clusters_blk[match(gwas_id, blk_names)]]
-fwrite(cluster_export, cluster_table, sep = "\t")
+cluster_dat[, cluster_blk := clusters_blk[match(gwas_id, blk_names)]]
+fwrite(cluster_dat, cluster_table, sep = "\t")
 
 
 # heat map (ggplot2) ====
 # Order: pathway_broad → non-singleton cluster → singleton → label
-ht <- copy(cluster_export)
-ht[consistent_ids, pathway_group := i.pathway_group, on = "gwas_id"]
+ht <- copy(cluster_dat)
+ht[map, pathway_group := i.pathway_group, on = "gwas_id"]
 ht[, pathway_broad := fcase(
   pathway_group == "Lipid metabolism",      "Lipid metabolism",
   pathway_group == "Lipoproteins",          "Lipoproteins",
@@ -557,6 +748,8 @@ p_singletons <- ggplot(bar_dt[is_singleton == TRUE],
 
 p_bar <- p_clusters + p_singletons +
   plot_layout(widths = c(n_clust, 1))
+
+p_bar
 
 ggsave(cluster_bar_fig, p_bar, width = 12, height = 4, dpi = 300, bg = "white")
 

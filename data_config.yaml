@@ -135,6 +135,150 @@ gwases: {
       "ncase": { "name": "ncase",   "alias": "N_case",   "type": "integer" }
     }
   },
+#  non_ischaemic_heart_failure: {
+#    dir_env_var: "DATA_DIR",
+#    id_builder: null,
+#    ids: null,
+#    paths: [ "gwas/hf_nonisch_henry_2023/FORMAT-METAL_Pheno2_EUR.tsv.gz" ],
+#    gwas_build: "Hg19",
+#    binary: true,
+#    ncase: 42081,
+#    ncontrol: 1267892,
+#    prevalence: 0.012,
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsID",    "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
+#      "bp": { "name": "bp",      "alias": "pos_b37", "type": "integer" },
+#      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
+#      "p": { "name": "p",       "alias": "pval",    "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "A1",      "type": "character" },
+#      "oa": { "name": "oa",      "alias": "A2",      "type": "character" },
+#      "beta": { "name": "beta",    "alias": "A1_beta", "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "A1_freq", "type": "numeric" },
+#      "n": { "name": "n",       "alias": "N_total", "type": "integer" },
+#      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer" }
+#    }
+#  },
+#  dcm: {
+#    dir_env_var: "DATA_DIR",
+#    id_builder: null,
+#    ids: null,
+#    paths: [ "gwas/dcm_broad_henry_2023/FORMAT-METAL_Pheno5_EUR.tsv.gz" ],
+#    gwas_build: "Hg19",
+#    binary: true,
+#    ncase: 14256,
+#    ncontrol: 1199156,
+#    prevalence: 0.004,
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsID",     "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chr",      "type": "character" },
+#      "bp": { "name": "bp",      "alias": "pos_b37",  "type": "integer" },
+#      "se": { "name": "se",      "alias": "se",       "type": "numeric" },
+#      "p": { "name": "p",       "alias": "pval",     "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "A1",       "type": "character" },
+#      "oa": { "name": "oa",      "alias": "A2",       "type": "character" },
+#      "beta": { "name": "beta",    "alias": "A1_beta",  "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "A1_freq",  "type": "numeric" },
+#      "n": { "name": "n",       "alias": "N_total",  "type": "integer" },
+#      "ncase": { "name": "ncase",   "alias": "N_case",   "type": "integer" }
+#    }
+#  },
+#  hfpef: {
+#    dir_env_var: "DATA_DIR",
+#    id_builder: null,
+#    ids: null,
+#    paths: [ "gwas/mvp_verma_2025/MVP_R4.1000G_AGR.GIA.PheCodes_CirculatorySystem_batch2/MVP_R4.1000G_AGR.Phe_428_4.EUR.GIA.dbGaP_b37_processed.txt.gz" ],
+#    gwas_build: "Hg19",
+#    binary: true,
+#    ncase: 19682,
+#    ncontrol: 419065,
+#    prevalence: 0.012,
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",    "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
+#      "bp": { "name": "bp",      "alias": "bp", "type": "integer" },
+#      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p",    "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "ea",      "type": "character" },
+#      "oa": { "name": "oa",      "alias": "oa",      "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta", "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "eaf", "type": "numeric" },
+#      "n": { "name": "n",       "alias": "n", "type": "integer" },
+#      "ncase": { "name": "ncase",   "alias": "ncase",  "type": "integer" }
+#    }
+#  },
+#  hfref: {
+#    dir_env_var: "DATA_DIR",
+#    id_builder: null,
+#    ids: null,
+#    paths: [ "gwas/mvp_verma_2025/MVP_R4.1000G_AGR.GIA.PheCodes_CirculatorySystem_batch2/MVP_R4.1000G_AGR.Phe_428_3.EUR.GIA.dbGaP_b37_processed.txt.gz" ],
+#    gwas_build: "Hg19",
+#    binary: true,
+#    ncase: 31220,
+#    ncontrol: 407213,
+#    prevalence: 0.012,
+#    map: {
+#      "rsid": { "name": "rsid",    "alias": "rsid",    "type": "character" },
+#      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
+#      "bp": { "name": "bp",      "alias": "bp", "type": "integer" },
+#      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
+#      "p": { "name": "p",       "alias": "p",    "type": "numeric" },
+#      "ea": { "name": "ea",      "alias": "ea",      "type": "character" },
+#      "oa": { "name": "oa",      "alias": "oa",      "type": "character" },
+#      "beta": { "name": "beta",    "alias": "beta", "type": "numeric" },
+#      "eaf": { "name": "eaf",     "alias": "eaf", "type": "numeric" },
+#      "n": { "name": "n",       "alias": "n", "type": "integer" },
+#      "ncase": { "name": "ncase",   "alias": "ncase",  "type": "integer" }
+#    }
+#  },
+  non_ischaemic_hfref: {
+    dir_env_var: "DATA_DIR",
+    id_builder: null,
+    ids: null,
+    paths: [ "gwas/hf_nonisch_ref_henry_2023/FORMAT-METAL_Pheno3_EUR.tsv.gz" ],
+    gwas_build: "Hg19",
+    binary: true,
+    ncase: 31220,
+    ncontrol: 407213,
+    prevalence: 0.012,
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsID",    "type": "character" },
+      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
+      "bp": { "name": "bp",      "alias": "pos_b37", "type": "integer" },
+      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
+      "p": { "name": "p",       "alias": "pval",    "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "A1",      "type": "character" },
+      "oa": { "name": "oa",      "alias": "A2",      "type": "character" },
+      "beta": { "name": "beta",    "alias": "A1_beta", "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "A1_freq", "type": "numeric" },
+      "n": { "name": "n",       "alias": "N_total", "type": "integer" },
+      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer" }
+    }
+  },
+  non_ischaemic_hfpef: {
+    dir_env_var: "DATA_DIR",
+    id_builder: null,
+    ids: null,
+    paths: [ "gwas/hf_nonisch_pef_henry_2023/FORMAT-METAL_Pheno4_EUR.tsv.gz" ],
+    gwas_build: "Hg19",
+    binary: true,
+    ncase: 19682,
+    ncontrol: 419065,
+    prevalence: 0.012,
+    map: {
+      "rsid": { "name": "rsid",    "alias": "rsID",    "type": "character" },
+      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
+      "bp": { "name": "bp",      "alias": "pos_b37", "type": "integer" },
+      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
+      "p": { "name": "p",       "alias": "pval",    "type": "numeric" },
+      "ea": { "name": "ea",      "alias": "A1",      "type": "character" },
+      "oa": { "name": "oa",      "alias": "A2",      "type": "character" },
+      "beta": { "name": "beta",    "alias": "A1_beta", "type": "numeric" },
+      "eaf": { "name": "eaf",     "alias": "A1_freq", "type": "numeric" },
+      "n": { "name": "n",       "alias": "N_total", "type": "integer" },
+      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer" }
+    }
+  },
   hip_knee_osteoarthritis: {
     dir_env_var: "DATA_DIR",
     id_builder: null,
@@ -157,80 +301,33 @@ gwases: {
       "n": { "name": "n",       "alias": "N",  "type": "integer" }
     }
   },
-  endometrial_cancer: {
+  kidney_cancer: {
     dir_env_var: "DATA_DIR",
     id_builder: null,
     ids: null,
-    paths: [ "gwas/endometrial_cancer_omara_2018/GCST006464_GRCh37.tsv.gz" ],
-    gwas_build: "Hg19",
+    paths: [ "gwas/kidney_cancer_purdue_2024/GCST90320057.tsv.gz" ],
+    gwas_build: "Hg38",
     binary: true,
-    ncase: 12906,
-    ncontrol: 108979,
-    prevalence: 0.015,
+    ncase: 25890,
+    ncontrol: 743585,
+    prevalence: 0.0044,
     map: {
-      "rsid": { "name": "rsid",    "alias": "variant_id",     "type": "character" },
-      "chr": { "name": "chr",     "alias": "chromosome",      "type": "character" },
-      "bp": { "name": "bp",      "alias": "base_pair_location",  "type": "integer" },
-      "se": { "name": "se",      "alias": "standard_error",       "type": "numeric" },
-      "p": { "name": "p",       "alias": "p_value",     "type": "numeric" },
-      "ea": { "name": "ea",      "alias": "effect_allele",       "type": "character" },
-      "oa": { "name": "oa",      "alias": "other_allele",       "type": "character" },
-      "beta": { "name": "beta",    "alias": "beta",  "type": "numeric" },
-      "eaf": { "name": "eaf",     "alias": "effect_allele_frequency",  "type": "numeric" }
+      "rsid": { "name": "rsid",    "alias": "rsid",                    "type": "character" },
+      "chr":  { "name": "chr",     "alias": "chromosome",              "type": "character" },
+      "bp":   { "name": "bp",      "alias": "base_pair_location",      "type": "integer"   },
+      "se":   { "name": "se",      "alias": "standard_error",          "type": "numeric"   },
+      "p":    { "name": "p",       "alias": "p_value",                 "type": "numeric"   },
+      "ea":   { "name": "ea",      "alias": "effect_allele",           "type": "character" },
+      "oa":   { "name": "oa",      "alias": "other_allele",            "type": "character" },
+      "beta": { "name": "beta",    "alias": "beta",                    "type": "numeric"   },
+      "eaf":  { "name": "eaf",     "alias": "effect_allele_frequency", "type": "numeric"   },
+      "n":    { "name": "n",       "alias": "n_samples",               "type": "integer"   }
     }
   }
 }
-#
 
-#  hfref: {
-#    path: "gwas/hf_nonisch_ref_henry_2023/FORMAT-METAL_Pheno3_EUR.tsv.gz",
-#    map: {
-#      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
-#      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
-#      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
-#      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
-#      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
-#      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
-#      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
-#      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
-#      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
-#      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
-#      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
-#    }
-#  },
-#  hfpef: {
-#    path: "gwas/hf_nonisch_pef_henry_2023/FORMAT-METAL_Pheno4_EUR.tsv.gz",
-#    map: {
-#      "rsid":  { "name": "rsid",    "alias": "rsID",    "type": "character" },
-#      "chr":   { "name": "chr",     "alias": "chr",     "type": "character" },
-#      "bp":    { "name": "bp",      "alias": "pos_b37", "type": "integer"   },
-#      "se":    { "name": "se",      "alias": "se",      "type": "numeric"   },
-#      "p":     { "name": "p",       "alias": "pval",    "type": "numeric"   },
-#      "ea":    { "name": "ea",      "alias": "A1",      "type": "character" },
-#      "oa":    { "name": "oa",      "alias": "A2",      "type": "character" },
-#      "beta":  { "name": "beta",    "alias": "A1_beta", "type": "numeric"   },
-#      "eaf":   { "name": "eaf",     "alias": "A1_freq", "type": "numeric"   },
-#      "n":     { "name": "n",       "alias": "N_total", "type": "integer"   },
-#      "ncase": { "name": "ncase",   "alias": "N_case",  "type": "integer"   }
-#    }
-#  },
-#  hfpef_mvp: {
-#    path: "gwas/mvp_verma_2025/MVP_R4.1000G_AGR.GIA.PheCodes_CirculatorySystem_batch2/MVP_R4.1000G_AGR.Phe_428_4.EUR.GIA.dbGaP_b37_processed.txt.gz",
-#    map: {
-#      "rsid": { "name": "rsid",    "alias": "rsid",    "type": "character" },
-#      "chr": { "name": "chr",     "alias": "chr",     "type": "character" },
-#      "bp": { "name": "bp",      "alias": "bp", "type": "integer" },
-#      "se": { "name": "se",      "alias": "se",      "type": "numeric" },
-#      "p": { "name": "p",       "alias": "p",    "type": "numeric" },
-#      "ea": { "name": "ea",      "alias": "ea",      "type": "character" },
-#      "oa": { "name": "oa",      "alias": "oa",      "type": "character" },
-#      "beta": { "name": "beta",    "alias": "beta", "type": "numeric" },
-#      "eaf": { "name": "eaf",     "alias": "eaf", "type": "numeric" },
-#      "n": { "name": "n",       "alias": "n", "type": "integer" },
-#      "ncase": { "name": "ncase",   "alias": "ncase",  "type": "integer" }
-#    }
-#  }
-#}
+
+
 
 pathway_instrument_search: {
   branched_chain_amino_acids: {

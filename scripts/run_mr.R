@@ -387,7 +387,7 @@ for (si in 1:2) {
   cat("Running MR methods\n")
 
   res_mr <- TwoSampleMR::mr(har_dat, method_list = c(
-    "mr_ivw", "mr_egger_regression", "mr_weighted_median", "mr_weighted_mode"
+    "mr_wald_ratio", "mr_ivw", "mr_egger_regression", "mr_weighted_median", "mr_weighted_mode"
   ))
 
   res_het <- tryCatch({
